@@ -38,6 +38,8 @@ extension SigningRequestTracer {
     func process(from pid: Int32) -> SigningRequestProvenance.Process {
         var pidAndNameInfo = unsafe self.pidAndNameInfo(from: pid)
         let ppid = unsafe pidAndNameInfo.kp_eproc.e_ppid != 0 ? pidAndNameInfo.kp_eproc.e_ppid : nil
+        let start = unsafe pidAndNameInfo.kp_proc.p_un.__p_starttime
+        let startTime = start.tv_sec != 0 ? Date(timeIntervalSince1970: TimeInterval(start.tv_sec) + TimeInterval(start.tv_usec) / 1_000_000) : nil
         let procName = unsafe withUnsafeMutablePointer(to: &pidAndNameInfo.kp_proc.p_comm.0) { pointer in
             unsafe String(cString: pointer)
         }
@@ -50,7 +52,7 @@ extension SigningRequestTracer {
         let flags: SecCSFlags = [.considerExpiration, .enforceRevocationChecks]
         unsafe SecCodeCreateWithPID(pid, SecCSFlags(), &secCode)
         let valid = unsafe SecCodeCheckValidity(secCode.takeRetainedValue(), flags, nil) == errSecSuccess
-        return SigningRequestProvenance.Process(pid: pid, processName: procName, appName: appName(for: pid), iconURL: iconURL(for: pid), path: path, validSignature: valid, parentPID: ppid)
+        return SigningRequestProvenance.Process(pid: pid, processName: procName, appName: appName(for: pid), iconURL: iconURL(for: pid), path: path, validSignature: valid, parentPID: ppid, startTime: startTime)
     }
 
     /// Looks up the URL for the icon of a process ID, if it has one.
