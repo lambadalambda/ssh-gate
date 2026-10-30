@@ -1,5 +1,35 @@
 # sshgate
 
+> The main work has moved to a fork of Secretive with scoped grants
+> (`lambadalambda/ssh-gate`, branch `scoped-grants`): a Mac app that holds the keys
+> in the Secure Enclave and asks in a window, with Touch ID, which process may
+> use which key for which purpose and for how long. This repo has the
+> `ssh-grant` command and the agent skill for it, the e2e and fixture tools,
+> and the original proxy below.
+
+## ssh-grant and the agent skill
+
+```sh
+go build -o ssh-grant ./cmd/ssh-grant      # put it on the agent's PATH
+ssh-grant login git@git.example.com --for 1h --reason "push branch x"
+ssh-grant sign --for 1h --reason "sign the release tag"
+```
+
+`ssh-grant` asks the fork's agent (`SSH_AUTH_SOCK`) for a grant before the key
+is used. For coding agents, install the skill:
+
+```sh
+ln -s "$PWD/skills/ssh-grant" ~/.claude/skills/ssh-grant
+```
+
+If a key is marked as grant CA in the fork's host app, each login grant also
+gets a user certificate that is valid only for the granted user and until the
+grant expires. Servers trust the CA with one line in `authorized_keys`
+(`cert-authority,principals="USER" <CA key>`) or with `TrustedUserCAKeys`.
+`scripts/manual-certificate-test.sh` tests this end to end.
+
+## The original proxy
+
 A filtering ssh-agent proxy. Each grant gets its own socket. A process that
 uses the socket can only:
 
