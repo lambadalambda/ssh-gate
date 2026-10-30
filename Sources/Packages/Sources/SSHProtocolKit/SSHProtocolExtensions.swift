@@ -6,12 +6,15 @@ extension SSHAgent {
 
     public enum ProtocolExtension: CustomDebugStringConvertible, Codable, Sendable {
         case openSSH(OpenSSHExtension)
+        case grantRequest(GrantRequestContext)
         case unknown(String)
 
         public var debugDescription: String {
             switch self {
             case let .openSSH(protocolExtension):
                 protocolExtension.debugDescription
+            case .grantRequest:
+                GrantRequestContext.name
             case .unknown(let string):
                 "Unknown (\(string))"
             }

@@ -163,6 +163,13 @@ extension SSHAgentInputParser {
         do {
             let reader = OpenSSHReader(data: data)
             let nameRaw = try reader.readNextChunkAsString()
+            if nameRaw == SSHAgent.ProtocolExtension.GrantRequestContext.name {
+                do {
+                    return .grantRequest(try SSHAgent.ProtocolExtension.GrantRequestContext(reading: reader))
+                } catch {
+                    throw AgentParsingError.invalidData
+                }
+            }
             let nameSplit = nameRaw.split(separator: "@")
             guard nameSplit.count == 2 else {
                 throw AgentParsingError.invalidData
