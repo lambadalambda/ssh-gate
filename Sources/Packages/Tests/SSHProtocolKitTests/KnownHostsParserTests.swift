@@ -16,13 +16,13 @@ import SSHTestFixtures
 
     @Test func keysByFullBlob() {
         let hosts = KnownHostsParser.parse(Data([line("a.example", p256), line("b.example", p384)].joined(separator: "\n").utf8))
-        #expect(hosts[p256] == "a.example")
-        #expect(hosts[p384] == "b.example")
+        #expect(hosts.names[p256] == "a.example")
+        #expect(hosts.names[p384] == "b.example")
     }
 
     @Test func mergesNamesAndAcceptsComments() {
         let contents = [line("a.example", ed, comment: "my server"), line("10.0.0.1", ed)].joined(separator: "\n")
-        #expect(KnownHostsParser.parse(Data(contents.utf8))[ed] == "a.example, 10.0.0.1")
+        #expect(KnownHostsParser.parse(Data(contents.utf8)).names[ed] == "a.example, 10.0.0.1")
     }
 
     @Test func acceptsTabsAndBadLines() {
@@ -31,8 +31,8 @@ import SSHTestFixtures
         contents.append(contentsOf: [0x0a, 0xff, 0xfe, 0x0a])
         contents.append(Data(line("b.example", p256).utf8))
         let hosts = KnownHostsParser.parse(contents)
-        #expect(hosts[ed] == "a.example")
-        #expect(hosts[p256] == "b.example")
+        #expect(hosts.names[ed] == "a.example")
+        #expect(hosts.names[p256] == "b.example")
     }
 
     @Test func skipsMarkersHashedAndInvalidLines() {
@@ -46,7 +46,10 @@ import SSHTestFixtures
             "x.example ssh-ed25519 !!!notbase64",
             "y.example ssh-rsa " + ed.base64EncodedString(), // type does not match the blob
         ].joined(separator: "\n")
-        #expect(KnownHostsParser.parse(Data(contents.utf8)).isEmpty)
+        let hosts = KnownHostsParser.parse(Data(contents.utf8))
+        #expect(hosts.names.isEmpty)
+        // The @cert-authority line is a CA, not a host key.
+        #expect(hosts.authorities == [p256: "*.example"])
     }
 
 }

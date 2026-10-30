@@ -51,7 +51,7 @@ extension Agent {
     public func handle(
         request: SSHAgent.Request,
         provenance: SigningRequestProvenance,
-        hosts: [Data: String]?,
+        hosts: KnownHosts?,
         connection: AgentConnection
     ) async -> Data {
         logger.debug("Agent received request of type \(request.debugDescription)")
@@ -65,6 +65,17 @@ extension Agent {
                 response.append(await identities())
                 logger.debug("Agent returned \(SSHAgent.Response.agentIdentitiesAnswer.debugDescription)")
             case .signRequest(let context):
+                let state = connection.snapshot
+                if let reason = state.poisoned {
+                    logger.error("Agent refused request on poisoned connection: \(reason, privacy: .public)")
+                    throw BindingFailure()
+                }
+                let purpose = AgentConnection.purpose(of: context.dataToSign.decoded, in: state)
+                let grantContext = GrantContext(
+                    purpose: purpose,
+                    forwarded: state.forwarded,
+                    host: Self.hostName(for: purpose, bind: state.bind, knownHosts: hosts, now: now())
+                )
                 let target: SigningRequestTarget?
                 switch context.dataToSign.decoded {
                 case .sshConnection(let payload):
@@ -75,7 +86,7 @@ extension Agent {
                             publicKeyAlgorithm: payload.publicKeyAlgorithm,
                             publicKey: payload.publicKey,
                             hostKey: payload.hostKey ?? Data(),
-                            host: payload.hostKey.flatMap { hosts?[$0] }
+                            host: grantContext.host
                         )
                     )
                 case .sshSig(let payload):
@@ -89,17 +100,6 @@ extension Agent {
                 default:
                     target = nil
                 }
-                let state = connection.snapshot
-                if let reason = state.poisoned {
-                    logger.error("Agent refused request on poisoned connection: \(reason, privacy: .public)")
-                    throw BindingFailure()
-                }
-                let purpose = AgentConnection.purpose(of: context.dataToSign.decoded, in: state)
-                let grantContext = GrantContext(
-                    purpose: purpose,
-                    forwarded: state.forwarded,
-                    host: { if case .login(_, let hostKey) = purpose { hosts?[hostKey] } else { nil } }()
-                )
                 response.append(SSHAgent.Response.agentSignResponse.data)
                 response.append(try await sign(data: context.dataToSign.raw, keyBlob: context.keyBlob, provenance: provenance, target: target, grantContext: grantContext))
                 logger.debug("Agent returned \(SSHAgent.Response.agentSignResponse.debugDescription)")
@@ -183,6 +183,26 @@ extension Agent {
         try await witness?.witness(accessTo: secret, from: store, by: provenance, target: target, offerPersistence: secret.authenticationRequirement.required)
         logger.debug("Agent signed request")
         return signedData
+    }
+
+}
+
+extension Agent {
+
+    /// The host name to show for a login: the known_hosts name of the host key, or, for a valid host certificate
+    /// whose CA known_hosts trusts, the certificate's principals that the CA line's patterns allow. Never principals of
+    /// an unknown CA, which anybody can write.
+    static func hostName(for purpose: GrantPurpose?, bind: AgentConnection.SessionBind?, knownHosts: KnownHosts?, now: Date) -> String? {
+        guard case .login(_, let hostKey) = purpose, let knownHosts else { return nil }
+        if let name = knownHosts.names[hostKey] {
+            return name
+        }
+        guard let certificate = bind?.certificate, certificate.publicKey == hostKey, certificate.isValid(at: now),
+              let patterns = knownHosts.authorities[certificate.authority] else {
+            return nil
+        }
+        let allowed = certificate.principals.filter { HostPattern.matches($0, patterns: patterns) }
+        return allowed.isEmpty ? nil : allowed.joined(separator: ", ")
     }
 
 }

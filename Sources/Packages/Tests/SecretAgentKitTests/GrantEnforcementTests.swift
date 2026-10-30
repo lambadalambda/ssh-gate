@@ -82,9 +82,9 @@ final class Clock: @unchecked Sendable {
         return auth.request
     }
 
-    func send(_ agent: Agent, _ message: Data, from provenance: SigningRequestProvenance, on connection: AgentConnection = AgentConnection()) async throws -> Bool {
+    func send(_ agent: Agent, _ message: Data, from provenance: SigningRequestProvenance, on connection: AgentConnection = AgentConnection(), knownHosts: KnownHosts? = nil) async throws -> Bool {
         // A new connection per message unless a test passes one.
-        let response = await agent.handle(request: try SSHAgentInputParser().parse(data: message), provenance: provenance, hosts: nil, connection: connection)
+        let response = await agent.handle(request: try SSHAgentInputParser().parse(data: message), provenance: provenance, hosts: knownHosts, connection: connection)
         return response != Constants.Responses.requestFailure
     }
 
@@ -205,6 +205,44 @@ final class Clock: @unchecked Sendable {
         #expect(try await send(agent, p256.request, from: provenance, on: other))
         #expect(try await send(agent, login(sessionID: p256.context.sessionID, hostKey: p256.context.hostKey), from: provenance, on: other))
         #expect(approver.requests.count == 2)
+    }
+
+    @Test func hostCertificateShowsPrincipalsOnlyForKnownCA() async throws {
+        let agent = await makeAgent()
+        let login = try #require(CapturedFixtures.certLogins["ecdsa256c"])
+        guard case .protocolExtension(.openSSH(.sessionBind(let bind))) = try SSHAgentInputParser().parse(data: login.sessionBind),
+              let authority = bind.certificate?.authority else {
+            throw TestFailure()
+        }
+        let trusted = KnownHosts(names: [:], authorities: [authority: "[127.0.0.1]:2222"])
+        for (knownHosts, host) in [(trusted, "127.0.0.1"), (KnownHosts(names: [:], authorities: [:]), nil)] {
+            let connection = AgentConnection()
+            #expect(try await send(agent, login.sessionBind, from: provenance, on: connection, knownHosts: knownHosts))
+            approver.decision = .once
+            #expect(try await send(agent, self.login(sessionID: bind.sessionID, hostKey: login.hostKey), from: provenance, on: connection, knownHosts: knownHosts))
+            #expect(approver.requests.last?.purpose == .login(username: "root", hostKey: login.hostKey))
+            #expect(approver.requests.last?.host == host)
+        }
+    }
+
+    @Test func hostNameRules() throws {
+        let login = try #require(CapturedFixtures.certLogins["ed25519c"])
+        guard case .protocolExtension(.openSSH(.sessionBind(let bind))) = try SSHAgentInputParser().parse(data: login.sessionBind),
+              let ca = bind.certificate?.authority else {
+            throw TestFailure()
+        }
+        let now = Date()
+        func name(_ authorities: [Data: String], names: [Data: String] = [:], at time: Date = now, purpose: GrantPurpose? = nil) -> String? {
+            Agent.hostName(for: purpose ?? GrantPurpose.login(username: "root", hostKey: login.hostKey), bind: bind, knownHosts: KnownHosts(names: names, authorities: authorities), now: time)
+        }
+        #expect(name([ca: "*"], names: [login.hostKey: "pinned.example"]) == "pinned.example")
+        #expect(name([ca: "*"]) == "127.0.0.1, test.example")
+        #expect(name([ca: "*.example"]) == "test.example")
+        #expect(name([ca: "*.corp"]) == nil)
+        #expect(name([ca: "*"], at: Date(timeIntervalSince1970: 0)) == nil)
+        #expect(name([:]) == nil)
+        let other = GrantPurpose.login(username: "root", hostKey: try #require(CapturedFixtures.logins["ed25519"]).hostKey)
+        #expect(name([ca: "*"], purpose: other) == nil)
     }
 
     @Test func unverifiedLoginsHaveNoPurpose() async throws {

@@ -1,12 +1,13 @@
 import Foundation
 import OSLog
 import XPCWrappers
+import SSHProtocolKit
 import OSLog
 
 public final class XPCHostsfileReader {
 
     private let logger = Logger(subsystem: "com.maxgoedjen.secretive.secretagent", category: "XPCHostsfileReader")
-    private let session: XPCTypedSession<[Data: String], HostsfileReaderError>
+    private let session: XPCTypedSession<KnownHosts, HostsfileReaderError>
 
     public init() async throws {
         logger.debug("Creating XPCHostsfileReader")
@@ -14,7 +15,7 @@ public final class XPCHostsfileReader {
         logger.debug("XPCHostsfileReader is warmed up.")
     }
 
-    public func read() async throws -> [Data: String] {
+    public func read() async throws -> KnownHosts {
         logger.debug("Reading hosts file")
         defer { logger.debug("Read hosts file") }
         return try await session.send(Data())
