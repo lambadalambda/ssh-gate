@@ -50,6 +50,12 @@ extension SigningRequestProvenance.Process {
         #expect(RequesterSelection.defaultIndex(in: chain("ssh", "git", "zsh")) == 2)
     }
 
+    @Test func wrappersAreIntermediaries() {
+        let c = chain("ssh-keygen", "timeout", "zsh", "2.1.280", "fish", "tmux", "launchd")
+        #expect(RequesterSelection.defaultIndex(in: c) == 3)
+        #expect(RequesterSelection.defaultIndex(in: chain("ssh", "nice", "stdbuf", "time", "caffeinate", "claude", "zsh", "login", "Terminal")) == 5)
+    }
+
     @Test func narrowestProcessWins() {
         // In an editor's terminal, the pty host would cover all terminals of the editor.
         let c = chain("ssh", "git", "bash", "claude", "zsh", "Code Helper", "Code")

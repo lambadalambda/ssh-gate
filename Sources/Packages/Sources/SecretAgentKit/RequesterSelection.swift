@@ -9,6 +9,7 @@ public enum RequesterSelection {
     /// Shells, session helpers, terminal multiplexers and tools that run on behalf of the actual requester.
     static let intermediaries: Set<String> = shells.union([
         "login", "sudo", "env", "nohup", "xargs", "make", "tmux", "screen",
+        "timeout", "nice", "time", "stdbuf", "caffeinate",
         "git", "ssh", "ssh-keygen", "scp", "sftp", "rsync",
     ])
 

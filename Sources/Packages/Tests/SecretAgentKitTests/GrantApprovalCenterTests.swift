@@ -122,4 +122,62 @@ import Testing
         #expect(center.pending.isEmpty)
     }
 
+
+    @Test func requestsThroughDifferentShellsOfOneAgentMerge() async throws {
+        let center = GrantApprovalCenter()
+        var otherShell = provenance
+        otherShell.chain[0] = otherShell.chain[0].with(pid: 900)
+        otherShell.chain[1] = otherShell.chain[1].with(pid: 901)
+        otherShell.chain[2] = otherShell.chain[2].with(pid: 902)
+        async let first = center.decide(request(.signature(namespace: "git")))
+        try await pending(center, count: 1)
+        async let second = center.decide(request(.signature(namespace: "git"), provenance: otherShell))
+        try await Task.sleep(for: .milliseconds(20))
+        #expect(center.pending.count == 1)
+        center.resolve(center.pending[0], with: .once)
+        #expect(await first == .once)
+        #expect(await second == .once)
+    }
+
+    @Test func noDefaultRequesterNeverMerges() async throws {
+        let center = GrantApprovalCenter()
+        let noDefault = GrantRequest(secret: secret, provenance: provenance, purpose: .signature(namespace: "git"), host: nil, defaultRequesterIndex: nil, forwarded: false)
+        async let first = center.decide(noDefault)
+        try await pending(center, count: 1)
+        async let second = center.decide(noDefault)
+        try await pending(center, count: 2)
+        center.denyAll()
+        _ = await (first, second)
+    }
+
+
+    @Test func mergedDecisionsPointToTheSameRequester() async throws {
+        let center = GrantApprovalCenter()
+        // One more shell below the agent: the agent is at index 4 here, at index 3 in `provenance`.
+        var longer = provenance
+        longer.chain.insert(longer.chain[2].with(pid: 950), at: 2)
+        let longerRequest = GrantRequest(secret: secret, provenance: longer, purpose: .signature(namespace: "git"), host: nil, defaultRequesterIndex: 4, forwarded: false)
+        async let first = center.decide(request(.signature(namespace: "git")))
+        try await pending(center, count: 1)
+        async let second = center.decide(longerRequest)
+        try await Task.sleep(for: .milliseconds(20))
+        #expect(center.pending.count == 1)
+        center.resolve(center.pending[0], with: .grant(requesterIndex: 4, duration: 60))
+        #expect(await first == .grant(requesterIndex: 4, duration: 60))
+        #expect(await second == .grant(requesterIndex: 5, duration: 60))
+    }
+
+    @Test func mergedDecisionBelowRequesterIsOnce() async throws {
+        let center = GrantApprovalCenter()
+        var otherShell = provenance
+        otherShell.chain[2] = otherShell.chain[2].with(pid: 902)
+        async let first = center.decide(request(.signature(namespace: "git")))
+        try await pending(center, count: 1)
+        async let second = center.decide(request(.signature(namespace: "git"), provenance: otherShell))
+        try await Task.sleep(for: .milliseconds(20))
+        center.resolve(center.pending[0], with: .grant(requesterIndex: 2, duration: 60))
+        #expect(await first == .grant(requesterIndex: 2, duration: 60))
+        #expect(await second == .once)
+    }
+
 }

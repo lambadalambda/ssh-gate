@@ -4,25 +4,27 @@ import SecretKit
 
 /// Collects requests that need the user's decision, for an approval window to show.
 ///
-/// Requests that are the same (key, purpose, and requester chain apart from the connecting process, e.g. two parallel
-/// ssh connections of one agent) share one pending item and get the same decision. Requests without a purpose are
-/// never merged. A request that nobody decides is denied after the timeout.
+/// Requests that are the same (key, purpose, connecting binary, and the chain from the default requester upward, e.g.
+/// two parallel ssh connections of one agent through different shells) share one pending item and get the same
+/// decision. Requests without a purpose or without a default requester are never merged. A request that nobody decides is denied after the timeout.
 @MainActor @Observable
 public final class GrantApprovalCenter: GrantApprover {
 
     @MainActor @Observable
     public final class Item: Identifiable {
         public let id = UUID()
+        /// The request the window shows.
         public let request: GrantRequest
-        fileprivate var continuations: [CheckedContinuation<GrantDecision, Never>]
+        /// The shown request first, then merged ones.
+        fileprivate var waiting: [(request: GrantRequest, continuation: CheckedContinuation<GrantDecision, Never>)]
         @ObservationIgnored fileprivate var timeoutTask: Task<Void, Never>?
 
         /// How many requests wait for this item's decision.
-        public var requestCount: Int { continuations.count }
+        public var requestCount: Int { waiting.count }
 
         fileprivate init(request: GrantRequest, continuation: CheckedContinuation<GrantDecision, Never>) {
             self.request = request
-            self.continuations = [continuation]
+            self.waiting = [(request, continuation)]
         }
     }
 
@@ -40,7 +42,7 @@ public final class GrantApprovalCenter: GrantApprover {
     public func decide(_ request: GrantRequest) async -> GrantDecision {
         await withCheckedContinuation { continuation in
             if let key = Self.mergeKey(request), let item = pending.first(where: { Self.mergeKey($0.request) == key }) {
-                item.continuations.append(continuation)
+                item.waiting.append((request, continuation))
                 return
             }
             let item = Item(request: request, continuation: continuation)
@@ -56,21 +58,29 @@ public final class GrantApprovalCenter: GrantApprover {
 
     /// Answers all requests of a pending item. Does nothing if the item is no longer pending.
     ///
-    /// A grant to the connecting process (index 0) applies to the first request only; merged requests come from other
-    /// connecting processes, so they are allowed once.
+    /// The decision refers to the shown request's process chain. Merged requests get it translated to their own chain,
+    /// see ``translate(_:from:to:)``.
     public func resolve(_ item: Item, with decision: GrantDecision) {
         guard let index = pending.firstIndex(where: { $0.id == item.id }) else { return }
         pending.remove(at: index)
         item.timeoutTask?.cancel()
-        let continuations = item.continuations
-        item.continuations = []
-        for (position, continuation) in continuations.enumerated() {
-            if position > 0, case .grant(requesterIndex: 0, _) = decision {
-                continuation.resume(returning: .once)
-            } else {
-                continuation.resume(returning: decision)
-            }
+        let waiting = item.waiting
+        item.waiting = []
+        for (position, entry) in waiting.enumerated() {
+            entry.continuation.resume(returning: position == 0 ? decision : Self.translate(decision, from: item.request, to: entry.request))
         }
+    }
+
+    /// Merged requests share the chain from the default requester upward, but the processes below it differ, and so
+    /// can the chain length. A grant to the default requester or above moves to the same process in the other chain;
+    /// a grant below it would name a process the user did not see, so it becomes a one-time approval.
+    static func translate(_ decision: GrantDecision, from shown: GrantRequest, to merged: GrantRequest) -> GrantDecision {
+        guard case .grant(let index, let duration) = decision else { return decision }
+        guard let shownDefault = shown.defaultRequesterIndex, let mergedDefault = merged.defaultRequesterIndex,
+              index >= shownDefault else {
+            return .once
+        }
+        return .grant(requesterIndex: mergedDefault + (index - shownDefault), duration: duration)
     }
 
     /// Denies all pending requests, e.g. when the user closes the window.
@@ -87,19 +97,22 @@ public final class GrantApprovalCenter: GrantApprover {
         /// The connecting process may differ (e.g. two ssh processes), but must be the same binary.
         let connectingPath: String
         let connectingSigned: Bool
-        let ancestors: [String]
+        /// The default requester and its ancestors.
+        let requester: [String]
     }
 
     static func mergeKey(_ request: GrantRequest) -> MergeKey? {
-        guard let purpose = request.purpose, let connecting = request.provenance.chain.first else { return nil }
-        let ancestors = request.provenance.chain.dropFirst().map { "\($0.pid)@\($0.startTime?.timeIntervalSince1970 ?? -1)" }
+        let chain = request.provenance.chain
+        guard let purpose = request.purpose, let connecting = chain.first,
+              let index = request.defaultRequesterIndex, chain.indices.contains(index) else { return nil }
+        let requester = chain[index...].map { "\($0.pid)@\($0.startTime?.timeIntervalSince1970 ?? -1)" }
         return MergeKey(
             secret: request.secret.id,
             purpose: purpose,
             forwarded: request.forwarded,
             connectingPath: connecting.path,
             connectingSigned: connecting.validSignature,
-            ancestors: ancestors
+            requester: requester
         )
     }
 
