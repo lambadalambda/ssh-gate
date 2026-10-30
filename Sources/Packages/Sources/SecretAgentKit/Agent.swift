@@ -20,6 +20,9 @@ public final class Agent: Sendable {
     private let deniedAdvance = Mutex([String: Date]())
     static let advanceDenialPause: TimeInterval = 30
     private let now: @Sendable () -> Date
+    /// The public key blob of the secret that signs grant certificates, if one is set.
+    private let certificateAuthority: @Sendable () async -> Data?
+    private let issuedCertificates = Mutex([IssuedCertificate]())
     private let publicKeyWriter = OpenSSHPublicKeyWriter()
     private let signatureWriter = OpenSSHSignatureWriter()
     private let logger = Logger(subsystem: "com.maxgoedjen.secretive.secretagent", category: "Agent")
@@ -36,7 +39,8 @@ public final class Agent: Sendable {
         authenticationHandler: AuthenticationHandler,
         witness: SigningWitness? = nil,
         grantApprover: GrantApprover? = nil,
-        now: @escaping @Sendable () -> Date = { Date() }
+        now: @escaping @Sendable () -> Date = { Date() },
+        certificateAuthority: @escaping @Sendable () async -> Data? = { nil }
     ) {
         logger.debug("Agent is running")
         self.storeList = storeList
@@ -45,6 +49,7 @@ public final class Agent: Sendable {
         self.witness = witness
         self.grantApprover = grantApprover
         self.now = now
+        self.certificateAuthority = certificateAuthority
     }
     
 }
@@ -142,11 +147,14 @@ extension Agent {
     /// - Returns: An OpenSSH formatted Data payload listing the identities available for signing operations.
     func identities() async -> Data {
         let secrets = await storeList.allSecrets
+        let authority = await certificateAuthority()
         var count = 0
         var keyData = Data()
 
         for secret in secrets {
             let keyBlob = publicKeyWriter.data(secret: secret)
+            // The grant CA only signs grant certificates; clients never see or use it.
+            guard keyBlob != authority else { continue }
             keyData.append(keyBlob.lengthAndData)
             keyData.append(publicKeyWriter.comment(secret: secret).lengthAndData)
             count += 1
@@ -155,6 +163,12 @@ extension Agent {
                 keyData.append(certificate.name.lengthAndData)
                 count += 1
             }
+        }
+        let current = now()
+        for certificate in issuedCertificates.withLock({ $0.filter { current < $0.expires } }) {
+            keyData.append(certificate.blob.lengthAndData)
+            keyData.append(certificate.comment.lengthAndData)
+            count += 1
         }
         logger.log("Agent enumerated \(count) identities")
         var countBigEndian = UInt32(count).bigEndian
@@ -171,6 +185,10 @@ extension Agent {
         guard let (secret, store) = await secret(matching: keyBlob) else {
             let keyBlobHex = keyBlob.formatted(.hex())
             logger.debug("Agent did not have a key matching \(keyBlobHex)")
+            throw NoMatchingKeyError()
+        }
+        guard await keyBlob != certificateAuthority() else {
+            logger.error("Agent refused a client request to sign with the grant CA key")
             throw NoMatchingKeyError()
         }
         try await authorize(secret: secret, keyBlob: keyBlob, provenance: provenance, context: grantContext)
@@ -215,6 +233,14 @@ extension Agent {
 
 }
 
+struct IssuedCertificate: Sendable {
+    let publicKey: Data
+    let principals: [String]
+    let blob: Data
+    let comment: String
+    let expires: Date
+}
+
 struct GrantContext {
     let purpose: GrantPurpose?
     let forwarded: Bool
@@ -248,29 +274,69 @@ extension Agent {
         case .once:
             logger.debug("Grant approver allowed request once")
         case .grant(let index, let duration):
-            guard let purpose = context.purpose, addGrants(for: [purpose], keyBlob: keyBlob, provenance: provenance, requesterIndex: index, duration: duration) else {
+            guard let purpose = context.purpose, let added = addGrants(for: [purpose], keyBlob: keyBlob, provenance: provenance, requesterIndex: index, duration: duration) else {
                 logger.debug("Grant approver allowed request, but no grant is possible; allowed once")
                 return
             }
+            await issueCertificate(for: [purpose], keyBlob: keyBlob, requester: added.requester, expires: added.expires, provenance: provenance)
         }
     }
 
-    /// Adds one grant per purpose. Returns false (and adds nothing) if no grant is possible.
-    func addGrants(for purposes: [GrantPurpose], keyBlob: Data, provenance: SigningRequestProvenance, requesterIndex: Int, duration: TimeInterval) -> Bool {
+    /// Adds one grant per purpose. Returns `nil` (and adds nothing) if no grant is possible.
+    func addGrants(for purposes: [GrantPurpose], keyBlob: Data, provenance: SigningRequestProvenance, requesterIndex: Int, duration: TimeInterval) -> (requester: GrantRequester, expires: Date)? {
         guard !purposes.isEmpty, duration > 0, duration.isFinite,
               provenance.chain.indices.contains(requesterIndex),
               let requester = GrantRequester(process: provenance.chain[requesterIndex]) else {
-            return false
+            return nil
         }
         let start = now()
+        let expires = start + duration
         grants.withLock { grants in
             grants.removeExpired(now: start)
             for purpose in purposes {
-                grants.add(Grant(publicKey: keyBlob, requester: requester, purpose: purpose, expires: start + duration))
+                grants.add(Grant(publicKey: keyBlob, requester: requester, purpose: purpose, expires: expires))
             }
         }
         logger.debug("Created \(purposes.count) grant(s) for \(requester.path, privacy: .public)")
-        return true
+        return (requester, expires)
+    }
+
+    /// For login grants, signs a user certificate with the grant CA, if one is set: principals are the granted users,
+    /// valid until the grants expire, so servers that trust the CA enforce the expiry themselves. Failures only cost the
+    /// certificate, not the grant.
+    func issueCertificate(for purposes: [GrantPurpose], keyBlob: Data, requester: GrantRequester, expires: Date, provenance: SigningRequestProvenance) async {
+        let users = purposes.reduce(into: [String]()) { users, purpose in
+            if case .login(let user, _) = purpose, !users.contains(user) { users.append(user) }
+        }
+        guard !users.isEmpty, users.allSatisfy(UserCertificate.isSafePrincipal), let authority = await certificateAuthority(), authority != keyBlob,
+              let (caSecret, caStore) = await secret(matching: authority) else {
+            return
+        }
+        let start = now()
+        let request = UserCertificate.Request(
+            publicKey: keyBlob,
+            serial: UInt64.random(in: 1...UInt64.max),
+            keyID: "secretive grant: \(requester.path) pid \(requester.pid)",
+            principals: users,
+            validAfter: UInt64(max(0, start.timeIntervalSince1970 - 60)),
+            validBefore: UInt64(expires.timeIntervalSince1970),
+            authority: authority
+        )
+        do {
+            let toBeSigned = try request.toBeSigned(nonce: Data((0..<32).map { _ in UInt8.random(in: 0...255) }))
+            let raw = try await caStore.sign(data: toBeSigned, with: caSecret, for: provenance, target: nil, context: nil)
+            let signature = try OpenSSHReader(data: signatureWriter.data(secret: caSecret, signature: raw)).readNextChunk()
+            let blob = UserCertificate.assemble(toBeSigned: toBeSigned, signature: signature)
+            let comment = "grant for \(users.joined(separator: ",")) until \(expires.formatted(date: .omitted, time: .shortened))"
+            issuedCertificates.withLock {
+                // A renewal replaces the earlier certificate for the same key and users.
+                $0.removeAll { start >= $0.expires || ($0.publicKey == keyBlob && $0.principals == users) }
+                $0.append(IssuedCertificate(publicKey: keyBlob, principals: users, blob: blob, comment: comment, expires: expires))
+            }
+            logger.debug("Issued grant certificate for \(users.joined(separator: ","), privacy: .public)")
+        } catch {
+            logger.error("Could not issue grant certificate: \(String(describing: error), privacy: .public)")
+        }
     }
 
     /// Handles request-grant@heldscal.la: asks the approver for a grant before the key is used. Login requests name a
@@ -290,9 +356,11 @@ extension Agent {
             logger.debug("Grant request refused: denied recently")
             return false
         }
-        let found = context.keyBlob.isEmpty ? await firstSecret() : await secret(matching: context.keyBlob)
+        let authority = await certificateAuthority()
+        let found = context.keyBlob.isEmpty ? await firstSecret(except: authority) : await secret(matching: context.keyBlob)
         guard let (secret, _) = found else { return false }
         let keyBlob = publicKeyWriter.data(secret: secret)
+        guard keyBlob != authority else { return false }
 
         let purposes: [GrantPurpose]
         let host: String?
@@ -328,8 +396,12 @@ extension Agent {
                 $0[pauseKey] = now() + Self.advanceDenialPause
             }
         }
-        guard case .grant(let index, let duration) = decision else { return false }
-        return addGrants(for: purposes, keyBlob: keyBlob, provenance: provenance, requesterIndex: index, duration: min(duration, GrantPresentation.maximumDuration))
+        guard case .grant(let index, let duration) = decision,
+              let added = addGrants(for: purposes, keyBlob: keyBlob, provenance: provenance, requesterIndex: index, duration: min(duration, GrantPresentation.maximumDuration)) else {
+            return false
+        }
+        await issueCertificate(for: purposes, keyBlob: keyBlob, requester: added.requester, expires: added.expires, provenance: provenance)
+        return true
     }
 
 }
@@ -373,9 +445,9 @@ extension Agent {
         return "\(requester.pid)@\(requester.startTime?.timeIntervalSince1970 ?? -1) \(context.keyBlob.base64EncodedString()) \(context.purpose)"
     }
 
-    /// The first secret, for requests that do not name a key.
-    func firstSecret() async -> (AnySecret, AnySecretStore)? {
-        await storeList.allSecretsWithStores.first
+    /// The first secret except the grant CA, for requests that do not name a key.
+    func firstSecret(except authority: Data?) async -> (AnySecret, AnySecretStore)? {
+        await storeList.allSecretsWithStores.first { publicKeyWriter.data(secret: $0.0) != authority }
     }
 
 }

@@ -234,6 +234,125 @@ final class Clock: @unchecked Sendable {
         #expect(approver.requests.first?.requestedDuration == TimeInterval(8 * 3600))
     }
 
+    // MARK: Certificates
+
+    func makeAgentWithCA() async -> (Agent, Data) {
+        let list = await AgentTests().storeList(with: [Constants.Secrets.ecdsa256Secret, Constants.Secrets.ecdsa384Secret])
+        let ca = OpenSSHPublicKeyWriter().data(secret: Constants.Secrets.ecdsa384Secret)
+        let clock = clock
+        let agent = Agent(storeList: list, certificateStore: CertificateStore(), authenticationHandler: AuthenticationHandler(), grantApprover: approver, now: { clock.now }, certificateAuthority: { ca })
+        return (agent, ca)
+    }
+
+    /// The identities that the agent lists, as (blob, comment).
+    func identities(_ agent: Agent) async throws -> [(Data, String)] {
+        let response = await agent.handle(request: .requestIdentities, provenance: provenance, hosts: nil, connection: AgentConnection())
+        let reader = OpenSSHReader(data: response)
+        _ = try reader.readNextBytes(as: UInt32.self)
+        _ = try reader.readNextBytes(as: UInt8.self)
+        let count = try reader.readNextBytes(as: UInt32.self)
+        return try (0..<count).map { _ in (try reader.readNextChunk(), try reader.readNextChunkAsString()) }
+    }
+
+    @Test func loginGrantGetsCertificate() async throws {
+        let (agent, ca) = await makeAgentWithCA()
+        let ed = try bind("ed25519")
+        let known = KnownHosts(names: [ed.context.hostKey: "git.example"], authorities: [:])
+        #expect(try await send(agent, advance(.login(host: "git.example", port: 22, user: "deploy")), from: viaTool, knownHosts: known))
+
+        let certificates = try await identities(agent).filter { HostCertificate.isCertificate($0.0) }
+        try #require(certificates.count == 1)
+        let blob = certificates[0].0
+        let fields = try HostCertificate.Fields(blob)
+        #expect(fields.certType == "ecdsa-sha2-nistp256-cert-v01@openssh.com")
+        #expect(fields.type == 1)
+        #expect(fields.principals == Data("deploy".utf8).lengthAndData)
+        #expect(fields.validBefore == UInt64(clock.now.timeIntervalSince1970) + 3600)
+        #expect(fields.validAfter == UInt64(clock.now.timeIntervalSince1970) - 60)
+        #expect(fields.signatureKey == ca)
+        try HostKeySignatureVerifier.verify(hostKey: ca, signature: fields.signature, data: Data(blob.prefix(blob.count - 4 - fields.signature.count)))
+
+        // ssh signs with the certificate: the grant covers it.
+        let connection = AgentConnection()
+        #expect(try await send(agent, ed.request, from: provenance, on: connection))
+        var auth = UserAuth()
+        auth.sessionID = ed.context.sessionID
+        auth.user = "deploy"
+        auth.algorithm = "ecdsa-sha2-nistp256-cert-v01@openssh.com"
+        auth.key = blob
+        auth.hostKey = ed.context.hostKey
+        #expect(try await send(agent, signRequest(key: blob, data: auth.data), from: provenance, on: connection))
+        #expect(approver.requests.count == 1)
+
+        // Expired certificates are no longer listed.
+        clock.now += 3600
+        #expect(try await identities(agent).filter { HostCertificate.isCertificate($0.0) }.isEmpty)
+    }
+
+    func certificates(_ agent: Agent) async throws -> [Data] {
+        try await identities(agent).map(\.0).filter { HostCertificate.isCertificate($0) }
+    }
+
+    @Test func caKeyIsNotUsableByClients() async throws {
+        let (agent, ca) = await makeAgentWithCA()
+        #expect(try await !identities(agent).contains { $0.0 == ca })
+        approver.decision = .once
+        var data = Data("SSHSIG".utf8)
+        for chunk in [Data("git".utf8), Data(), Data("sha512".utf8), Data(repeating: 1, count: 64)] { data.append(chunk.lengthAndData) }
+        #expect(try await !send(agent, signRequest(key: ca, data: data), from: provenance))
+        #expect(try await !send(agent, signRequest(key: ca, data: Data("anything".utf8)), from: provenance))
+        #expect(approver.requests.isEmpty)
+    }
+
+    @Test func certificateFromSignRequestPathAndRenewal() async throws {
+        let (agent, _) = await makeAgentWithCA()
+        let ed = try bind("ed25519")
+        for _ in 0..<2 {
+            let connection = AgentConnection()
+            #expect(try await send(agent, ed.request, from: provenance, on: connection))
+            #expect(try await send(agent, login(sessionID: ed.context.sessionID, hostKey: ed.context.hostKey), from: provenance, on: connection))
+            clock.now += 3600 // the grant expires, the next login asks again and renews the certificate
+        }
+        clock.now -= 3600
+        #expect(try await certificates(agent).count == 1)
+        #expect(approver.requests.count == 2)
+
+        // A renewal in advance while the certificate is still valid replaces it.
+        let known = KnownHosts(names: [ed.context.hostKey: "git.example"], authorities: [:])
+        for _ in 0..<2 {
+            clock.now += 31
+            #expect(try await send(agent, advance(.login(host: "git.example", port: 22, user: "root")), from: viaTool, knownHosts: known))
+        }
+        #expect(try await certificates(agent).count == 1)
+    }
+
+    @Test func noCertificateForUnsafePrincipals() async throws {
+        let (agent, _) = await makeAgentWithCA()
+        let ed = try bind("ed25519")
+        let connection = AgentConnection()
+        #expect(try await send(agent, ed.request, from: provenance, on: connection))
+        var auth = UserAuth()
+        auth.sessionID = ed.context.sessionID
+        auth.user = "deploy,root"
+        auth.algorithm = "ecdsa-sha2-nistp256"
+        auth.key = keyBlob
+        auth.hostKey = ed.context.hostKey
+        #expect(try await send(agent, signRequest(key: keyBlob, data: auth.data), from: provenance, on: connection))
+        #expect(try await certificates(agent).isEmpty)
+    }
+
+    @Test func noCertificateWithoutCAOrForSignatures() async throws {
+        let (withCA, _) = await makeAgentWithCA()
+        #expect(try await send(withCA, advance(.signature(namespace: "git")), from: viaTool))
+        #expect(try await identities(withCA).filter { HostCertificate.isCertificate($0.0) }.isEmpty)
+
+        let agent = await makeAgent()
+        let ed = try bind("ed25519")
+        let known = KnownHosts(names: [ed.context.hostKey: "git.example"], authorities: [:])
+        #expect(try await send(agent, advance(.login(host: "git.example", port: 22, user: "deploy")), from: viaTool, knownHosts: known))
+        #expect(try await identities(agent).filter { HostCertificate.isCertificate($0.0) }.isEmpty)
+    }
+
     // MARK: Without approver
 
     @Test func withoutApproverBindThenSignWorks() async throws {

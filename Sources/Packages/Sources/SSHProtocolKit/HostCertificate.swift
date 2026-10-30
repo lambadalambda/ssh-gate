@@ -38,6 +38,16 @@ public struct HostCertificate: Sendable, Codable, Equatable {
         certType.hasSuffix(suffix) ? String(certType.dropLast(suffix.count)) : nil
     }
 
+    /// The plain public key blob inside any certificate (user or host) of a supported key type. Does not verify it.
+    public static func plainPublicKey(ofCertificate blob: Data) -> Data? {
+        guard let fields = try? Fields(blob) else { return nil }
+        var publicKey = Data(fields.plainType.utf8).lengthAndData
+        for field in fields.keyFields {
+            publicKey.append(field.lengthAndData)
+        }
+        return publicKey
+    }
+
     public static func isCertificate(_ blob: Data) -> Bool {
         (try? OpenSSHReader(data: blob).readNextChunkAsString())?.hasSuffix(suffix) ?? false
     }
@@ -50,10 +60,7 @@ public struct HostCertificate: Sendable, Codable, Equatable {
         let signed = blob.prefix(blob.count - 4 - fields.signature.count)
         try HostKeySignatureVerifier.verify(hostKey: fields.signatureKey, signature: fields.signature, data: Data(signed))
 
-        var publicKey = Data(fields.plainType.utf8).lengthAndData
-        for field in fields.keyFields {
-            publicKey.append(field.lengthAndData)
-        }
+        let publicKey = Self.plainPublicKey(ofCertificate: blob)!
         let principalReader = OpenSSHReader(data: fields.principals)
         var principals: [String] = []
         while !principalReader.done {

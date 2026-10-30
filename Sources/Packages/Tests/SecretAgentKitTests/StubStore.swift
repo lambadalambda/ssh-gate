@@ -54,6 +54,9 @@ extension Stub {
             guard !shouldThrow else {
                 throw NSError(domain: "test", code: 0, userInfo: nil)
             }
+            if secret.keyType.size == 384 {
+                return try CryptoKit.P384.Signing.PrivateKey(x963Representation: secret.privateKey).signature(for: data).rawRepresentation
+            }
             let privateKey = try CryptoKit.P256.Signing.PrivateKey(x963Representation: secret.privateKey)
             return try privateKey.signature(for: data).rawRepresentation
         }

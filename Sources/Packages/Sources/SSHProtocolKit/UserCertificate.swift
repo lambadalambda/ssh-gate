@@ -5,6 +5,14 @@ public enum UserCertificate {
 
     static let userType: UInt32 = 1
 
+    /// Whether a user name is safe as a certificate principal. sshd splits principals at commas when it matches them
+    /// against `principals="..."` in authorized_keys, and patterns could widen them.
+    public static func isSafePrincipal(_ name: String) -> Bool {
+        !name.isEmpty && !name.unicodeScalars.contains {
+            $0.properties.isWhitespace || $0.properties.generalCategory == .control || ",*?!\"".unicodeScalars.contains($0)
+        }
+    }
+
     /// Extensions as ssh-keygen sets them by default, without agent and X11 forwarding: grants refuse forwarded
     /// agents anyway. Sorted by name, as the format requires.
     static let extensions = ["permit-port-forwarding", "permit-pty", "permit-user-rc"]

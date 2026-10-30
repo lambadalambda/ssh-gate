@@ -220,21 +220,7 @@ extension SSHAgentInputParser {
     }
 
     func certificatePublicKeyBlob(from hash: Data) -> Data? {
-        let reader = OpenSSHReader(data: hash)
-        do {
-            let certType = try reader.readNextChunkAsString()
-            guard let certType = OpenSSHCertificate.CertificateType(rawValue: certType) else { return nil }
-            _ = try reader.readNextChunk() // nonce
-            let curveIdentifier = try reader.readNextChunk()
-            let publicKey = try reader.readNextChunk()
-            let openSSHIdentifier = certType.keyIdentifier
-            return openSSHIdentifier.lengthAndData +
-            curveIdentifier.lengthAndData +
-                publicKey.lengthAndData
-            
-        } catch {
-            return nil
-        }
+        HostCertificate.plainPublicKey(ofCertificate: hash)
     }
 
 }
