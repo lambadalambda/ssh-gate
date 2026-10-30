@@ -18,7 +18,11 @@ port=2245
 grant=${SSH_GRANT:-$here/ssh-grant}
 
 ca=${1:-$(grep -l "grant-ca@" "$container"/PublicKeys/*.pub 2>/dev/null | head -1)}
-[ -n "$ca" ] && [ -f "$ca" ] || { echo "CA public key not found; pass it as first argument"; exit 1; }
+[ -n "$ca" ] && [ -f "$ca" ] || {
+	echo "CA public key not found (macOS may block reading the agent's container)."
+	echo "Copy the public key from the CA key's detail view in the host app into a file and pass it as first argument."
+	exit 1
+}
 [ -x "$grant" ] || { echo "ssh-grant not found at $grant; build it or set SSH_GRANT"; exit 1; }
 
 dir=$(mktemp -d /tmp/cert-test.XXXX)
