@@ -15,3 +15,5 @@
 - [x] [XPC code signing requirement in release builds](issues/xpc-release-signing-requirement.md)
 - [x] [Identify the peer by audit token](issues/peer-audit-token.md)
 - [x] [Allow hosts with host certificates](issues/host-certificate-support.md)
+- [x] [Grant request extension in the agent](issues/grant-request-extension.md)
+- [x] [ssh-grant command](issues/ssh-grant-command.md)

@@ -13,3 +13,7 @@ A small CLI that sends the grant request extension through `SSH_AUTH_SOCK` and w
 ## Acceptance Criteria
 
 - Unit tests for argument parsing and message encoding; manual run against the app.
+
+## Notes
+
+- Done: `cmd/ssh-grant`, `internal/grantreq`. Live: sign and login requests open the window with reason and duration; denial gives exit 1. Approval is part of the user's manual test.
