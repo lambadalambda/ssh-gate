@@ -1,4 +1,3 @@
 - [ ] [Allow hosts with host certificates](issues/host-certificate-support.md)
 - [ ] [sshgate v2: short-lived certificates from an SSH CA](issues/sshgate-v2-ca-certificates.md)
 - [ ] [Identify the peer by audit token](issues/peer-audit-token.md)
-- [ ] [XPC code signing requirement in release builds](issues/xpc-release-signing-requirement.md)

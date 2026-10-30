@@ -11,3 +11,8 @@
 ## Acceptance Criteria
 
 - A Release build signed with team ABCDE12345 lists keys through its socket.
+
+## Notes
+
+- Done: requirement from the app's own team ID in all configurations; unsigned Debug builds skip it, unsigned Release builds fail closed ("never"). Two XPC targets had the upstream team fixed for Release in the project.
+- Release builds need `IDEEnableNewPackagePIFBuilder=NO` (as upstream CI); `scripts/build-release.sh` in the fork. Tested: the Release agent lists the key and reaches the approval window.
