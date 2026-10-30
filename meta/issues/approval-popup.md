@@ -15,3 +15,4 @@ A window that shows the requester chain (with code signature status and working 
 - With no safe default requester (`RequesterSelection.defaultIndex` is nil), offer only "this request".
 - After approval, keys with "require authentication" still ask for Touch ID in the existing flow, so the user may be asked twice. Decide: reuse the approval's LAContext, or recommend keys without per-use authentication for agents.
 - Remove or hide the key-wide "remember for N minutes" option once grants work.
+- Implemented in the fork (065c266, 6b6595f). Open: manual test by the user. Not done: dropping requests whose client disconnected (the session task is not cancelled on disconnect).

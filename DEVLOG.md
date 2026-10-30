@@ -44,3 +44,18 @@
   then crashes: SSHProtocolKit asserts that the process is an XPC service or
   `xctest`, and SwiftPM runs tests in `swiftpm-testing-helper`. The fork's
   `scripts/test-local.sh` runs the bundles with `xcrun xctest`.
+
+## 2026-10-30: scoped grants in the Secretive fork
+
+- Upstream gaps found and fixed in the fork: session-bind handling was disabled
+  and global; ECDSA host keys could not verify and RSA was refused; userauth
+  parsing dropped the session ID and keyed host keys by the curve name, so all
+  P-256 hosts looked the same (also in the known_hosts name lookup); peer pid
+  and sysctl results were not checked; a process exiting at the wrong moment
+  could crash the agent.
+- Grants: (requester pid + start time, key, purpose, wall-clock expiry). The
+  default requester is the narrowest non-intermediary process in the chain,
+  never an app or launchd. Forwarded agent connections get one-time approvals.
+- `xcodebuild` also sandboxes macro plugins; `OTHER_SWIFT_FLAGS=-disable-sandbox`
+  plus `-IDEPackageSupportDisable*Sandbox=YES` builds the app unsigned here
+  (`scripts/build-local.sh` in the fork).
