@@ -34,6 +34,7 @@ import XPCWrappers
     ) {
         self.osVersion = osVersion
         self.currentVersion = currentVersion
+        guard Self.checksForUpdates(bundleID: Bundle.main.bundleIdentifier) else { return }
         _ = Task {
             if checkOnLaunch {
                 try await checkForUpdates()
@@ -43,6 +44,12 @@ import XPCWrappers
                 try await checkForUpdates()
             }
         }
+    }
+
+    /// Only official builds look for upstream releases. Builds with their own bundle ID (forks) would otherwise offer
+    /// to replace themselves with upstream Secretive.
+    static func checksForUpdates(bundleID: String?) -> Bool {
+        bundleID?.hasPrefix("com.maxgoedjen.Secretive.") ?? false
     }
 
     /// Manually trigger an update check.

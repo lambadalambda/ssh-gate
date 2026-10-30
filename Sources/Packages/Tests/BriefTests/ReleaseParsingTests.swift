@@ -106,4 +106,12 @@ import Foundation
         #expect(sorted == two)
     }
 
+
+    @Test func onlyOfficialBuildsCheckForUpdates() {
+        #expect(Updater.checksForUpdates(bundleID: "com.maxgoedjen.Secretive.Host"))
+        #expect(Updater.checksForUpdates(bundleID: "com.maxgoedjen.Secretive.SecretAgent"))
+        #expect(!Updater.checksForUpdates(bundleID: "com.example.sshgate.Host"))
+        #expect(!Updater.checksForUpdates(bundleID: nil))
+    }
+
 }
