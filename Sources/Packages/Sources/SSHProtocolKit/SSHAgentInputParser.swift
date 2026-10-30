@@ -129,7 +129,13 @@ extension SSHAgentInputParser {
         case Constants.publicKeyMethod:
             hostKey = nil
         case Constants.hostboundMethod:
-            hostKey = try payloadReader.readNextChunk()
+            let presentedKey = try payloadReader.readNextChunk()
+            if HostCertificate.isCertificate(presentedKey) {
+                guard let certificate = try? HostCertificate(presentedKey) else { throw .incorrectFormat }
+                hostKey = certificate.publicKey
+            } else {
+                hostKey = presentedKey
+            }
         default:
             throw .incorrectFormat
         }
@@ -167,14 +173,18 @@ extension SSHAgentInputParser {
                 switch name {
                 case SSHAgent.ProtocolExtension.OpenSSHExtension.sessionBind(.empty).name:
                     // https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.agent
-                    let hostKey = try reader.readNextChunk()
+                    let presentedKey = try reader.readNextChunk()
                     let sessionID = try reader.readNextChunk()
                     let signature = try reader.readNextChunk()
                     let forwarding = try reader.readNextByteAsBool()
                     guard reader.done, !sessionID.isEmpty, sessionID.count <= Constants.maxSessionIDLength else {
                         throw AgentParsingError.invalidData
                     }
+                    let certificate: HostCertificate?
+                    let hostKey: Data
                     do {
+                        certificate = HostCertificate.isCertificate(presentedKey) ? try HostCertificate(presentedKey) : nil
+                        hostKey = certificate?.publicKey ?? presentedKey
                         try HostKeySignatureVerifier.verify(hostKey: hostKey, signature: signature, data: sessionID)
                     } catch {
                         throw AgentParsingError.incorrectSignature
@@ -183,7 +193,8 @@ extension SSHAgentInputParser {
                         hostKey: hostKey,
                         sessionID: sessionID,
                         signature: signature,
-                        forwarding: forwarding
+                        forwarding: forwarding,
+                        certificate: certificate
                     )))
                 default:
                     return .openSSH(.unknown(String(name)))

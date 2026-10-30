@@ -57,16 +57,20 @@ extension SSHAgent.ProtocolExtension.OpenSSHExtension {
 
     public struct SessionBindContext: Codable, Sendable {
 
+        /// The plain host key blob. For a host certificate, the key inside it.
         public let hostKey: Data
         public let sessionID: Data
         public let signature: Data
         public let forwarding: Bool
+        /// The host certificate, if the host presented one.
+        public let certificate: HostCertificate?
 
-        public init(hostKey: Data, sessionID: Data, signature: Data, forwarding: Bool) {
+        public init(hostKey: Data, sessionID: Data, signature: Data, forwarding: Bool, certificate: HostCertificate? = nil) {
             self.hostKey = hostKey
             self.sessionID = sessionID
             self.signature = signature
             self.forwarding = forwarding
+            self.certificate = certificate
         }
 
         public static let empty = SessionBindContext(hostKey: Data(), sessionID: Data(), signature: Data(), forwarding: false)
