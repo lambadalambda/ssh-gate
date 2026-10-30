@@ -173,7 +173,7 @@ final class Clock: @unchecked Sendable {
         #expect(request.host == "127.0.0.1:2241")
         // A wildcard known_hosts line is named in the window.
         let wildcard = KnownHosts(names: [ed.context.hostKey: "*.example"], authorities: [:])
-        #expect(try await send(agent, advance(.login(host: "git.example", port: 22, user: "root")), from: viaTool, knownHosts: wildcard))
+        #expect(try await send(agent, advance(.login(host: "git.example", port: 22, user: "deploy")), from: viaTool, knownHosts: wildcard))
         #expect(approver.requests.last?.host == "git.example (known_hosts entry \u{201C}*.example\u{201D})")
         approver.decision = .grant(requesterIndex: 3, duration: 3600)
         // Both host keys are granted.
@@ -225,6 +225,21 @@ final class Clock: @unchecked Sendable {
         }
         approver.decision = .grant(requesterIndex: 3, duration: 3600)
         #expect(try await send(agent, sshsig("git"), from: provenance))
+        #expect(approver.requests.count == 3)
+    }
+
+    @Test func coveredAdvanceRequestNeedsNoWindow() async throws {
+        let agent = await makeAgent()
+        let ed = try bind("ed25519")
+        let known = KnownHosts(names: [ed.context.hostKey: "git.example"], authorities: [:])
+        #expect(try await send(agent, advance(.login(host: "git.example", port: 22, user: "root")), from: viaTool, knownHosts: known))
+        #expect(try await send(agent, advance(.login(host: "git.example", port: 22, user: "root")), from: viaTool, knownHosts: known))
+        #expect(approver.requests.count == 1)
+        // Another user, or another agent, is not covered.
+        #expect(try await send(agent, advance(.login(host: "git.example", port: 22, user: "deploy")), from: viaTool, knownHosts: known))
+        var otherTool = otherAgent
+        otherTool.chain[0] = viaTool.chain[0].with(pid: 991)
+        #expect(try await send(agent, advance(.login(host: "git.example", port: 22, user: "root")), from: otherTool, knownHosts: known))
         #expect(approver.requests.count == 3)
     }
 

@@ -377,6 +377,15 @@ extension Agent {
             logger.debug("Grant request for a host without known host keys refused")
             return false
         }
+        // Already granted to this requester: answer without a window, so wrappers like `ssh-grant ssh` can ask before
+        // every connection.
+        let covered = grants.withLock { grants in
+            purposes.allSatisfy { grants.match(publicKey: keyBlob, chain: provenance.chain, purpose: $0, now: start) != nil }
+        }
+        if covered {
+            logger.debug("Grant request already covered by existing grants")
+            return true
+        }
         var request = GrantRequest(
             secret: secret,
             provenance: provenance,
