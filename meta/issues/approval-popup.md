@@ -7,3 +7,9 @@ A window that shows the requester chain (with code signature status and working 
 ## Acceptance Criteria
 
 - Manual test by the user: approve, deny, durations.
+
+## Notes
+
+- Say clearly that a grant covers the requester and everything it starts.
+- Show the executable path of each process, not only the name: process names are chosen by the process itself.
+- With no safe default requester (`RequesterSelection.defaultIndex` is nil), offer only "this request".

@@ -26,20 +26,27 @@ import (
 	"sshgate/internal/server"
 )
 
-// sshdScript runs two sshd processes with different host keys in an Alpine
-// container. Keys come in through the environment, because the podman VM
-// cannot see /tmp on macOS.
+// sshdScript runs one sshd per entry in $SERVERS (space-separated, each a
+// comma-separated list of host key names) in an Alpine container, on ports
+// 2201, 2202, ... Keys come in through the environment (KEY_<name>), because
+// the podman VM cannot see /tmp on macOS.
 const sshdScript = `set -e
 apk add -q openssh-server >/dev/null
 sed -i 's/^root:[^:]*:/root:*:/' /etc/shadow
 mkdir -p /root/.ssh
 printf '%s\n' "$AUTH" > /root/.ssh/authorized_keys
 chmod 700 /root/.ssh; chmod 600 /root/.ssh/authorized_keys
-for h in A B; do
-  eval "printf '%s\n' \"\$HOST$h\"" > /etc/ssh/host$h; chmod 600 /etc/ssh/host$h
+port=2201
+for server in $SERVERS; do
+  args=""
+  for k in $(echo "$server" | tr , ' '); do
+    eval "printf '%s\n' \"\$KEY_$k\"" > /etc/ssh/$k; chmod 600 /etc/ssh/$k
+    args="$args -h /etc/ssh/$k"
+  done
+  /usr/sbin/sshd -D -e -p $port $args &
+  port=$((port + 1))
 done
-/usr/sbin/sshd -e -p 2201 -h /etc/ssh/hostA
-exec /usr/sbin/sshd -D -e -p 2202 -h /etc/ssh/hostB
+wait
 `
 
 type fixture struct {
@@ -82,9 +89,9 @@ func freePort(t *testing.T) int {
 	return l.Addr().(*net.TCPAddr).Port
 }
 
-// startSSHD starts the container and returns the local ports of the sshd
-// with host key hostA and the one with hostB.
-func startSSHD(t *testing.T, dir string) (portA, portB int) {
+// startSSHD starts one sshd per server in a container and returns their
+// local ports. Each server is a list of host key files in dir.
+func startSSHD(t *testing.T, dir string, servers ...[]string) []int {
 	t.Helper()
 	if _, err := exec.LookPath("podman"); err != nil {
 		t.Skip("no podman")
@@ -96,12 +103,21 @@ func startSSHD(t *testing.T, dir string) (portA, portB int) {
 		}
 		return string(b)
 	}
-	portA, portB = freePort(t), freePort(t)
 	name := filepath.Base(dir)
-	cmd := exec.Command("podman", "run", "--rm", "--name", name,
-		"-p", fmt.Sprintf("127.0.0.1:%d:2201", portA), "-p", fmt.Sprintf("127.0.0.1:%d:2202", portB),
-		"-e", "AUTH="+read("user.pub"), "-e", "HOSTA="+read("hostA"), "-e", "HOSTB="+read("hostB"),
-		"docker.io/library/alpine:3", "sh", "-c", sshdScript)
+	args := []string{"run", "--rm", "--name", name, "-e", "AUTH=" + read("user.pub")}
+	var ports []int
+	var spec []string
+	for i, keys := range servers {
+		port := freePort(t)
+		ports = append(ports, port)
+		args = append(args, "-p", fmt.Sprintf("127.0.0.1:%d:%d", port, 2201+i))
+		for _, k := range keys {
+			args = append(args, "-e", "KEY_"+k+"="+read(k))
+		}
+		spec = append(spec, strings.Join(keys, ","))
+	}
+	args = append(args, "-e", "SERVERS="+strings.Join(spec, " "), "docker.io/library/alpine:3", "sh", "-c", sshdScript)
+	cmd := exec.Command("podman", args...)
 	var stderr bytes.Buffer
 	cmd.Stdout, cmd.Stderr = &stderr, &stderr
 	if err := cmd.Start(); err != nil {
@@ -114,10 +130,10 @@ func startSSHD(t *testing.T, dir string) (portA, portB int) {
 			t.Logf("sshd log:\n%s", stderr.String())
 		}
 	})
-	for _, port := range []int{portA, portB} {
+	for _, port := range ports {
 		waitForBanner(t, port, &stderr)
 	}
-	return portA, portB
+	return ports
 }
 
 // waitForBanner waits until an SSH server answers on port. The podman port
@@ -253,7 +269,8 @@ func (f fixture) sign(namespace string) error {
 
 func TestSSHLogin(t *testing.T) {
 	f := setup(t)
-	portA, portB := startSSHD(t, f.dir)
+	ports := startSSHD(t, f.dir, []string{"hostA"}, []string{"hostB"})
+	portA, portB := ports[0], ports[1]
 
 	// ssh itself trusts both hosts; only sshgate tells them apart.
 	knownHosts := filepath.Join(f.dir, "known_hosts")

@@ -5,3 +5,5 @@
 - [x] [Grant CLI and socket server](issues/grant-cli-and-socket-server.md)
 - [x] [End-to-end test with real OpenSSH](issues/e2e-test-with-openssh.md)
 - [x] [Set up Secretive fork](issues/secretive-fork-setup.md)
+- [x] [Grant model and matching](issues/grant-model-and-matching.md)
+- [x] [Stable requester identity](issues/stable-requester-identity.md)
