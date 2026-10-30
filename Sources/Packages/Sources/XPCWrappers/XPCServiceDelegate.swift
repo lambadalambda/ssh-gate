@@ -12,9 +12,7 @@ public final class XPCServiceDelegate: NSObject, NSXPCListenerDelegate {
         newConnection.exportedInterface = NSXPCInterface(with: (any _XPCProtocol).self)
         let exportedObject = exportedObject
         newConnection.exportedObject = exportedObject
-#if !DEBUG
-        newConnection.setCodeSigningRequirement("anchor apple generic and certificate leaf[subject.OU] = \"Z72PRUAWF6\"")
-#endif
+        XPCCodeSigning.apply(to: newConnection)
         newConnection.resume()
         return true
     }

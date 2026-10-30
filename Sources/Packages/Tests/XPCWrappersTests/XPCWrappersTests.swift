@@ -26,3 +26,31 @@ import Testing
     }
 
 }
+
+@Suite struct XPCCodeSigningTests {
+
+    @Test func requirementPinsOwnTeam() {
+        #expect(XPCCodeSigning.requirement(teamID: "ABCDE12345", debug: false) == "anchor apple generic and certificate leaf[subject.OU] = \"ABCDE12345\"")
+        #expect(XPCCodeSigning.requirement(teamID: "ABCDE12345", debug: true) == "anchor apple generic and certificate leaf[subject.OU] = \"ABCDE12345\"")
+    }
+
+    @Test func unsignedBuilds() {
+        #expect(XPCCodeSigning.requirement(teamID: nil, debug: true) == nil)
+        #expect(XPCCodeSigning.requirement(teamID: nil, debug: false) == "never")
+    }
+
+    @Test func malformedTeamIDFailsClosed() {
+        for team in ["", "SZ2F3U9QJ", "ABCDE12345\" or true", "sz2f3u9qj3"] {
+            #expect(XPCCodeSigning.requirement(teamID: team, debug: true) == "never", "\(team)")
+        }
+    }
+
+    @Test func requirementsCompile() throws {
+        for requirement in [XPCCodeSigning.requirement(teamID: "ABCDE12345", debug: false)!, "never"] {
+            var compiled: SecRequirement?
+            let status = unsafe SecRequirementCreateWithString(requirement as CFString, [], &compiled)
+            #expect(status == errSecSuccess, "\(requirement)")
+        }
+    }
+
+}
