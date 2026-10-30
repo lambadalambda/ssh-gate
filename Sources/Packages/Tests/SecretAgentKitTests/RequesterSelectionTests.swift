@@ -15,6 +15,13 @@ func chain(_ names: String...) -> [SigningRequestProvenance.Process] {
     }
 }
 
+extension SigningRequestProvenance {
+    init(chain: [Process]) {
+        self.init(root: chain[0])
+        self.chain = chain
+    }
+}
+
 extension SigningRequestProvenance.Process {
     func with(pid: Int32? = nil, startTime: Date? = nil) -> Self {
         .init(pid: pid ?? self.pid, processName: processName, appName: appName, iconURL: iconURL, path: path, validSignature: validSignature, parentPID: parentPID, startTime: startTime ?? self.startTime, isApp: isApp)

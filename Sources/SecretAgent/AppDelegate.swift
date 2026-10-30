@@ -56,9 +56,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         let inputParser = try await XPCAgentInputParser()
                         let hostsReader = try? await XPCHostsfileReader()
                         let hosts = try? await hostsReader?.read()
+                        let connection = AgentConnection()
                         for await message in session.messages {
                             let request = try await inputParser.parse(data: message)
-                            let agentResponse = await agent.handle(request: request, provenance: session.provenance, hosts: hosts)
+                            let agentResponse = await agent.handle(request: request, provenance: session.provenance, hosts: hosts, connection: connection)
                             try session.write(agentResponse)
                         }
                     } catch {

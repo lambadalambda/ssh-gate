@@ -5,6 +5,7 @@ import SecretKit
 import CertificateKit
 import AppKit
 import SSHProtocolKit
+import Synchronization
 
 /// The `Agent` is an implementation of an SSH agent. It manages coordination and access between a socket, traces requests, notifies witnesses and passes requests to stores.
 public final class Agent: Sendable {
@@ -13,27 +14,34 @@ public final class Agent: Sendable {
     private let authenticationHandler: AuthenticationHandler
     private let certificateStore: CertificateStore
     private let witness: SigningWitness?
+    private let grantApprover: GrantApprover?
+    private let grants = Mutex(GrantSet())
+    private let now: @Sendable () -> Date
     private let publicKeyWriter = OpenSSHPublicKeyWriter()
     private let signatureWriter = OpenSSHSignatureWriter()
     private let logger = Logger(subsystem: "com.maxgoedjen.secretive.secretagent", category: "Agent")
-
-    @MainActor private var sessionID: SSHAgent.ProtocolExtension.OpenSSHExtension.SessionBindContext?
 
     /// Initializes an agent with a store list and a witness.
     /// - Parameters:
     ///   - storeList: The `SecretStoreList` to make available.
     ///   - witness: A witness to notify of requests.
+    ///   - grantApprover: If set, every signature needs a matching grant or the approver's decision.
+    ///   - now: The wall clock for grant expiry.
     public init(
         storeList: SecretStoreList,
         certificateStore: CertificateStore,
         authenticationHandler: AuthenticationHandler,
-        witness: SigningWitness? = nil
+        witness: SigningWitness? = nil,
+        grantApprover: GrantApprover? = nil,
+        now: @escaping @Sendable () -> Date = { Date() }
     ) {
         logger.debug("Agent is running")
         self.storeList = storeList
         self.certificateStore = certificateStore
         self.authenticationHandler = authenticationHandler
         self.witness = witness
+        self.grantApprover = grantApprover
+        self.now = now
     }
     
 }
@@ -43,7 +51,8 @@ extension Agent {
     public func handle(
         request: SSHAgent.Request,
         provenance: SigningRequestProvenance,
-        hosts: [Data: String]?
+        hosts: [Data: String]?,
+        connection: AgentConnection
     ) async -> Data {
         logger.debug("Agent received request of type \(request.debugDescription)")
         // Depending on the launch context (such as after macOS update), the agent may need to reload secrets before acting
@@ -69,12 +78,6 @@ extension Agent {
                             host: payload.hostKey.flatMap { hosts?[$0] }
                         )
                     )
-                    if let boundSession = await sessionID {
-                        guard payload.hostKey == boundSession.hostKey else {
-                            logger.error("Agent received bind request, but host key does not match signature request host key.")
-                            throw BindingFailure()
-                        }
-                    }
                 case .sshSig(let payload):
                     target = .signature(
                         .init(
@@ -86,24 +89,28 @@ extension Agent {
                 default:
                     target = nil
                 }
-                _ = target
+                let state = connection.snapshot
+                if let reason = state.poisoned {
+                    logger.error("Agent refused request on poisoned connection: \(reason, privacy: .public)")
+                    throw BindingFailure()
+                }
+                let purpose = AgentConnection.purpose(of: context.dataToSign.decoded, in: state)
+                let grantContext = GrantContext(
+                    purpose: purpose,
+                    forwarded: state.forwarded,
+                    host: { if case .login(_, let hostKey) = purpose { hosts?[hostKey] } else { nil } }()
+                )
                 response.append(SSHAgent.Response.agentSignResponse.data)
-                response.append(try await sign(data: context.dataToSign.raw, keyBlob: context.keyBlob, provenance: provenance, target: target))
+                response.append(try await sign(data: context.dataToSign.raw, keyBlob: context.keyBlob, provenance: provenance, target: target, grantContext: grantContext))
                 logger.debug("Agent returned \(SSHAgent.Response.agentSignResponse.debugDescription)")
             case .protocolExtension(.openSSH(.sessionBind(let bind))):
-                // This is disabled until forward enforcement is handled.
-                _ = bind
-                response = try await MainActor.run {
-                    logger.debug("Agent received bind request but not currently supported.")
-                    throw UnhandledRequestError()
-//                    guard sessionID == nil else {
-//                        logger.error("Agent received bind request, but already bound.")
-//                        throw BindingFailure()
-//                    }
-//                    logger.debug("Agent bound")
-//                    sessionID = bind
-//                    return SSHAgent.Response.agentSuccess.data
+                do {
+                    try connection.bind(bind)
+                } catch {
+                    logger.error("Agent refused session-bind: \(String(describing: error), privacy: .public)")
+                    throw BindingFailure()
                 }
+                response = SSHAgent.Response.agentSuccess.data
                 logger.debug("Agent returned \(SSHAgent.Response.agentSuccess.debugDescription)")
             case .unknown(let value):
                 logger.error("Agent received unknown request of type \(value).")
@@ -152,12 +159,13 @@ extension Agent {
     ///   - data: The data to sign.
     ///   - provenance: A ``SecretKit.SigningRequestProvenance`` object describing the origin of the request.
     /// - Returns: An OpenSSH formatted Data payload containing the signed data response.
-    func sign(data: Data, keyBlob: Data, provenance: SigningRequestProvenance, target: SigningRequestTarget?) async throws -> Data {
+    func sign(data: Data, keyBlob: Data, provenance: SigningRequestProvenance, target: SigningRequestTarget?, grantContext: GrantContext) async throws -> Data {
         guard let (secret, store) = await secret(matching: keyBlob) else {
             let keyBlobHex = keyBlob.formatted(.hex())
             logger.debug("Agent did not have a key matching \(keyBlobHex)")
             throw NoMatchingKeyError()
         }
+        try await authorize(secret: secret, keyBlob: keyBlob, provenance: provenance, context: grantContext)
         logger.debug("Agent offering witness chance to object")
         do {
             try await witness?.speakNowOrForeverHoldYourPeace(forAccessTo: secret, from: store, by: provenance, target: target)
@@ -175,6 +183,56 @@ extension Agent {
         try await witness?.witness(accessTo: secret, from: store, by: provenance, target: target, offerPersistence: secret.authenticationRequirement.required)
         logger.debug("Agent signed request")
         return signedData
+    }
+
+}
+
+struct GrantContext {
+    let purpose: GrantPurpose?
+    let forwarded: Bool
+    let host: String?
+}
+
+extension Agent {
+
+    struct GrantDenied: Error {}
+
+    /// Lets a request through if a grant covers it, else asks the grant approver. Does nothing without an approver.
+    func authorize(secret: AnySecret, keyBlob: Data, provenance: SigningRequestProvenance, context: GrantContext) async throws {
+        guard let grantApprover else { return }
+        if let purpose = context.purpose,
+           let grant = grants.withLock({ $0.match(publicKey: keyBlob, chain: provenance.chain, purpose: purpose, now: now()) }) {
+            logger.debug("Grant \(grant.id, privacy: .public) covers request")
+            return
+        }
+        let request = GrantRequest(
+            secret: secret,
+            provenance: provenance,
+            purpose: context.purpose,
+            host: context.host,
+            defaultRequesterIndex: context.purpose == nil ? nil : RequesterSelection.defaultIndex(in: provenance.chain),
+            forwarded: context.forwarded
+        )
+        switch await grantApprover.decide(request) {
+        case .deny:
+            logger.debug("Grant approver denied request")
+            throw GrantDenied()
+        case .once:
+            logger.debug("Grant approver allowed request once")
+        case .grant(let index, let duration):
+            guard let purpose = context.purpose, duration > 0, duration.isFinite,
+                  provenance.chain.indices.contains(index),
+                  let requester = GrantRequester(process: provenance.chain[index]) else {
+                logger.debug("Grant approver allowed request, but no grant is possible; allowed once")
+                return
+            }
+            let start = now()
+            grants.withLock {
+                $0.removeExpired(now: start)
+                $0.add(Grant(publicKey: keyBlob, requester: requester, purpose: purpose, expires: start + duration))
+            }
+            logger.debug("Grant approver created grant for \(requester.path, privacy: .public)")
+        }
     }
 
 }
