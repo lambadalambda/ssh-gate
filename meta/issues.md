@@ -2,5 +2,5 @@
 - [ ] [sshgate v2: short-lived certificates from an SSH CA](issues/sshgate-v2-ca-certificates.md)
 - [ ] [Secretive fork with scoped grants (meta)](issues/secretive-scoped-grants.md)
 - [ ] [Approval pop-up with duration and Touch ID](issues/approval-popup.md)
-- [ ] [Signed build with team entitlements](issues/signed-build.md)
 - [ ] [Identify the peer by audit token](issues/peer-audit-token.md)
+- [ ] [XPC code signing requirement in release builds](issues/xpc-release-signing-requirement.md)
