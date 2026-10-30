@@ -11,17 +11,20 @@ extension SigningRequestTracer {
 
     /// Generates a ``SecretKit.SigningRequestProvenance`` from a ``FileHandle``.
     ///
-    /// The chain stops at the first GUI app, at a process without a parent, or where a pid was reused: a parent that
-    /// started after its child is not the real parent. If the connecting process itself cannot be identified, the
-    /// chain contains only an unknown process, which no grant can match.
+    /// The connecting process is identified by its audit token. The chain stops at the first GUI app, at a process
+    /// without a parent, or where a pid was reused: a parent that started after its child is not the real parent. If the
+    /// connecting process itself cannot be identified, the chain contains only an unknown process, which no grant can
+    /// match.
     /// - Parameter fileHandle: The reader involved in processing the request.
     /// - Returns: A ``SecretKit.SigningRequestProvenance`` describing the origin of the request.
     func provenance(from fileHandle: FileHandle) -> SigningRequestProvenance {
         let acceptedAt = Date()
-        guard let pid = fileHandle.pidOfConnectedProcess else {
+        guard let token = fileHandle.auditTokenOfConnectedProcess else {
             return SigningRequestProvenance(root: Self.unknownProcess(pid: -1))
         }
-        guard let root = process(from: pid), let started = root.startTime, started <= acceptedAt else {
+        let pid = token.pid
+        // The token still names a live process after the lookup, so the pid was not reused in between.
+        guard let root = process(from: pid), let started = root.startTime, started <= acceptedAt, token.isLive else {
             return SigningRequestProvenance(root: Self.unknownProcess(pid: pid))
         }
         var provenance = SigningRequestProvenance(root: root)
