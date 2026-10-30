@@ -8,3 +8,8 @@ When a login grant is created and a grant CA is set, the agent signs an OpenSSH 
 
 - Unit tests: certificate fields, validity, signature verifies with the CA key (ssh-keygen -L accepts it), listed only while valid.
 - e2e: sshd with TrustedUserCAKeys accepts the login; after expiry it refuses.
+
+## Notes
+
+- Done. After review: clients can neither list nor use the CA key; principals with `,`, whitespace, `*`, `?`, `!` get no certificate; a renewal replaces the earlier certificate; certificates of all supported key types map to their plain key.
+- Open: manual test by the user with `scripts/manual-certificate-test.sh` (approval needs Touch ID). Agent-side steps up to the window are tested live.

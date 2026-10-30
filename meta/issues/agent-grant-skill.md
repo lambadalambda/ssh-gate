@@ -7,3 +7,7 @@ A skill (SKILL.md) that tells coding agents when and how to run `ssh-grant` befo
 ## Acceptance Criteria
 
 - Skill file in this repo, tested once with Claude Code.
+
+## Notes
+
+- Written: `skills/ssh-grant/SKILL.md`. Open: one test with Claude Code (needs the user to install it and approve).

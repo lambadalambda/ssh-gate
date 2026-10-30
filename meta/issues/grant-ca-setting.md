@@ -8,3 +8,7 @@ A setting in the shared keychain settings store names the secret that signs gran
 
 - The agent reads the setting; the host app can set and clear it.
 - Manual test by the user.
+
+## Notes
+
+- Done. Tested live: switching it on in the host app hides the CA key from the agent's key list, so the shared keychain setting reaches the agent.

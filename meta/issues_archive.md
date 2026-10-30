@@ -17,3 +17,4 @@
 - [x] [Allow hosts with host certificates](issues/host-certificate-support.md)
 - [x] [Grant request extension in the agent](issues/grant-request-extension.md)
 - [x] [ssh-grant command](issues/ssh-grant-command.md)
+- [x] [Mark a key as grant CA in the host app](issues/grant-ca-setting.md)
