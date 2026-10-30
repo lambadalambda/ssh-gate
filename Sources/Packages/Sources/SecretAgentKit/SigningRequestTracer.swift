@@ -10,33 +10,58 @@ struct SigningRequestTracer {
 extension SigningRequestTracer {
 
     /// Generates a ``SecretKit.SigningRequestProvenance`` from a ``FileHandle``.
+    ///
+    /// The chain stops at the first GUI app, at a process without a parent, or where a pid was reused: a parent that
+    /// started after its child is not the real parent. If the connecting process itself cannot be identified, the
+    /// chain contains only an unknown process, which no grant can match.
     /// - Parameter fileHandle: The reader involved in processing the request.
     /// - Returns: A ``SecretKit.SigningRequestProvenance`` describing the origin of the request.
     func provenance(from fileHandle: FileHandle) -> SigningRequestProvenance {
-        let firstInfo = process(from: fileHandle.pidOfConnectedProcess)
-        var provenance = SigningRequestProvenance(root: firstInfo)
-        while NSRunningApplication(processIdentifier: provenance.origin.pid) == nil && provenance.origin.parentPID != nil {
-            provenance.chain.append(process(from: provenance.origin.parentPID!))
+        let acceptedAt = Date()
+        guard let pid = fileHandle.pidOfConnectedProcess else {
+            return SigningRequestProvenance(root: Self.unknownProcess(pid: -1))
+        }
+        guard let root = process(from: pid), let started = root.startTime, started <= acceptedAt else {
+            return SigningRequestProvenance(root: Self.unknownProcess(pid: pid))
+        }
+        var provenance = SigningRequestProvenance(root: root)
+        while NSRunningApplication(processIdentifier: provenance.origin.pid) == nil,
+              let parentPID = provenance.origin.parentPID,
+              let parent = process(from: parentPID),
+              Self.isPlausibleParent(parent, of: provenance.origin) {
+            provenance.chain.append(parent)
         }
         return provenance
     }
 
+    /// A parent must have started no later than its child, else its pid was reused.
+    static func isPlausibleParent(_ parent: SigningRequestProvenance.Process, of child: SigningRequestProvenance.Process) -> Bool {
+        guard let parentStart = parent.startTime, let childStart = child.startTime else { return false }
+        return parentStart <= childStart
+    }
+
+    static func unknownProcess(pid: Int32) -> SigningRequestProvenance.Process {
+        .init(pid: pid, processName: "unknown", appName: nil, iconURL: nil, path: "", validSignature: false, parentPID: nil)
+    }
+
     /// Generates a `kinfo_proc` representation of the provided process ID.
     /// - Parameter pid: The process ID to look up.
-    /// - Returns: a `kinfo_proc` struct describing the process ID.
-    func pidAndNameInfo(from pid: Int32) -> kinfo_proc {
-        var len = unsafe MemoryLayout<kinfo_proc>.size
-        let infoPointer = UnsafeMutableRawPointer.allocate(byteCount: len, alignment: 1)
+    /// - Returns: a `kinfo_proc` struct describing the process ID, or `nil` if there is no such process.
+    func pidAndNameInfo(from pid: Int32) -> kinfo_proc? {
+        var info = unsafe kinfo_proc()
+        let size = unsafe MemoryLayout<kinfo_proc>.size
+        var len = size
         var name: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, pid]
-        unsafe sysctl(&name, UInt32(name.count), infoPointer, &len, nil, 0)
-        return unsafe infoPointer.load(as: kinfo_proc.self)
+        let result = unsafe sysctl(&name, UInt32(name.count), &info, &len, nil, 0)
+        guard result == 0, len == size else { return nil }
+        return unsafe info
     }
 
     /// Generates a ``SecretKit.SigningRequestProvenance.Process`` from a provided process ID.
     /// - Parameter pid: The process ID to look up.
-    /// - Returns: A ``SecretKit.SigningRequestProvenance.Process`` describing the process.
-    func process(from pid: Int32) -> SigningRequestProvenance.Process {
-        var pidAndNameInfo = unsafe self.pidAndNameInfo(from: pid)
+    /// - Returns: A ``SecretKit.SigningRequestProvenance.Process`` describing the process, or `nil` if there is no such process.
+    func process(from pid: Int32) -> SigningRequestProvenance.Process? {
+        guard var pidAndNameInfo = unsafe self.pidAndNameInfo(from: pid) else { return nil }
         let ppid = unsafe pidAndNameInfo.kp_eproc.e_ppid != 0 ? pidAndNameInfo.kp_eproc.e_ppid : nil
         let start = unsafe pidAndNameInfo.kp_proc.p_un.__p_starttime
         let startTime = start.tv_sec != 0 ? Date(timeIntervalSince1970: TimeInterval(start.tv_sec) + TimeInterval(start.tv_usec) / 1_000_000) : nil
@@ -44,15 +69,21 @@ extension SigningRequestTracer {
             unsafe String(cString: pointer)
         }
 
-        let pathPointer = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(MAXPATHLEN))
-        _ = unsafe proc_pidpath(pid, pathPointer, UInt32(MAXPATHLEN))
+        var pathBuffer = [UInt8](repeating: 0, count: Int(MAXPATHLEN))
+        _ = unsafe proc_pidpath(pid, &pathBuffer, UInt32(MAXPATHLEN))
+        let path = String(decoding: pathBuffer.prefix { $0 != 0 }, as: UTF8.self)
 
-        let path = unsafe String(cString: pathPointer)
-        var secCode: Unmanaged<SecCode>!
+        return SigningRequestProvenance.Process(pid: pid, processName: procName, appName: appName(for: pid), iconURL: iconURL(for: pid), path: path, validSignature: hasValidSignature(pid: pid), parentPID: ppid, startTime: startTime, isApp: NSRunningApplication(processIdentifier: pid) != nil)
+    }
+
+    /// Checks the code signature of a process. A process that exits during the check has no valid signature.
+    func hasValidSignature(pid: Int32) -> Bool {
+        var secCode: Unmanaged<SecCode>?
+        guard unsafe SecCodeCreateWithPID(pid, SecCSFlags(), &secCode) == errSecSuccess, let code = unsafe secCode?.takeRetainedValue() else {
+            return false
+        }
         let flags: SecCSFlags = [.considerExpiration, .enforceRevocationChecks]
-        unsafe SecCodeCreateWithPID(pid, SecCSFlags(), &secCode)
-        let valid = unsafe SecCodeCheckValidity(secCode.takeRetainedValue(), flags, nil) == errSecSuccess
-        return SigningRequestProvenance.Process(pid: pid, processName: procName, appName: appName(for: pid), iconURL: iconURL(for: pid), path: path, validSignature: valid, parentPID: ppid, startTime: startTime)
+        return SecCodeCheckValidity(code, flags, nil) == errSecSuccess
     }
 
     /// Looks up the URL for the icon of a process ID, if it has one.
