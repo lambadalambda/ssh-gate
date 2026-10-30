@@ -90,19 +90,26 @@ extension SSHAgent {
 
                     public struct SSHConnectionPayload: Sendable, Codable {
 
+                        /// The SSH session ID. A login is only bound to a host if a verified session-bind has the same ID.
+                        public let sessionID: Data
                         public let username: String
                         public let hasSignature: Bool
                         public let publicKeyAlgorithm: String
+                        /// The full public key blob.
                         public let publicKey: Data
-                        public let hostKey: Data
+                        /// The full host key blob, for the hostbound method only. The client chooses it, so only trust
+                        /// it together with a verified session-bind.
+                        public let hostKey: Data?
 
                         public init(
+                            sessionID: Data,
                             username: String,
                             hasSignature: Bool,
                             publicKeyAlgorithm: String,
                             publicKey: Data,
-                            hostKey: Data
+                            hostKey: Data?
                         ) {
+                            self.sessionID = sessionID
                             self.username = username
                             self.hasSignature = hasSignature
                             self.publicKeyAlgorithm = publicKeyAlgorithm

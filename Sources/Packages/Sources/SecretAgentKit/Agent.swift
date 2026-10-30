@@ -65,8 +65,8 @@ extension Agent {
                             hasSignature: payload.hasSignature,
                             publicKeyAlgorithm: payload.publicKeyAlgorithm,
                             publicKey: payload.publicKey,
-                            hostKey: payload.hostKey,
-                            host: hosts?[payload.hostKey]
+                            hostKey: payload.hostKey ?? Data(),
+                            host: payload.hostKey.flatMap { hosts?[$0] }
                         )
                     )
                     if let boundSession = await sessionID {
