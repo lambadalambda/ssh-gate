@@ -1,5 +1,4 @@
 - [ ] [sshgate v1 (meta)](issues/sshgate-v1.md)
-- [ ] [Filtering proxy agent](issues/filtering-proxy-agent.md)
 - [ ] [Grant CLI and socket server](issues/grant-cli-and-socket-server.md)
 - [ ] [End-to-end test with real OpenSSH](issues/e2e-test-with-openssh.md)
 - [ ] [Allow hosts with host certificates](issues/host-certificate-support.md)

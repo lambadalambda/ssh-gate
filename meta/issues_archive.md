@@ -1,2 +1,3 @@
 - [x] [Parse sign requests](issues/parse-sign-requests.md)
 - [x] [Grant policy](issues/grant-policy.md)
+- [x] [Filtering proxy agent](issues/filtering-proxy-agent.md)

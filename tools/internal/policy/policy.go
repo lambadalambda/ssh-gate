@@ -80,10 +80,10 @@ func decideLogin(g Grant, c Conn, key ssh.PublicKey, r sigdata.UserAuth) error {
 	if !containsKey(g.HostKeys, c.Bind.HostKey) {
 		return fmt.Errorf("host key %s not allowed", ssh.FingerprintSHA256(c.Bind.HostKey))
 	}
-	if r.HostKey != nil && !keyEqual(r.HostKey, c.Bind.HostKey) {
+	if r.HostKey != nil && !KeyEqual(r.HostKey, c.Bind.HostKey) {
 		return errors.New("hostbound host key does not match session-bind")
 	}
-	if !keyEqual(r.Key, key) {
+	if !KeyEqual(r.Key, key) {
 		return errors.New("userauth key differs from signing key")
 	}
 	if len(g.Users) > 0 && !slices.Contains(g.Users, r.User) {
@@ -92,10 +92,11 @@ func decideLogin(g Grant, c Conn, key ssh.PublicKey, r sigdata.UserAuth) error {
 	return nil
 }
 
-func keyEqual(a, b ssh.PublicKey) bool {
+// KeyEqual reports whether two public keys are the same.
+func KeyEqual(a, b ssh.PublicKey) bool {
 	return bytes.Equal(a.Marshal(), b.Marshal())
 }
 
 func containsKey(keys []ssh.PublicKey, key ssh.PublicKey) bool {
-	return slices.ContainsFunc(keys, func(k ssh.PublicKey) bool { return keyEqual(k, key) })
+	return slices.ContainsFunc(keys, func(k ssh.PublicKey) bool { return KeyEqual(k, key) })
 }
