@@ -3,7 +3,6 @@ import Foundation
 public struct XPCTypedSession<ResponseType: Codable & Sendable, ErrorType: Error & Codable>: ~Copyable {
 
     private let connection: NSXPCConnection
-    private let proxy: _XPCProtocol
 
     public init(serviceName: String, warmup: Bool = false) async throws {
         let connection = NSXPCConnection(serviceName: serviceName)
@@ -12,9 +11,7 @@ public struct XPCTypedSession<ResponseType: Codable & Sendable, ErrorType: Error
         connection.setCodeSigningRequirement("anchor apple generic and certificate leaf[subject.OU] = \"Z72PRUAWF6\"")
         #endif
         connection.resume()
-        guard let proxy = connection.remoteObjectProxy as? _XPCProtocol else { fatalError() }
         self.connection = connection
-        self.proxy = proxy
         if warmup {
             _ = try? await send()
         }
@@ -23,6 +20,15 @@ public struct XPCTypedSession<ResponseType: Codable & Sendable, ErrorType: Error
     public func send(_ message: some Encodable = Data()) async throws -> ResponseType {
         let encoded = try JSONEncoder().encode(message)
         return try await withCheckedThrowingContinuation { continuation in
+            // NSXPC calls exactly one of the error handler and the reply block, so a missing or crashed service
+            // fails the request instead of leaving it waiting forever.
+            let proxy = connection.remoteObjectProxyWithErrorHandler { error in
+                continuation.resume(throwing: error)
+            }
+            guard let proxy = proxy as? _XPCProtocol else {
+                continuation.resume(throwing: NoDataError())
+                return
+            }
             proxy.process(encoded) { data, error in
                 do {
                     if let error {
