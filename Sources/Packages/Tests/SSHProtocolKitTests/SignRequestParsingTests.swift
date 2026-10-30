@@ -1,6 +1,7 @@
 import Foundation
 import Testing
 @testable import SSHProtocolKit
+import SSHTestFixtures
 
 typealias ConnectionPayload = SSHAgent.Request.SignatureRequestContext.SignaturePayload.DecodedPayload.SSHConnectionPayload
 typealias SessionBind = SSHAgent.ProtocolExtension.OpenSSHExtension.SessionBindContext
@@ -22,45 +23,6 @@ func parseConnection(_ data: Data) throws -> ConnectionPayload {
 
 enum TestFailure: Error {
     case unexpectedRequest
-}
-
-/// Frames a sign request for `data` like ssh does.
-func signRequest(key: Data, data: Data) -> Data {
-    var body = Data([13])
-    body.append(key.lengthAndData)
-    body.append(data.lengthAndData)
-    body.append(Data([0, 0, 0, 0]))
-    return body.lengthAndData
-}
-
-/// The fields of a userauth request; tests change single fields.
-struct UserAuth {
-    var sessionID = Data(repeating: 7, count: 32)
-    var message: UInt8 = 50
-    var user = "root"
-    var service = "ssh-connection"
-    var method = "publickey-hostbound-v00@openssh.com"
-    var sigFollows: UInt8 = 1
-    var algorithm = "ssh-ed25519"
-    var key = CapturedFixtures.userKey
-    var hostKey: Data? = CapturedFixtures.logins["ed25519"]!.hostKey
-    var trailing = Data()
-
-    var data: Data {
-        var d = sessionID.lengthAndData
-        d.append(message)
-        d.append(Data(user.utf8).lengthAndData)
-        d.append(Data(service.utf8).lengthAndData)
-        d.append(Data(method.utf8).lengthAndData)
-        d.append(sigFollows)
-        d.append(Data(algorithm.utf8).lengthAndData)
-        d.append(key.lengthAndData)
-        if let hostKey { d.append(hostKey.lengthAndData) }
-        d.append(trailing)
-        return d
-    }
-
-    var request: Data { signRequest(key: key, data: data) }
 }
 
 @Suite struct CapturedLoginTests {

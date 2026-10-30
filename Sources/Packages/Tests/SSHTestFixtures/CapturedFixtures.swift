@@ -3,17 +3,17 @@
 
 import Foundation
 
-enum CapturedFixtures {
+public enum CapturedFixtures {
 
-    static let userKey = Data(base64Encoded: "AAAAC3NzaC1lZDI1NTE5AAAAIIdKN2w4dgJOjKBZDKFF9VhLpGa/gCZTfkqb61MtGuws")!
+    public static let userKey = Data(base64Encoded: "AAAAC3NzaC1lZDI1NTE5AAAAIIdKN2w4dgJOjKBZDKFF9VhLpGa/gCZTfkqb61MtGuws")!
 
-    struct Login {
-        let hostKey: Data
-        let sessionBind: Data
-        let signRequest: Data
+    public struct Login: Sendable {
+        public let hostKey: Data
+        public let sessionBind: Data
+        public let signRequest: Data
     }
 
-    static let logins: [String: Login] = [
+    public static let logins: [String: Login] = [
         "ed25519": Login(
             hostKey: Data(base64Encoded: "AAAAC3NzaC1lZDI1NTE5AAAAII0vWqc2ihccyf7Uio/BTRW0cDCK7ZwN7nby6sufytL6")!,
             sessionBind: Data(base64Encoded: "AAAA0BsAAAAYc2Vzc2lvbi1iaW5kQG9wZW5zc2guY29tAAAAMwAAAAtzc2gtZWQyNTUxOQAAACCNL1qnNooXHMn+1IqPwU0VtHAwiu2cDe528urLn8rS+gAAACBNbe9n5feLLhfh6hDgY+yOabSxtniTJTjijlMzg6ZNMAAAAFMAAAALc3NoLWVkMjU1MTkAAABAh9+icDKaQnyFgQ5Kv5wvH7toWxA6ptRVBxZQbXlc+PUVJ2DN87spuZZgG09oJv7ICp/783kYNQr1h0TJGNzsAwA=")!,
@@ -41,6 +41,6 @@ enum CapturedFixtures {
         ),
     ]
 
-    static let gitSignRequest = Data(base64Encoded: "AAAAnw0AAAAzAAAAC3NzaC1lZDI1NTE5AAAAIIdKN2w4dgJOjKBZDKFF9VhLpGa/gCZTfkqb61MtGuwsAAAAX1NTSFNJRwAAAANnaXQAAAAAAAAABnNoYTUxMgAAAECbcdIkvWLzeF2W1GrT6j1zMZv7wokMqtri3/clGWc8pyMjw9mbpcEdfHrMbhS4xdoMRmNHXC5cOt70b3O83sBDAAAAAA==")!
+    public static let gitSignRequest = Data(base64Encoded: "AAAAnw0AAAAzAAAAC3NzaC1lZDI1NTE5AAAAIIdKN2w4dgJOjKBZDKFF9VhLpGa/gCZTfkqb61MtGuwsAAAAX1NTSFNJRwAAAANnaXQAAAAAAAAABnNoYTUxMgAAAECbcdIkvWLzeF2W1GrT6j1zMZv7wokMqtri3/clGWc8pyMjw9mbpcEdfHrMbhS4xdoMRmNHXC5cOt70b3O83sBDAAAAAA==")!
 
 }

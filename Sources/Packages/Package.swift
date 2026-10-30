@@ -93,7 +93,7 @@ let package = Package(
         ),
         .testTarget(
             name: "SecretAgentKitTests",
-            dependencies: ["SecretAgentKit"],
+            dependencies: ["SecretAgentKit", "SSHTestFixtures"],
         ),
         .target(
             name: "SSHProtocolKit",
@@ -101,9 +101,15 @@ let package = Package(
             resources: [localization],
             swiftSettings: swiftSettings,
         ),
+        .target(
+            name: "SSHTestFixtures",
+            dependencies: ["SSHProtocolKit"],
+            path: "Tests/SSHTestFixtures",
+            swiftSettings: swiftSettings,
+        ),
         .testTarget(
             name: "SSHProtocolKitTests",
-            dependencies: ["SSHProtocolKit"],
+            dependencies: ["SSHProtocolKit", "SSHTestFixtures"],
             swiftSettings: swiftSettings,
         ),
         .target(

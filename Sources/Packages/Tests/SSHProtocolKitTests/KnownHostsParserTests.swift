@@ -1,6 +1,7 @@
 import Foundation
 import Testing
 @testable import SSHProtocolKit
+import SSHTestFixtures
 
 @Suite struct KnownHostsParserTests {
 
