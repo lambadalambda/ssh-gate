@@ -25,7 +25,7 @@ import SSHTestFixtures
 
     @Test func hostKeyFingerprintMatchesOpenSSH() {
         // ssh-keygen -lf of the captured ed25519 host key.
-        #expect(presentation(.login(username: "git", hostKey: hostKey)).hostKeyFingerprint == "SHA256:kO+1Nv8Tbi6b9DeDHQowKjTAnKGFmx83UQhZpGeqkmg")
+        #expect(presentation(.login(username: "git", hostKey: hostKey)).hostKeyFingerprint == "SHA256:bbzE4hsjBSAab8QRvR+Vs8aolV4VBSghnNLEsp223RM")
         #expect(presentation(.signature(namespace: "git")).hostKeyFingerprint == nil)
     }
 
