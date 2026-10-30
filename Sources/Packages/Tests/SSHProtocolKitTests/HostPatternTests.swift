@@ -15,9 +15,23 @@ import Testing
         ("127.0.0.1", "[127.0.0.1]:2222", true),
         ("127.0.0.2", "[127.0.0.1]:2222", false),
         ("anything", "!*", false),
+        ("second.example", "first.example, second.example", true),
     ])
     func matches(host: String, patterns: String, expected: Bool) {
         #expect(HostPattern.matches(host, patterns: patterns) == expected)
+    }
+
+
+    @Test(arguments: [
+        ("git.example", UInt32(22), "git.example", true),
+        ("git.example", UInt32(22), "*.example", true),
+        ("git.example", UInt32(2222), "git.example", false),
+        ("git.example", UInt32(2222), "[git.example]:2222", true),
+        ("git.example", UInt32(22), "[git.example]:2222", false),
+        ("127.0.0.1", UInt32(2241), "[127.0.0.1]:2241,other", true),
+    ])
+    func matchesHostAndPort(host: String, port: UInt32, patterns: String, expected: Bool) {
+        #expect(HostPattern.matches(host: host, port: port, patterns: patterns) == expected)
     }
 
 }

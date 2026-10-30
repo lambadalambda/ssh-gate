@@ -4,17 +4,28 @@ import Foundation
 /// match_hostname. Case-insensitive.
 public enum HostPattern {
 
-    /// Whether `host` matches the comma-separated `patterns`. A matching negated pattern wins over all others.
+    /// Whether `host` matches the comma-separated `patterns`, ignoring ports in `[host]:port` patterns (e.g. for
+    /// certificate principals, which have no port). A matching negated pattern wins over all others.
     public static func matches(_ host: String, patterns: String) -> Bool {
-        let host = host.lowercased()
+        matches(candidate: host, patterns: patterns, ignorePorts: true)
+    }
+
+    /// Whether a connection to `host` on `port` matches the patterns, as ssh looks it up in known_hosts: `host` for
+    /// port 22, `[host]:port` otherwise.
+    public static func matches(host: String, port: UInt32, patterns: String) -> Bool {
+        matches(candidate: port == 22 ? host : "[\(host)]:\(port)", patterns: patterns, ignorePorts: false)
+    }
+
+    static func matches(candidate: String, patterns: String, ignorePorts: Bool) -> Bool {
+        let host = candidate.lowercased()
         var matched = false
         for rawPattern in patterns.split(separator: ",") {
-            var pattern = Substring(rawPattern.lowercased())
+            var pattern = Substring(rawPattern.lowercased().trimmingCharacters(in: .whitespaces))
             let negated = pattern.hasPrefix("!")
             if negated {
                 pattern = pattern.dropFirst()
             }
-            if pattern.hasPrefix("["), let end = pattern.firstIndex(of: "]") {
+            if ignorePorts, pattern.hasPrefix("["), let end = pattern.firstIndex(of: "]") {
                 pattern = pattern[pattern.index(after: pattern.startIndex)..<end]
             }
             guard glob(Array(pattern), Array(host)) else { continue }
