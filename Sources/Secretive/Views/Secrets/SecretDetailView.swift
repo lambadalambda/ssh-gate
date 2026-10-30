@@ -3,6 +3,7 @@ import SecretKit
 import Common
 import CertificateKit
 import SSHProtocolKit
+import SettingsKit
 
 struct SecretDetailView<SecretType: Secret>: View {
     
@@ -11,6 +12,7 @@ struct SecretDetailView<SecretType: Secret>: View {
     let navigateToCertificate: ((Certificate) -> Void)?
 
     private let keyWriter = OpenSSHPublicKeyWriter()
+    @Environment(\.settingsStore) private var settingsStore
 
     var body: some View {
         ScrollView {
@@ -56,6 +58,9 @@ struct SecretDetailView<SecretType: Secret>: View {
                         }
                     }
                     Spacer()
+                        .frame(height: 20)
+                    GrantAuthoritySection(secret: secret, keyWriter: keyWriter, settingsStore: settingsStore)
+                    Spacer()
                 }
             }
             .padding()
@@ -69,3 +74,40 @@ struct SecretDetailView<SecretType: Secret>: View {
 //#Preview {
 //    SecretDetailView(secret: Preview.Secret(name: "Demonstration Secret"))
 //}
+
+/// Marks the secret as the CA for grant certificates and shows how servers trust it.
+private struct GrantAuthoritySection<SecretType: Secret>: View {
+
+    let secret: SecretType
+    let keyWriter: OpenSSHPublicKeyWriter
+    @Bindable var settingsStore: SettingsStore
+
+    private var blob: Data { keyWriter.data(secret: secret) }
+
+    private var isAuthority: Binding<Bool> {
+        Binding(
+            get: { settingsStore.grantCertificateAuthority == blob },
+            set: { settingsStore.grantCertificateAuthority = $0 ? blob : nil }
+        )
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Toggle("Sign grant certificates with this key", isOn: isAuthority)
+            Text("When you approve a login grant, the agent signs a certificate for the granted key that is valid only for the approved user and until the grant expires. Servers that trust this key as a user CA enforce the expiry themselves. Clients cannot use this key directly. If it requires authentication, you confirm each certificate a second time.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            if isAuthority.wrappedValue {
+                CopyableView(
+                    title: "Line for ~/.ssh/authorized_keys (replace the principal)",
+                    image: Image(systemName: "server.rack"),
+                    text: "cert-authority,principals=\"USER\" " + keyWriter.openSSHString(secret: secret)
+                )
+                Text("Or system-wide: save the public key in a file and set TrustedUserCAKeys to it in sshd_config.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+
+}

@@ -4,6 +4,7 @@ import SecretKit
 import SecureEnclaveSecretKit
 import SmartCardSecretKit
 import SecretAgentKit
+import SettingsKit
 import Brief
 import Observation
 import Common
@@ -50,7 +51,8 @@ struct SecretAgent: App {
                         certificateStore: certificateStore,
                         authenticationHandler: authenticationHandler,
                         witness: notifier,
-                        grantApprover: grantApprovalCenter
+                        grantApprover: grantApprovalCenter,
+                        certificateAuthority: { await MainActor.run { SettingsStore().grantCertificateAuthority } }
                     )
                     for await session in socketController.sessions {
                         Task {
