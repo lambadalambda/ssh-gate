@@ -17,3 +17,4 @@ A window that shows the requester chain (with code signature status and working 
 - Remove or hide the key-wide "remember for N minutes" option once grants work.
 - Implemented in the fork (065c266, 6b6595f). Open: manual test by the user. Not done: dropping requests whose client disconnected (the session task is not cancelled on disconnect).
 - Tested in the signed app (2026-10-30), through accessibility: window content for git signing and logins (ed25519 and ECDSA host keys, fingerprints match ssh-keygen), Deny via Escape, closing the window denies all, parallel requests merge. Not tested: Allow (needs Touch ID). Use `scripts/manual-grant-test.sh` in the fork.
+- Allow tested by the user with `scripts/manual-grant-test.sh` (2026-10-30): all five steps as expected.

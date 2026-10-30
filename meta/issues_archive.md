@@ -10,3 +10,5 @@
 - [x] [Harden session-bind handling in Secretive](issues/harden-session-bind.md)
 - [x] [Enforce grants in the agent](issues/enforce-grants-in-agent.md)
 - [x] [Signed build with team entitlements](issues/signed-build.md)
+- [x] [Secretive fork with scoped grants (meta)](issues/secretive-scoped-grants.md)
+- [x] [Approval pop-up with duration and Touch ID](issues/approval-popup.md)

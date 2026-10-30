@@ -25,3 +25,8 @@ Replace sshgate's proxy design with a fork of Secretive (MIT). The app owns the 
 - Fork: https://github.com/lambadalambda/ssh-gate
 - Secretive already has: process chain tracing with code signature check, session-bind verification, `SigningRequestTarget` (login with host key, SSHSIG namespace), host names from known_hosts, key-wide "remember for N minutes".
 - Later: explicit request command with a reason; upstream PR.
+
+## Result (2026-10-30)
+
+- Manual test by the user passed: grants for git signing and for one host, no new prompt within the grant, new prompt and denial for another host.
+- Expiry is covered by unit tests (`expiredGrantAsksAgain`), not by a manual test.
