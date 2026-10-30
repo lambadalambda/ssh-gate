@@ -393,6 +393,7 @@
         "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
         "AUTOMATION_APPLE_EVENTS": "NO",
         "CODE_SIGN_ENTITLEMENTS": "SecretAgent/SecretAgent.entitlements",
+        "SKIP_INSTALL": "YES",
         "CODE_SIGN_IDENTITY[config=Release]": "Developer ID Application",
         "CODE_SIGN_STYLE[config=Debug]": "Automatic",
         "CODE_SIGN_STYLE[config=Release]": "Manual",
