@@ -21,3 +21,12 @@ extension String {
     }
 
 }
+
+extension Data {
+
+    /// An integer in network byte order, as in SSH's uint32 and uint64.
+    static func bigEndian<T: FixedWidthInteger>(_ value: T) -> Data {
+        Data((0..<T.bitWidth / 8).reversed().map { UInt8(truncatingIfNeeded: value >> ($0 * 8)) })
+    }
+
+}

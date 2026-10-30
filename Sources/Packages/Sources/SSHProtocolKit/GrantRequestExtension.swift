@@ -73,11 +73,11 @@ extension SSHAgent.ProtocolExtension {
             for string in [kind, host] {
                 data.append(Data(string.utf8).lengthAndData)
             }
-            data.append(Self.bigEndian(port))
+            data.append(Data.bigEndian(port))
             for string in [user, namespace] {
                 data.append(Data(string.utf8).lengthAndData)
             }
-            data.append(Self.bigEndian(seconds))
+            data.append(Data.bigEndian(seconds))
             data.append(Data(reason.utf8).lengthAndData)
             return data
         }
@@ -85,10 +85,6 @@ extension SSHAgent.ProtocolExtension {
         /// No control characters, so the window cannot be confused by line breaks or escape sequences.
         static func isPrintable(_ string: String) -> Bool {
             !string.unicodeScalars.contains { $0.properties.generalCategory == .control || $0.properties.generalCategory == .format }
-        }
-
-        static func bigEndian(_ value: UInt32) -> Data {
-            Data((0..<4).reversed().map { UInt8(truncatingIfNeeded: value >> ($0 * 8)) })
         }
     }
 
