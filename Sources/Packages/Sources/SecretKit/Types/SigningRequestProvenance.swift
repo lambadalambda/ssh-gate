@@ -58,6 +58,8 @@ extension SigningRequestProvenance {
         public let parentPID: Int32?
         /// When the process started. Together with the pid, this identifies a process even if its pid is reused later.
         public let startTime: Date?
+        /// Whether the process is a GUI application.
+        public let isApp: Bool
 
         /// Initializes a Process.
         /// - Parameters:
@@ -69,7 +71,8 @@ extension SigningRequestProvenance {
         ///   - validSignature: A boolean describing whether or not the process has a valid code signature.
         ///   - parentPID: The pid of the process's parent.
         ///   - startTime: When the process started.
-        public init(pid: Int32, processName: String, appName: String?, iconURL: URL?, path: String, validSignature: Bool, parentPID: Int32?, startTime: Date? = nil) {
+        ///   - isApp: Whether the process is a GUI application.
+        public init(pid: Int32, processName: String, appName: String?, iconURL: URL?, path: String, validSignature: Bool, parentPID: Int32?, startTime: Date? = nil, isApp: Bool = false) {
             self.pid = pid
             self.processName = processName
             self.appName = appName
@@ -78,6 +81,7 @@ extension SigningRequestProvenance {
             self.validSignature = validSignature
             self.parentPID = parentPID
             self.startTime = startTime
+            self.isApp = isApp
         }
 
         /// The best user-facing name to display for the process.

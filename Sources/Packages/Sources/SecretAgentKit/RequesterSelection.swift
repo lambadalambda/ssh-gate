@@ -4,32 +4,35 @@ import SecretKit
 /// Chooses which process in a request chain a grant should belong to.
 public enum RequesterSelection {
 
-    /// Shells, session helpers and tools that run on behalf of the actual requester.
-    static let intermediaries: Set<String> = [
-        "sh", "bash", "zsh", "fish", "dash", "ksh", "tcsh", "csh", "nu", "login", "sudo", "env", "nohup", "xargs", "make",
-        "git", "ssh", "ssh-keygen", "scp", "sftp", "rsync",
-    ]
+    static let shells: Set<String> = ["sh", "bash", "zsh", "fish", "dash", "ksh", "tcsh", "csh", "nu"]
 
-    /// The index of the default requester in a chain that starts at the connecting process and ends at the app.
+    /// Shells, session helpers, terminal multiplexers and tools that run on behalf of the actual requester.
+    static let intermediaries: Set<String> = shells.union([
+        "login", "sudo", "env", "nohup", "xargs", "make", "tmux", "screen",
+        "git", "ssh", "ssh-keygen", "scp", "sftp", "rsync",
+    ])
+
+    /// The index of the default requester in a chain that starts at the connecting process and ends at the top.
     ///
-    /// Walks down from the app and returns the first process that is not an intermediary, such as a coding agent
-    /// started in a terminal. If there is none, the request comes straight from the app's own session, so the app is
-    /// the requester.
-    /// - Returns: `nil` for an empty chain.
+    /// 1. Walking up from the connecting process, the first process that is not an intermediary: the narrowest real
+    ///    requester, such as a coding agent started in a terminal, or a tool that connects to the agent itself.
+    /// 2. Else the outermost shell, which stands for one terminal tab or pane.
+    /// 3. Else `nil`: there is no safe default, and the user must choose.
+    ///
+    /// GUI apps and pid 1 are never the default, because a grant to them would cover every process they start.
     public static func defaultIndex(in chain: [SigningRequestProvenance.Process]) -> Int? {
-        guard let top = chain.indices.last else { return nil }
-        for index in stride(from: top - 1, to: 0, by: -1) where !isIntermediary(chain[index]) {
-            return index
-        }
-        return top
+        let candidates = chain.indices.filter { !chain[$0].isApp && chain[$0].pid > 1 }
+        return candidates.first { !isIntermediary(chain[$0]) }
+            ?? candidates.last { shells.contains(name(of: chain[$0])) }
     }
 
     static func isIntermediary(_ process: SigningRequestProvenance.Process) -> Bool {
-        var name = process.processName
-        if name.hasPrefix("-") {
-            name.removeFirst()
-        }
-        return intermediaries.contains(name)
+        intermediaries.contains(name(of: process))
+    }
+
+    /// The process name without the leading "-" of a login shell.
+    static func name(of process: SigningRequestProvenance.Process) -> String {
+        process.processName.hasPrefix("-") ? String(process.processName.dropFirst()) : process.processName
     }
 
 }
