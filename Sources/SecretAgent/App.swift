@@ -27,6 +27,7 @@ struct SecretAgent: App {
     private let updater = Updater(checkOnLaunch: true)
     private let notifier = Notifier()
     private let authenticationHandler = AuthenticationHandler()
+    private let grantApprovalCenter = GrantApprovalCenter()
     private let publicKeyFileStoreController = PublicKeyFileStoreController(publicKeysURL: URL.publicKeyDirectory, certificatesURL: URL.certificatesDirectory)
 
     @Environment(\.openWindow) var openWindow
@@ -48,7 +49,8 @@ struct SecretAgent: App {
                         storeList: storeList,
                         certificateStore: certificateStore,
                         authenticationHandler: authenticationHandler,
-                        witness: notifier
+                        witness: notifier,
+                        grantApprover: grantApprovalCenter
                     )
                     for await session in socketController.sessions {
                         Task {
@@ -82,6 +84,12 @@ struct SecretAgent: App {
                     }
                 }
                 .task {
+                    grantApprovalCenter.onPendingRequest = {
+                        NSApp.activate()
+                        openWindow(value: GrantApprovalViewIdentifier())
+                    }
+                }
+                .task {
                     authenticationHandler.setPendingRequestHandler { @MainActor in
                         openWindow(value: PendingRequestsViewIdentifier())
                     }
@@ -106,6 +114,11 @@ struct SecretAgent: App {
         }
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
+        WindowGroup("Allow SSH key use", for: GrantApprovalViewIdentifier.self) { _ in
+            GrantApprovalView(center: grantApprovalCenter)
+        }
+        .windowResizability(.contentSize)
+        .windowLevel(.floating)
     }
 
     @ViewBuilder
