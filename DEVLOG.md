@@ -16,3 +16,18 @@
   fake their process ancestry, and PIDs get reused.
 - Hosts with host certificates are denied for now: the bind carries the
   certificate, not the pinned key.
+
+## 2026-10-30: server, CLI, e2e
+
+- Go timers and `time.Now()` differences use the monotonic clock, which stops
+  while a Mac sleeps. Grant expiry is `Round(0)` (wall clock), and Serve polls
+  the wall clock every 10s. Signatures are refused at the exact expiry time;
+  the socket closes up to 10s later.
+- `knownhosts.KeyError.Want` also returns `@cert-authority` keys. They are
+  filtered out, because sshgate pins plain host keys only.
+- macOS sshd cannot run inside a sandboxed session (`sandbox_init` fails), so
+  the e2e test runs sshd in an Alpine podman container. Files go in through
+  environment variables, because the podman VM cannot see /tmp.
+- Verified against OpenSSH 10.5: `ssh` sends session-bind and uses the
+  hostbound method; `ssh-keygen -Y sign` and `git commit -S` work through a
+  grant socket.

@@ -1,3 +1,6 @@
 - [x] [Parse sign requests](issues/parse-sign-requests.md)
 - [x] [Grant policy](issues/grant-policy.md)
 - [x] [Filtering proxy agent](issues/filtering-proxy-agent.md)
+- [x] [sshgate v1 (meta)](issues/sshgate-v1.md)
+- [x] [Grant CLI and socket server](issues/grant-cli-and-socket-server.md)
+- [x] [End-to-end test with real OpenSSH](issues/e2e-test-with-openssh.md)
