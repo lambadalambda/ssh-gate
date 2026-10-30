@@ -1,1 +1,6 @@
 - [ ] [sshgate v2: short-lived certificates from an SSH CA](issues/sshgate-v2-ca-certificates.md)
+- [ ] [Grant request extension in the agent](issues/grant-request-extension.md)
+- [ ] [ssh-grant command](issues/ssh-grant-command.md)
+- [ ] [Short-lived certificates for login grants](issues/grant-certificates.md)
+- [ ] [Mark a key as grant CA in the host app](issues/grant-ca-setting.md)
+- [ ] [Agent skill for requesting grants](issues/agent-grant-skill.md)

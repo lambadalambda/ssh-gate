@@ -10,7 +10,17 @@ For hosts that trust an SSH user CA: a login grant also gets a certificate for t
 - On a login grant: certificate type user, key = agent key, principals = [approved user], valid from now - 60 s until grant expiry, key ID names the requester (path, pid), default extensions (permit-pty etc.), no critical options. Kept in memory with the grant.
 - The agent lists the certificate as an extra identity while it is valid. Signing with it still needs the grant.
 
-## Open question: first login
+## Decision (2026-10-30): request in advance
+
+The user chose option 2. Sub-issues:
+
+- [Grant request extension in the agent](grant-request-extension.md)
+- [ssh-grant command](ssh-grant-command.md)
+- [Short-lived certificates for login grants](grant-certificates.md)
+- [Mark a key as grant CA in the host app](grant-ca-setting.md)
+- [Agent skill for requesting grants](agent-grant-skill.md)
+
+## First login problem
 
 ssh asks for identities once, before the first sign request. A certificate created at the first approval only appears in the next connection's list, so the first login to a CA-only host fails. Options:
 
