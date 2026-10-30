@@ -21,4 +21,13 @@ import Testing
         #expect(SigningRequestTracer.isPlausibleParent(parent, of: me))
     }
 
+
+    @Test func signatureStatusFromKernel() {
+        // The test runner is signed; pid 999_999_999 does not exist.
+        #expect(SigningRequestTracer().hasValidSignature(pid: getpid()))
+        #expect(!SigningRequestTracer().hasValidSignature(pid: 999_999_999))
+        #expect(SigningRequestTracer.csValid(status: 0x2202_0201))
+        #expect(!SigningRequestTracer.csValid(status: 0x2202_0200))
+    }
+
 }

@@ -18,13 +18,14 @@ extension SigningRequestTracer {
     /// - Parameter fileHandle: The reader involved in processing the request.
     /// - Returns: A ``SecretKit.SigningRequestProvenance`` describing the origin of the request.
     func provenance(from fileHandle: FileHandle) -> SigningRequestProvenance {
-        let acceptedAt = Date()
         guard let token = fileHandle.auditTokenOfConnectedProcess else {
             return SigningRequestProvenance(root: Self.unknownProcess(pid: -1))
         }
         let pid = token.pid
         // The token still names a live process after the lookup, so the pid was not reused in between.
-        guard let root = process(from: pid), let started = root.startTime, started <= acceptedAt, token.isLive else {
+        // Process start times come from the boot-time clock, which can be ahead of Date() after clock corrections, so
+        // they are not compared with the current time here.
+        guard let root = process(from: pid), root.startTime != nil, token.isLive else {
             return SigningRequestProvenance(root: Self.unknownProcess(pid: pid))
         }
         var provenance = SigningRequestProvenance(root: root)
@@ -79,14 +80,17 @@ extension SigningRequestTracer {
         return SigningRequestProvenance.Process(pid: pid, processName: procName, appName: appName(for: pid), iconURL: iconURL(for: pid), path: path, validSignature: hasValidSignature(pid: pid), parentPID: ppid, startTime: startTime, isApp: NSRunningApplication(processIdentifier: pid) != nil)
     }
 
-    /// Checks the code signature of a process. A process that exits during the check has no valid signature.
+    /// Checks the code signature of a running process with the kernel's code signing status. Unlike
+    /// Security.framework, this does not read the binary, which the app sandbox does not allow for most paths.
     func hasValidSignature(pid: Int32) -> Bool {
-        var secCode: Unmanaged<SecCode>?
-        guard unsafe SecCodeCreateWithPID(pid, SecCSFlags(), &secCode) == errSecSuccess, let code = unsafe secCode?.takeRetainedValue() else {
-            return false
-        }
-        let flags: SecCSFlags = [.considerExpiration, .enforceRevocationChecks]
-        return SecCodeCheckValidity(code, flags, nil) == errSecSuccess
+        var status: UInt32 = 0
+        guard unsafe csops(pid, PeerAuditToken.csOpsStatus, &status, MemoryLayout<UInt32>.size) == 0 else { return false }
+        return Self.csValid(status: status)
+    }
+
+    /// CS_VALID from sys/codesign.h: the process's code signature is valid.
+    static func csValid(status: UInt32) -> Bool {
+        status & 0x1 != 0
     }
 
     /// Looks up the URL for the icon of a process ID, if it has one.
@@ -117,6 +121,6 @@ extension SigningRequestTracer {
 
 }
 
-//// from SecTask.h
-@_silgen_name("SecCodeCreateWithPID")
-@discardableResult func SecCodeCreateWithPID(_: Int32, _: SecCSFlags, _: UnsafeMutablePointer<Unmanaged<SecCode>?>!) -> OSStatus
+// From sys/codesign.h; part of libsystem_kernel, but not in the public SDK headers.
+@_silgen_name("csops")
+func csops(_ pid: pid_t, _ ops: UInt32, _ useraddr: UnsafeMutableRawPointer?, _ usersize: Int) -> Int32
