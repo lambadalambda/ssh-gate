@@ -28,7 +28,8 @@ import (
 
 // sshdScript runs one sshd per entry in $SERVERS (space-separated, each a
 // comma-separated list of host key names) in an Alpine container, on ports
-// 2201, 2202, ... Keys come in through the environment (KEY_<name>), because
+// 2201, 2202, ... Keys come in through the environment (KEY_<name>, and an
+// optional host certificate CERT_<name> from <name>-cert.pub), because
 // the podman VM cannot see /tmp on macOS.
 const sshdScript = `set -e
 apk add -q openssh-server >/dev/null
@@ -42,6 +43,10 @@ for server in $SERVERS; do
   for k in $(echo "$server" | tr , ' '); do
     eval "printf '%s\n' \"\$KEY_$k\"" > /etc/ssh/$k; chmod 600 /etc/ssh/$k
     args="$args -h /etc/ssh/$k"
+    if eval "[ -n \"\${CERT_$k:-}\" ]"; then
+      eval "printf '%s\n' \"\$CERT_$k\"" > /etc/ssh/$k-cert.pub
+      args="$args -o HostCertificate=/etc/ssh/$k-cert.pub"
+    fi
   done
   /usr/sbin/sshd -D -e -p $port $args &
   port=$((port + 1))
@@ -113,6 +118,9 @@ func startSSHD(t *testing.T, dir string, servers ...[]string) []int {
 		args = append(args, "-p", fmt.Sprintf("127.0.0.1:%d:%d", port, 2201+i))
 		for _, k := range keys {
 			args = append(args, "-e", "KEY_"+k+"="+read(k))
+			if _, err := os.Stat(filepath.Join(dir, k+"-cert.pub")); err == nil {
+				args = append(args, "-e", "CERT_"+k+"="+read(k+"-cert.pub"))
+			}
 		}
 		spec = append(spec, strings.Join(keys, ","))
 	}

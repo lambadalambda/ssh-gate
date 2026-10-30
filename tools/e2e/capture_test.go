@@ -110,12 +110,32 @@ func TestCaptureFixtures(t *testing.T) {
 		run(t, "ssh-keygen", args...)
 		names = append(names, k.name)
 	}
-	port := startSSHD(t, dir, names)[0]
+	// A second server presents host certificates, signed by a host CA.
+	certKeys := []struct{ name, keygenType, bits, algorithm string }{
+		{"ed25519c", "ed25519", "", "ssh-ed25519-cert-v01@openssh.com"},
+		{"ecdsa256c", "ecdsa", "256", "ecdsa-sha2-nistp256-cert-v01@openssh.com"},
+		{"rsac", "rsa", "3072", "rsa-sha2-512-cert-v01@openssh.com"},
+	}
+	run(t, "ssh-keygen", "-q", "-t", "ed25519", "-N", "", "-C", "", "-f", filepath.Join(dir, "hostca"))
+	var certNames []string
+	for _, k := range certKeys {
+		args := []string{"-q", "-t", k.keygenType, "-N", "", "-C", "", "-f", filepath.Join(dir, k.name)}
+		if k.bits != "" {
+			args = append(args, "-b", k.bits)
+		}
+		run(t, "ssh-keygen", args...)
+		run(t, "ssh-keygen", "-q", "-s", filepath.Join(dir, "hostca"), "-I", "test-host", "-h",
+			"-n", "127.0.0.1,test.example", "-V", "-5m:+3650d", filepath.Join(dir, k.name+".pub"))
+		certNames = append(certNames, k.name)
+	}
+	ports := startSSHD(t, dir, names, certNames)
+	port, certPort := ports[0], ports[1]
 
 	var kh strings.Builder
 	for _, k := range hostKeys {
 		fmt.Fprintf(&kh, "[127.0.0.1]:%d %s", port, ssh.MarshalAuthorizedKey(readPub(t, dir, k.name)))
 	}
+	fmt.Fprintf(&kh, "@cert-authority [127.0.0.1]:%d %s", certPort, ssh.MarshalAuthorizedKey(readPub(t, dir, "hostca")))
 	knownHosts := filepath.Join(dir, "known_hosts")
 	if err := os.WriteFile(knownHosts, []byte(kh.String()), 0o600); err != nil {
 		t.Fatal(err)
@@ -150,24 +170,39 @@ func TestCaptureFixtures(t *testing.T) {
 	src.WriteString("public enum CapturedFixtures {\n\n")
 	fmt.Fprintf(&src, "    public static let userKey = Data(base64Encoded: %q)!\n\n", b64(readPub(t, dir, "user").Marshal()))
 	src.WriteString("    public struct Login: Sendable {\n        public let hostKey: Data\n        public let sessionBind: Data\n        public let signRequest: Data\n    }\n\n")
-	src.WriteString("    public static let logins: [String: Login] = [\n")
-	for _, k := range hostKeys {
+	login := func(name, algorithm string, port int) (bind, sign []byte) {
 		cmd := exec.Command("ssh", "-F", "/dev/null",
 			"-o", "IdentityAgent="+sock,
 			"-o", "UserKnownHostsFile="+knownHosts,
 			"-o", "StrictHostKeyChecking=yes",
-			"-o", "HostKeyAlgorithms="+k.algorithm,
+			"-o", "HostKeyAlgorithms="+algorithm,
 			"-o", "BatchMode=yes",
 			"-p", fmt.Sprint(port), "root@127.0.0.1", "true")
 		if outp, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("ssh with %s: %v\n%s", k.algorithm, err, outp)
+			t.Fatalf("ssh with %s: %v\n%s", algorithm, err, outp)
 		}
 		binds, signs := rec.take(msgExtension), rec.take(msgSignRequest)
 		if len(binds) != 1 || len(signs) != 1 {
-			t.Fatalf("%s: got %d binds and %d sign requests, want 1 each", k.name, len(binds), len(signs))
+			t.Fatalf("%s: got %d binds and %d sign requests, want 1 each", name, len(binds), len(signs))
 		}
+		return binds[0], signs[0]
+	}
+	src.WriteString("    public static let logins: [String: Login] = [\n")
+	for _, k := range hostKeys {
+		bind, sign := login(k.name, k.algorithm, port)
 		fmt.Fprintf(&src, "        %q: Login(\n            hostKey: Data(base64Encoded: %q)!,\n            sessionBind: Data(base64Encoded: %q)!,\n            signRequest: Data(base64Encoded: %q)!\n        ),\n",
-			k.name, b64(readPub(t, dir, k.name).Marshal()), b64(binds[0]), b64(signs[0]))
+			k.name, b64(readPub(t, dir, k.name).Marshal()), b64(bind), b64(sign))
+	}
+	src.WriteString("    ]\n\n")
+
+	// hostKey is the plain key inside the certificate; certificate is the full certificate blob.
+	src.WriteString("    public struct CertLogin: Sendable {\n        public let hostKey: Data\n        public let certificate: Data\n        public let sessionBind: Data\n        public let signRequest: Data\n    }\n\n")
+	src.WriteString("    /// Principals of all host certificates: 127.0.0.1, test.example.\n")
+	src.WriteString("    public static let certLogins: [String: CertLogin] = [\n")
+	for _, k := range certKeys {
+		bind, sign := login(k.name, k.algorithm, certPort)
+		fmt.Fprintf(&src, "        %q: CertLogin(\n            hostKey: Data(base64Encoded: %q)!,\n            certificate: Data(base64Encoded: %q)!,\n            sessionBind: Data(base64Encoded: %q)!,\n            signRequest: Data(base64Encoded: %q)!\n        ),\n",
+			k.name, b64(readPub(t, dir, k.name).Marshal()), b64(readPub(t, dir, k.name+"-cert").Marshal()), b64(bind), b64(sign))
 	}
 	src.WriteString("    ]\n\n")
 
