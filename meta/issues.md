@@ -1,7 +1,6 @@
 - [ ] [Allow hosts with host certificates](issues/host-certificate-support.md)
 - [ ] [sshgate v2: short-lived certificates from an SSH CA](issues/sshgate-v2-ca-certificates.md)
 - [ ] [Secretive fork with scoped grants (meta)](issues/secretive-scoped-grants.md)
-- [ ] [Set up Secretive fork](issues/secretive-fork-setup.md)
 - [ ] [Grant model and matching](issues/grant-model-and-matching.md)
 - [ ] [Stable requester identity](issues/stable-requester-identity.md)
 - [ ] [Harden session-bind handling in Secretive](issues/harden-session-bind.md)

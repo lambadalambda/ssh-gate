@@ -4,3 +4,4 @@
 - [x] [sshgate v1 (meta)](issues/sshgate-v1.md)
 - [x] [Grant CLI and socket server](issues/grant-cli-and-socket-server.md)
 - [x] [End-to-end test with real OpenSSH](issues/e2e-test-with-openssh.md)
+- [x] [Set up Secretive fork](issues/secretive-fork-setup.md)
