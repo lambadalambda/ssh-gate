@@ -7,3 +7,5 @@
 - [x] [Set up Secretive fork](issues/secretive-fork-setup.md)
 - [x] [Grant model and matching](issues/grant-model-and-matching.md)
 - [x] [Stable requester identity](issues/stable-requester-identity.md)
+- [x] [Harden session-bind handling in Secretive](issues/harden-session-bind.md)
+- [x] [Enforce grants in the agent](issues/enforce-grants-in-agent.md)

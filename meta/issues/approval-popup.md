@@ -13,3 +13,5 @@ A window that shows the requester chain (with code signature status and working 
 - Say clearly that a grant covers the requester and everything it starts.
 - Show the executable path of each process, not only the name: process names are chosen by the process itself.
 - With no safe default requester (`RequesterSelection.defaultIndex` is nil), offer only "this request".
+- After approval, keys with "require authentication" still ask for Touch ID in the existing flow, so the user may be asked twice. Decide: reuse the approval's LAContext, or recommend keys without per-use authentication for agents.
+- Remove or hide the key-wide "remember for N minutes" option once grants work.
