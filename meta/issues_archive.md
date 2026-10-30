@@ -13,3 +13,4 @@
 - [x] [Secretive fork with scoped grants (meta)](issues/secretive-scoped-grants.md)
 - [x] [Approval pop-up with duration and Touch ID](issues/approval-popup.md)
 - [x] [XPC code signing requirement in release builds](issues/xpc-release-signing-requirement.md)
+- [x] [Identify the peer by audit token](issues/peer-audit-token.md)
