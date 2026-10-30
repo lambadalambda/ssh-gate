@@ -14,7 +14,7 @@ public final class XPCAgentInputParser: SSHAgentInputParserProtocol {
 
     public init() async throws {
         logger.debug("Creating XPCAgentInputParser")
-        session = try await XPCTypedSession(serviceName: "com.maxgoedjen.Secretive.SecretAgentInputParser", warmup: true)
+        session = try await XPCTypedSession(serviceName: XPCServiceName.named("SecretAgentInputParser"), warmup: true)
         logger.debug("XPCAgentInputParser is warmed up.")
     }
 

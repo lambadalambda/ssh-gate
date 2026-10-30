@@ -10,7 +10,7 @@ public final class XPCHostsfileReader {
 
     public init() async throws {
         logger.debug("Creating XPCHostsfileReader")
-        session = try await XPCTypedSession(serviceName: "com.maxgoedjen.Secretive.SecretAgentHostsfileReader", warmup: true)
+        session = try await XPCTypedSession(serviceName: XPCServiceName.named("SecretAgentHostsfileReader"), warmup: true)
         logger.debug("XPCHostsfileReader is warmed up.")
     }
 

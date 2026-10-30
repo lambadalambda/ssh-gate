@@ -12,7 +12,7 @@ public final class XPCCertificateParser: OpenSSHCertificateParserProtocol {
 
     public init() async throws {
         logger.debug("Creating XPCCertificateParser")
-        session = try await XPCTypedSession(serviceName: "com.maxgoedjen.Secretive.SecretiveCertificateParser", warmup: true)
+        session = try await XPCTypedSession(serviceName: XPCServiceName.named("SecretiveCertificateParser"), warmup: true)
         logger.debug("XPCCertificateParser is warmed up.")
     }
 
