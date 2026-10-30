@@ -44,7 +44,9 @@ extension SSHAgent.ProtocolExtension {
             }
             switch kind {
             case "login":
-                guard !host.isEmpty, !user.isEmpty, (1...65535).contains(port), Self.isPrintable(host), Self.isPrintable(user),
+                // Host names are ASCII (IDNs in punycode), so look-alike letters cannot imitate another host.
+                guard !host.isEmpty, host.count <= 253, host.unicodeScalars.allSatisfy({ $0.isASCII }),
+                      !user.isEmpty, (1...65535).contains(port), Self.isPrintable(host), Self.isPrintable(user),
                       !host.contains(" "), !user.contains(" ") else {
                     throw OpenSSHReaderError.incorrectFormat
                 }

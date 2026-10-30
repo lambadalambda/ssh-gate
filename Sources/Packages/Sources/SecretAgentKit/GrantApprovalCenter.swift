@@ -103,7 +103,8 @@ public final class GrantApprovalCenter: GrantApprover {
 
     static func mergeKey(_ request: GrantRequest) -> MergeKey? {
         let chain = request.provenance.chain
-        guard let purpose = request.purpose, let connecting = chain.first,
+        // Requests in advance carry more than the window shows for the first request (reason, further host keys).
+        guard !request.advance, let purpose = request.purpose, let connecting = chain.first,
               let index = request.defaultRequesterIndex, chain.indices.contains(index) else { return nil }
         let requester = chain[index...].map { "\($0.pid)@\($0.startTime?.timeIntervalSince1970 ?? -1)" }
         return MergeKey(

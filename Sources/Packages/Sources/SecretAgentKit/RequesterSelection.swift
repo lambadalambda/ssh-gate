@@ -10,7 +10,7 @@ public enum RequesterSelection {
     static let intermediaries: Set<String> = shells.union([
         "login", "sudo", "env", "nohup", "xargs", "make", "tmux", "screen",
         "timeout", "nice", "time", "stdbuf", "caffeinate",
-        "git", "ssh", "ssh-keygen", "scp", "sftp", "rsync",
+        "git", "ssh", "ssh-keygen", "scp", "sftp", "rsync", "ssh-grant",
     ])
 
     /// The index of the default requester in a chain that starts at the connecting process and ends at the top.

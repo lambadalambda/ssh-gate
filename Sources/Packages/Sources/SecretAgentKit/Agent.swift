@@ -16,6 +16,9 @@ public final class Agent: Sendable {
     private let witness: SigningWitness?
     private let grantApprover: GrantApprover?
     private let grants = Mutex(GrantSet())
+    /// Requests in advance that were denied, by requester and purpose, until when they are refused without asking.
+    private let deniedAdvance = Mutex([String: Date]())
+    static let advanceDenialPause: TimeInterval = 30
     private let now: @Sendable () -> Date
     private let publicKeyWriter = OpenSSHPublicKeyWriter()
     private let signatureWriter = OpenSSHSignatureWriter()
@@ -103,6 +106,11 @@ extension Agent {
                 response.append(SSHAgent.Response.agentSignResponse.data)
                 response.append(try await sign(data: context.dataToSign.raw, keyBlob: context.keyBlob, provenance: provenance, target: target, grantContext: grantContext))
                 logger.debug("Agent returned \(SSHAgent.Response.agentSignResponse.debugDescription)")
+            case .protocolExtension(.grantRequest(let context)):
+                guard try await grantInAdvance(context, provenance: provenance, hosts: hosts, connection: connection) else {
+                    throw GrantDenied()
+                }
+                response = SSHAgent.Response.agentSuccess.data
             case .protocolExtension(.openSSH(.sessionBind(let bind))):
                 do {
                     try connection.bind(bind)
@@ -240,19 +248,88 @@ extension Agent {
         case .once:
             logger.debug("Grant approver allowed request once")
         case .grant(let index, let duration):
-            guard let purpose = context.purpose, duration > 0, duration.isFinite,
-                  provenance.chain.indices.contains(index),
-                  let requester = GrantRequester(process: provenance.chain[index]) else {
+            guard let purpose = context.purpose, addGrants(for: [purpose], keyBlob: keyBlob, provenance: provenance, requesterIndex: index, duration: duration) else {
                 logger.debug("Grant approver allowed request, but no grant is possible; allowed once")
                 return
             }
-            let start = now()
-            grants.withLock {
-                $0.removeExpired(now: start)
-                $0.add(Grant(publicKey: keyBlob, requester: requester, purpose: purpose, expires: start + duration))
-            }
-            logger.debug("Grant approver created grant for \(requester.path, privacy: .public)")
         }
+    }
+
+    /// Adds one grant per purpose. Returns false (and adds nothing) if no grant is possible.
+    func addGrants(for purposes: [GrantPurpose], keyBlob: Data, provenance: SigningRequestProvenance, requesterIndex: Int, duration: TimeInterval) -> Bool {
+        guard !purposes.isEmpty, duration > 0, duration.isFinite,
+              provenance.chain.indices.contains(requesterIndex),
+              let requester = GrantRequester(process: provenance.chain[requesterIndex]) else {
+            return false
+        }
+        let start = now()
+        grants.withLock { grants in
+            grants.removeExpired(now: start)
+            for purpose in purposes {
+                grants.add(Grant(publicKey: keyBlob, requester: requester, purpose: purpose, expires: start + duration))
+            }
+        }
+        logger.debug("Created \(purposes.count) grant(s) for \(requester.path, privacy: .public)")
+        return true
+    }
+
+    /// Handles request-grant@heldscal.la: asks the approver for a grant before the key is used. Login requests name a
+    /// host; its keys come from the agent's own reading of known_hosts, never from the client.
+    func grantInAdvance(_ context: SSHAgent.ProtocolExtension.GrantRequestContext, provenance: SigningRequestProvenance, hosts: KnownHosts?, connection: AgentConnection) async throws -> Bool {
+        let state = connection.snapshot
+        // Only the request tool may ask in advance. Over an agent forwarded without session-bind, a remote host's
+        // request would come from the local ssh process and look local.
+        guard let grantApprover, state.poisoned == nil, !state.forwarded,
+              provenance.chain.first.map(RequesterSelection.name(of:)) == "ssh-grant" else {
+            return false
+        }
+        let defaultIndex = RequesterSelection.defaultIndex(in: provenance.chain)
+        let pauseKey = Self.pauseKey(context, chain: provenance.chain, requesterIndex: defaultIndex)
+        let start = now()
+        if let until = deniedAdvance.withLock({ $0[pauseKey] }), start < until {
+            logger.debug("Grant request refused: denied recently")
+            return false
+        }
+        let found = context.keyBlob.isEmpty ? await firstSecret() : await secret(matching: context.keyBlob)
+        guard let (secret, _) = found else { return false }
+        let keyBlob = publicKeyWriter.data(secret: secret)
+
+        let purposes: [GrantPurpose]
+        let host: String?
+        switch context.purpose {
+        case .login(let name, let port, let user):
+            let matching = (hosts?.names ?? [:]).filter { HostPattern.matches(host: name, port: port, patterns: $0.value) }
+            purposes = matching.keys.sorted { $0.lexicographicallyPrecedes($1) }.map { .login(username: user, hostKey: $0) }
+            host = Self.displayHost(name: name, port: port, matchingPatterns: Array(matching.values))
+        case .signature(let namespace):
+            purposes = [.signature(namespace: namespace)]
+            host = nil
+        }
+        guard let first = purposes.first else {
+            logger.debug("Grant request for a host without known host keys refused")
+            return false
+        }
+        var request = GrantRequest(
+            secret: secret,
+            provenance: provenance,
+            purpose: first,
+            host: host,
+            defaultRequesterIndex: defaultIndex,
+            forwarded: false
+        )
+        request.advance = true
+        request.reason = context.reason
+        request.additionalPurposes = Array(purposes.dropFirst())
+        request.requestedDuration = min(TimeInterval(context.seconds), GrantPresentation.maximumDuration)
+        let decision = await grantApprover.decide(request)
+        if decision == .deny {
+            deniedAdvance.withLock {
+                $0 = $0.filter { $0.value > start }
+                $0[pauseKey] = now() + Self.advanceDenialPause
+            }
+        }
+        guard case .grant(let index, let duration) = decision else { return false }
+        return addGrants(for: purposes, keyBlob: keyBlob, provenance: provenance, requesterIndex: index, duration: min(duration, GrantPresentation.maximumDuration))
     }
 
 }
@@ -277,6 +354,28 @@ extension Agent {
         await storeList.allSecretsWithStores.first {
             hash == publicKeyWriter.data(secret: $0.0)
         }
+    }
+
+    /// The host as the window shows it. If the known_hosts lines that matched do not name the host literally (e.g.
+    /// `*.example`), the window says which entry matched.
+    static func displayHost(name: String, port: UInt32, matchingPatterns: [String]) -> String {
+        let candidate = (port == 22 ? name : "[\(name)]:\(port)").lowercased()
+        let display = port == 22 ? name : "\(name):\(port)"
+        let indirect = matchingPatterns.filter { patterns in
+            !patterns.lowercased().split(separator: ",").contains { $0.trimmingCharacters(in: .whitespaces) == candidate }
+        }
+        guard !indirect.isEmpty else { return display }
+        return "\(display) (known_hosts entry \u{201C}\(Set(indirect).sorted().joined(separator: "; "))\u{201D})"
+    }
+
+    static func pauseKey(_ context: SSHAgent.ProtocolExtension.GrantRequestContext, chain: [SigningRequestProvenance.Process], requesterIndex: Int?) -> String {
+        let requester = requesterIndex.map { chain[$0] } ?? chain[0]
+        return "\(requester.pid)@\(requester.startTime?.timeIntervalSince1970 ?? -1) \(context.keyBlob.base64EncodedString()) \(context.purpose)"
+    }
+
+    /// The first secret, for requests that do not name a key.
+    func firstSecret() async -> (AnySecret, AnySecretStore)? {
+        await storeList.allSecretsWithStores.first
     }
 
 }

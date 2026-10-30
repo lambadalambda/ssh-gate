@@ -25,8 +25,8 @@ import SSHTestFixtures
 
     @Test func hostKeyFingerprintMatchesOpenSSH() {
         // ssh-keygen -lf of the captured ed25519 host key.
-        #expect(presentation(.login(username: "git", hostKey: hostKey)).hostKeyFingerprint == "SHA256:bbzE4hsjBSAab8QRvR+Vs8aolV4VBSghnNLEsp223RM")
-        #expect(presentation(.signature(namespace: "git")).hostKeyFingerprint == nil)
+        #expect(presentation(.login(username: "git", hostKey: hostKey)).hostKeyFingerprints.first == "SHA256:bbzE4hsjBSAab8QRvR+Vs8aolV4VBSghnNLEsp223RM")
+        #expect(presentation(.signature(namespace: "git")).hostKeyFingerprints.isEmpty)
     }
 
     @Test func titleDoesNotUseProcessNames() {
@@ -67,5 +67,24 @@ import SSHTestFixtures
         #expect(launchd.requesters.map(\.selectable) == [true, false])
     }
 
-}
 
+    @Test func advanceRequests() {
+        var request = GrantRequest(secret: secret, provenance: provenance, purpose: .login(username: "git", hostKey: hostKey), host: "git.example", defaultRequesterIndex: 3, forwarded: false)
+        request.advance = true
+        request.reason = "push the release branch"
+        request.additionalPurposes = [.login(username: "git", hostKey: Data([1]))]
+        request.requestedDuration = 4 * 3600
+        let p = GrantPresentation(request)
+        #expect(p.durations.map(\.label) == ["15 minutes", "1 hour", "4 hours", "8 hours"])
+        #expect(p.durations[p.defaultDuration].label == "4 hours")
+        #expect(p.reason == "push the release branch")
+        #expect(p.hostKeyFingerprints.count == 2)
+        #expect(p.decision(duration: 0, requester: 3) == .grant(requesterIndex: 3, duration: 15 * 60))
+
+        request.requestedDuration = 60
+        #expect(GrantPresentation(request).defaultDuration == 0)
+        request.reason = ""
+        #expect(GrantPresentation(request).reason == nil)
+    }
+
+}

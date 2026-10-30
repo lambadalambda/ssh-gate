@@ -132,6 +132,108 @@ final class Clock: @unchecked Sendable {
         #expect(try await !send(agent, sshsig("git"), from: provenance, on: connection))
     }
 
+    // MARK: Requests in advance
+
+    typealias RequestContext = SSHAgent.ProtocolExtension.GrantRequestContext
+
+    func advance(_ purpose: RequestContext.Purpose, seconds: UInt32 = 3600, reason: String = "deploy") -> Data {
+        var body = Data([27])
+        body.append(Data(RequestContext.name.utf8).lengthAndData)
+        body.append(RequestContext(keyBlob: keyBlob, purpose: purpose, seconds: seconds, reason: reason).encoded)
+        return body.lengthAndData
+    }
+
+    var viaTool: SigningRequestProvenance {
+        var p = provenance
+        p.chain[0] = SigningRequestProvenance.Process(pid: 990, processName: "ssh-grant", appName: nil, iconURL: nil, path: "/usr/local/bin/ssh-grant", validSignature: true, parentPID: p.chain[1].pid, startTime: clock.now)
+        return p
+    }
+
+    @Test func signatureRequestedInAdvance() async throws {
+        let agent = await makeAgent()
+        #expect(try await send(agent, advance(.signature(namespace: "git"), reason: "sign release"), from: viaTool))
+        let request = try #require(approver.requests.first)
+        #expect(request.advance)
+        #expect(request.reason == "sign release")
+        #expect(request.purpose == .signature(namespace: "git"))
+        #expect(request.defaultRequesterIndex == 3)
+        #expect(try await send(agent, sshsig("git"), from: provenance))
+        #expect(approver.requests.count == 1)
+    }
+
+    @Test func loginRequestedInAdvanceResolvesKnownHosts() async throws {
+        let agent = await makeAgent()
+        let ed = try bind("ed25519")
+        let p256 = try bind("ecdsa256")
+        let known = KnownHosts(names: [ed.context.hostKey: "[127.0.0.1]:2241", p256.context.hostKey: "[127.0.0.1]:2241", keyBlob: "other.example"], authorities: [:])
+        #expect(try await send(agent, advance(.login(host: "127.0.0.1", port: 2241, user: "root")), from: viaTool, knownHosts: known))
+        let request = try #require(approver.requests.first)
+        let purposes = Set([request.purpose].compactMap { $0 } + request.additionalPurposes)
+        #expect(purposes == [.login(username: "root", hostKey: ed.context.hostKey), .login(username: "root", hostKey: p256.context.hostKey)])
+        #expect(request.host == "127.0.0.1:2241")
+        // A wildcard known_hosts line is named in the window.
+        let wildcard = KnownHosts(names: [ed.context.hostKey: "*.example"], authorities: [:])
+        #expect(try await send(agent, advance(.login(host: "git.example", port: 22, user: "root")), from: viaTool, knownHosts: wildcard))
+        #expect(approver.requests.last?.host == "git.example (known_hosts entry \u{201C}*.example\u{201D})")
+        approver.decision = .grant(requesterIndex: 3, duration: 3600)
+        // Both host keys are granted.
+        for host in [ed, p256] {
+            let connection = AgentConnection()
+            #expect(try await send(agent, host.request, from: provenance, on: connection))
+            #expect(try await send(agent, login(sessionID: host.context.sessionID, hostKey: host.context.hostKey), from: provenance, on: connection))
+        }
+        #expect(approver.requests.count == 2)
+    }
+
+    @Test func advanceRequestsOnlyFromTheRequestTool() async throws {
+        let agent = await makeAgent()
+        // A remote host behind an agent forwarded without session-bind looks like the local ssh process.
+        #expect(try await !send(agent, advance(.signature(namespace: "git")), from: provenance))
+        #expect(approver.requests.isEmpty)
+    }
+
+    @Test func denialPausesRepeatedAdvanceRequests() async throws {
+        let agent = await makeAgent()
+        approver.decision = .deny
+        #expect(try await !send(agent, advance(.signature(namespace: "git")), from: viaTool))
+        #expect(try await !send(agent, advance(.signature(namespace: "git")), from: viaTool))
+        #expect(approver.requests.count == 1)
+        // Another purpose still asks.
+        #expect(try await !send(agent, advance(.signature(namespace: "file")), from: viaTool))
+        #expect(approver.requests.count == 2)
+        clock.now += 31
+        #expect(try await !send(agent, advance(.signature(namespace: "git")), from: viaTool))
+        #expect(approver.requests.count == 3)
+    }
+
+    @Test func advanceRequestsThatCannotBeGranted() async throws {
+        let agent = await makeAgent()
+        let known = KnownHosts(names: [:], authorities: [:])
+        // Unknown host: refused without asking.
+        #expect(try await !send(agent, advance(.login(host: "unknown.example", port: 22, user: "root")), from: viaTool, knownHosts: known))
+        #expect(approver.requests.isEmpty)
+        // Forwarded connection: refused without asking.
+        let forwarded = AgentConnection()
+        #expect(try await send(agent, try bind("ed25519", forwarding: true).request, from: provenance, on: forwarded))
+        #expect(try await !send(agent, advance(.signature(namespace: "git")), from: viaTool, on: forwarded))
+        #expect(approver.requests.isEmpty)
+        // Deny and once give no grant.
+        for decision in [GrantDecision.deny, .once] {
+            approver.decision = decision
+            #expect(try await !send(agent, advance(.signature(namespace: "git")), from: viaTool))
+            clock.now += Agent.advanceDenialPause + 1
+        }
+        approver.decision = .grant(requesterIndex: 3, duration: 3600)
+        #expect(try await send(agent, sshsig("git"), from: provenance))
+        #expect(approver.requests.count == 3)
+    }
+
+    @Test func advanceDurationIsCapped() async throws {
+        let agent = await makeAgent()
+        #expect(try await send(agent, advance(.signature(namespace: "git"), seconds: 100 * 3600), from: viaTool))
+        #expect(approver.requests.first?.requestedDuration == TimeInterval(8 * 3600))
+    }
+
     // MARK: Without approver
 
     @Test func withoutApproverBindThenSignWorks() async throws {

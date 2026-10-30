@@ -77,10 +77,19 @@ private struct GrantApprovalItemView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(presentation.purpose)
                     .font(.title3)
-                if let fingerprint = presentation.hostKeyFingerprint {
+                ForEach(presentation.hostKeyFingerprints, id: \.self) { fingerprint in
                     Text("Host key \(fingerprint)")
                         .font(.caption.monospaced())
                         .textSelection(.enabled)
+                }
+            }
+            if let reason = presentation.reason {
+                // In its own box, so the requester's text cannot pass for the app's text.
+                GroupBox("Reason given by the requester (not verified)") {
+                    Text(reason)
+                        .font(.callout)
+                        .lineLimit(4)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
             if presentation.durations.count == 1 {
@@ -97,7 +106,7 @@ private struct GrantApprovalItemView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             if grants, let requester {
-                Text("The grant covers only this key and this purpose, for \(presentation.requesters[requester].name) (pid \(String(presentation.requesters[requester].pid))) and every process it starts.")
+                Text("The grant covers only this key and the purpose above\(presentation.hostKeyFingerprints.count > 1 ? " (all listed host keys)" : ""), for \(presentation.requesters[requester].name) (pid \(String(presentation.requesters[requester].pid))) and every process it starts.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

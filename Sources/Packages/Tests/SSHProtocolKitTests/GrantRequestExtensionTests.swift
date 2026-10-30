@@ -32,6 +32,8 @@ func parseGrantRequest(_ message: Data) throws -> GrantRequestContext {
         GrantRequestContext(keyBlob: Data(), purpose: .login(host: "a.example", port: 22, user: ""), seconds: 60, reason: ""),
         GrantRequestContext(keyBlob: Data(), purpose: .login(host: "a.example", port: 0, user: "git"), seconds: 60, reason: ""),
         GrantRequestContext(keyBlob: Data(), purpose: .login(host: "a.example\nb", port: 22, user: "git"), seconds: 60, reason: ""),
+        GrantRequestContext(keyBlob: Data(), purpose: .login(host: "gіthub.com", port: 22, user: "git"), seconds: 60, reason: ""),
+        GrantRequestContext(keyBlob: Data(), purpose: .login(host: String(repeating: "a", count: 254), port: 22, user: "git"), seconds: 60, reason: ""),
         GrantRequestContext(keyBlob: Data(), purpose: .signature(namespace: ""), seconds: 60, reason: ""),
         GrantRequestContext(keyBlob: Data(), purpose: .signature(namespace: "git"), seconds: 0, reason: ""),
         GrantRequestContext(keyBlob: Data(), purpose: .signature(namespace: "git"), seconds: 60, reason: "line\u{1B}[31m"),

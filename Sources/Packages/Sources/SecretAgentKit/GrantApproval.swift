@@ -14,6 +14,14 @@ public struct GrantRequest: Sendable {
     public let defaultRequesterIndex: Int?
     /// The request comes through a forwarded agent connection. Only one-time approvals are possible.
     public let forwarded: Bool
+    /// The request was made in advance (request-grant@heldscal.la), not by a signature request. Only grants make sense.
+    public var advance = false
+    /// The requester's own explanation. Not verified.
+    public var reason: String? = nil
+    /// Further purposes that the same decision covers, e.g. other host keys of the same host.
+    public var additionalPurposes: [GrantPurpose] = []
+    /// The duration the requester asked for, capped at the longest duration the window offers.
+    public var requestedDuration: TimeInterval? = nil
 }
 
 public enum GrantDecision: Sendable, Equatable {

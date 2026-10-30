@@ -180,4 +180,22 @@ import Testing
         #expect(await second == .once)
     }
 
+
+    @Test func advanceRequestsNeverMerge() async throws {
+        let center = GrantApprovalCenter()
+        func advance() -> GrantRequest {
+            var request = request(.signature(namespace: "git"))
+            request.advance = true
+            return request
+        }
+        async let first = center.decide(request(.signature(namespace: "git")))
+        try await pending(center, count: 1)
+        async let second = center.decide(advance())
+        try await pending(center, count: 2)
+        async let third = center.decide(advance())
+        try await pending(center, count: 3)
+        center.denyAll()
+        _ = await (first, second, third)
+    }
+
 }

@@ -25,13 +25,19 @@ public struct GrantPresentation: Sendable {
 
     public let request: GrantRequest
     public let title: String
+    /// The requester's reason, for display as its claim.
+    public let reason: String?
     public let purpose: String
-    public let hostKeyFingerprint: String?
+    /// Fingerprints of all host keys that a login grant would cover.
+    public let hostKeyFingerprints: [String]
     public let durations: [Duration]
     /// Index into `durations`.
     public let defaultDuration: Int
     /// The process chain, from the process that connected to the app.
     public let requesters: [Requester]
+
+    /// The longest duration the window offers.
+    public static var maximumDuration: TimeInterval { allDurations.compactMap(\.seconds).max()! }
 
     static let allDurations: [Duration] = [
         .init(label: "Only this request", seconds: nil),
@@ -60,16 +66,21 @@ public struct GrantPresentation: Sendable {
             purpose = "Unverified request: the purpose cannot be checked"
         }
 
-        if case .login(_, let hostKey) = request.purpose {
-            let digest = Data(SHA256.hash(data: hostKey)).base64EncodedString().replacingOccurrences(of: "=", with: "")
-            hostKeyFingerprint = "SHA256:" + digest
-        } else {
-            hostKeyFingerprint = nil
+        hostKeyFingerprints = ([request.purpose].compactMap { $0 } + request.additionalPurposes).compactMap { purpose in
+            guard case .login(_, let hostKey) = purpose else { return nil }
+            return "SHA256:" + Data(SHA256.hash(data: hostKey)).base64EncodedString().replacingOccurrences(of: "=", with: "")
         }
+        reason = request.reason.flatMap { $0.isEmpty ? nil : $0 }
 
         let canGrant = request.purpose != nil && !request.forwarded
-        durations = canGrant ? Self.allDurations : [Self.allDurations[0]]
-        defaultDuration = canGrant && request.defaultRequesterIndex != nil ? 2 : 0
+        if request.advance {
+            durations = Array(Self.allDurations.dropFirst())
+            let requested = request.requestedDuration ?? 3600
+            defaultDuration = durations.lastIndex { ($0.seconds ?? 0) <= requested } ?? 0
+        } else {
+            durations = canGrant ? Self.allDurations : [Self.allDurations[0]]
+            defaultDuration = canGrant && request.defaultRequesterIndex != nil ? 2 : 0
+        }
         requesters = chain.enumerated().map { index, process in
             Requester(
                 index: index,
