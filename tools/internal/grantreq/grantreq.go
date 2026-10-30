@@ -46,10 +46,12 @@ func (r Request) Encode() []byte {
 const Usage = `usage:
   ssh-grant login [user@]host[:port] [--for 1h] [--reason "..."] [--key key.pub]
   ssh-grant sign [--namespace git] [--for 1h] [--reason "..."] [--key key.pub]
+  ssh-grant ssh [--for 1h] [--reason "..."] [--] <ssh arguments>
 
 Asks the SSH agent (SSH_AUTH_SOCK) for a grant before the key is used. The
 user approves in a window. Exit status 0 if granted, 1 if not, 2 on usage
-errors.
+errors. "ssh-grant ssh" asks for the destination that ssh would use (ssh -G)
+and then runs ssh with the arguments, also if not granted.
 `
 
 // ParseArgs parses the command line (without the program name). Flags may

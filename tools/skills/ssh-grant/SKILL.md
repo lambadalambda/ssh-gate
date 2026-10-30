@@ -40,6 +40,14 @@ Then ask:
 ssh-grant login git@github.com --for 1h --reason "push branch fix-login to origin for review"
 ```
 
+For a plain ssh session, `ssh-grant ssh` does both steps: it finds user, host
+and port like ssh does (also through `~/.ssh/config` aliases), asks for the
+grant, and then runs ssh with the same arguments:
+
+```sh
+ssh-grant ssh --reason "check disk space on the backup server" root@backup.example.com df -h
+```
+
 ## Signed commits and tags
 
 ```sh
