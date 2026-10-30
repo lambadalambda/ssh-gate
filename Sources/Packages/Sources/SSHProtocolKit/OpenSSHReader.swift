@@ -42,16 +42,13 @@ public final class OpenSSHReader {
         return convertEndianness ? T(value.bigEndian) : T(value)
     }
 
+    /// Reads an SSH boolean. Values other than 0 and 1 are an error.
     public func readNextByteAsBool() throws(OpenSSHReaderError) -> Bool {
-        let size = MemoryLayout<Bool>.size
-        guard remaining.count >= size else { throw .beyondBounds }
-        let lengthRange = 0..<size
-        let lengthChunk = remaining[lengthRange]
-        remaining.removeSubrange(lengthRange)
-        if remaining.isEmpty {
-            done = true
+        switch try readNextBytes(as: UInt8.self, convertEndianness: false) {
+        case 0: return false
+        case 1: return true
+        default: throw .incorrectFormat
         }
-        return unsafe lengthChunk.bytes.unsafeLoad(as: Bool.self)
     }
 
     public func readNextChunkAsString(convertEndianness: Bool = true) throws(OpenSSHReaderError) -> String {
