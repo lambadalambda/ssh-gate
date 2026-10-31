@@ -31,3 +31,7 @@ ssh asks for identities once, before the first sign request. A certificate creat
 ## Notes
 
 - OpenSSH certificates cannot be chained. The offline recovery key can be a second entry in TrustedUserCAKeys.
+
+## Result (2026-10-31)
+
+- All sub-issues done and tested by the user. The app is now called SSH Gate (repo lambadalambda/ssh-gate).

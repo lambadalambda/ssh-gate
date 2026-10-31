@@ -15,3 +15,4 @@
 
 - Go unit tests for argument splitting and `ssh -G` parsing; Swift test for the covered-request case.
 - Manual: `ssh-grant ssh root@backup.example.com` logs in with a certificate; a second call opens no window.
+- Tested by the user (2026-10-31): `ssh-grant ssh root@backup.example.com` works.

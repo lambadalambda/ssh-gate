@@ -20,3 +20,6 @@
 - [x] [Mark a key as grant CA in the host app](issues/grant-ca-setting.md)
 - [x] [Short-lived certificates for login grants](issues/grant-certificates.md)
 - [x] [Rename the app to SSH Gate](issues/rename-ssh-gate.md)
+- [x] [sshgate v2: short-lived certificates from an SSH CA](issues/sshgate-v2-ca-certificates.md)
+- [x] [Agent skill for requesting grants](issues/agent-grant-skill.md)
+- [x] [ssh wrapper that requests a grant first](issues/ssh-wrapper.md)

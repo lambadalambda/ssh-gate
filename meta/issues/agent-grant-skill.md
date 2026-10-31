@@ -11,3 +11,4 @@ A skill (SKILL.md) that tells coding agents when and how to run `ssh-grant` befo
 ## Notes
 
 - Written: `skills/ssh-grant/SKILL.md`. Open: one test with Claude Code (needs the user to install it and approve).
+- Tested by the user with Claude Code (2026-10-31): the skill works.

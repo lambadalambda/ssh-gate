@@ -1,3 +1,1 @@
-- [ ] [sshgate v2: short-lived certificates from an SSH CA](issues/sshgate-v2-ca-certificates.md)
-- [ ] [Agent skill for requesting grants](issues/agent-grant-skill.md)
-- [ ] [ssh wrapper that requests a grant first](issues/ssh-wrapper.md)
+
