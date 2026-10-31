@@ -96,4 +96,5 @@ contents.xcworkspacedata
 
 # Per-User Configs
 
-Sources/Config/OpenSource.xcconfig/dist
+Sources/Config/OpenSource.xcconfig
+/dist
