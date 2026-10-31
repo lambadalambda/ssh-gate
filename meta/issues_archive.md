@@ -19,3 +19,4 @@
 - [x] [ssh-grant command](issues/ssh-grant-command.md)
 - [x] [Mark a key as grant CA in the host app](issues/grant-ca-setting.md)
 - [x] [Short-lived certificates for login grants](issues/grant-certificates.md)
+- [x] [Rename the app to SSH Gate](issues/rename-ssh-gate.md)

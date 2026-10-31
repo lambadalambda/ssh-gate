@@ -14,3 +14,9 @@ The fork differs a lot from Secretive; it gets its own name. Decided with the us
 ## Acceptance Criteria
 
 - Release build installs as /Applications/SSH Gate.app, the agent runs and answers, grants work.
+
+## Notes
+
+- Done. Installed as /Applications/SSH Gate.app; the agent runs as login item; signing and login grants through it worked for these commits and pushes.
+- After a path change, the old launchd job keeps the stale path (EX_CONFIG, "Could not find program"); `scripts/install.sh` boots it out so the app registers it again.
+- Gitea repo still called `secretive` (rename pending the user's decision).
