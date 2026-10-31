@@ -10,4 +10,4 @@ IDEEnableNewPackagePIFBuilder=NO xcodebuild -project Secretive.xcodeproj -scheme
 	-derivedDataPath "${DERIVED_DATA:-/tmp/secretive-release}" -allowProvisioningUpdates \
 	CODE_SIGN_STYLE=Automatic CODE_SIGN_IDENTITY="Apple Development" DEVELOPMENT_TEAM="$team" PROVISIONING_PROFILE_SPECIFIER= \
 	build "$@"
-echo "App: ${DERIVED_DATA:-/tmp/secretive-release}/Build/Products/Release/Secretive.app"
+echo "App: ${DERIVED_DATA:-/tmp/secretive-release}/Build/Products/Release/SSH Gate.app"
