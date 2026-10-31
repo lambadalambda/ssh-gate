@@ -1,4 +1,26 @@
-# Secretive [![Test](https://github.com/maxgoedjen/secretive/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/maxgoedjen/secretive/actions/workflows/test.yml) ![Release](https://github.com/maxgoedjen/secretive/workflows/Release/badge.svg)
+# SSH Gate
+
+SSH Gate keeps your SSH keys in the Secure Enclave and decides, per process,
+who may use which key for what and for how long. When a program (for example
+a coding agent) asks to sign, a window shows who asks (the process chain with
+paths and code signatures), for what (a login to a host, verified through
+session-bind, or a git signature) and offers a duration. You approve with
+Touch ID; the grant then covers that process and its children until it
+expires.
+
+- Logins are pinned to host keys from verified session-binds, including host
+  certificates; forwarded agent connections only get one-time approvals.
+- Agents can ask in advance with a reason: `ssh-grant login user@host`,
+  `ssh-grant sign`, or `ssh-grant ssh <ssh args>` (from the sshgate repo).
+- With a key marked as grant CA, each login grant also gets a short-lived user
+  certificate, so servers that trust the CA enforce the expiry themselves.
+
+SSH Gate is a fork of [Secretive](https://github.com/maxgoedjen/secretive) by
+Max Goedjen (MIT License). Build with `scripts/release.sh` (Developer ID,
+team from `Sources/Config/OpenSource.xcconfig`) and install with
+`scripts/install.sh`.
+
+## Upstream: Secretive [![Test](https://github.com/maxgoedjen/secretive/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/maxgoedjen/secretive/actions/workflows/test.yml) ![Release](https://github.com/maxgoedjen/secretive/workflows/Release/badge.svg)
 
 
 Secretive is an app for protecting and managing SSH keys with the Secure Enclave.

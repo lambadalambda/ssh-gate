@@ -199,8 +199,8 @@
       "kind": "group",
       "name": "Products",
       "children": [
-        { "path": "<PRODUCTS>/Secretive.app", "id": "50617D7F23FCE48E0099B055", "type": "wrapper.application", "index": false },
-        { "path": "<PRODUCTS>/SecretAgent.app", "id": "50A3B78A24026B7500D209EA", "type": "wrapper.application", "index": false, "target-membership": [ { "build-phase": "Secretive/copy/Copy Files", "header-preservation": "remove-on-copy" } ] },
+        { "path": "<PRODUCTS>/SSH Gate.app", "id": "50617D7F23FCE48E0099B055", "type": "wrapper.application", "index": false },
+        { "path": "<PRODUCTS>/SSH Gate Agent.app", "id": "50A3B78A24026B7500D209EA", "type": "wrapper.application", "index": false, "target-membership": [ { "build-phase": "Secretive/copy/Copy Files", "header-preservation": "remove-on-copy" } ] },
         {
           "path": "<PRODUCTS>/SecretiveUpdater.xpc",
           "id": "50692D122E6FDB880043C7BB",
@@ -238,7 +238,7 @@
     {
       "name": "Secretive",
       "id": "50617D7E23FCE48D0099B055",
-      "product": "Products/Secretive.app",
+      "product": "Products/SSH Gate.app",
       "product-type": "application",
       "dependencies": [
         "SecretAgent",
@@ -332,14 +332,14 @@
         ],
         "MARKETING_VERSION": "1",
         "PRODUCT_BUNDLE_IDENTIFIER": "$(SECRETIVE_BASE_BUNDLE_ID).Host",
-        "PRODUCT_NAME": "$(TARGET_NAME)",
+        "PRODUCT_NAME": "SSH Gate",
         "PROVISIONING_PROFILE_SPECIFIER[config=Debug]": "",
         "PROVISIONING_PROFILE_SPECIFIER[config=Release]": "Secretive - Host",
       },
     }, {
       "name": "SecretAgent",
       "id": "50A3B78924026B7500D209EA",
-      "product": "Products/SecretAgent.app",
+      "product": "Products/SSH Gate Agent.app",
       "product-type": "application",
       "dependencies": [
         "SecretiveUpdater",
@@ -424,7 +424,7 @@
         ],
         "MARKETING_VERSION": "1",
         "PRODUCT_BUNDLE_IDENTIFIER": "$(SECRETIVE_BASE_BUNDLE_ID).SecretAgent",
-        "PRODUCT_NAME": "$(TARGET_NAME)",
+        "PRODUCT_NAME": "SSH Gate Agent",
         "PROVISIONING_PROFILE_SPECIFIER[config=Release]": "Secretive - Secret Agent",
         "RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES": "NO",
         "RUNTIME_EXCEPTION_ALLOW_JIT": "NO",

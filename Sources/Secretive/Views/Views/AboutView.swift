@@ -17,8 +17,10 @@ struct AboutViewContent: View {
             HStack {
                 Image(nsImage: NSApplication.shared.applicationIconImage)
                 VStack(alignment: .leading) {
-                    Text(verbatim: "Secretive")
+                    Text(verbatim: "SSH Gate")
                         .font(.system(.largeTitle, weight: .bold))
+                    Text(verbatim: "Based on Secretive by Max Goedjen")
+                        .foregroundStyle(.secondary)
                     Text("**\(Bundle.main.versionNumber)** (\(Bundle.main.buildNumber))")
                         .fixedSize(horizontal: true, vertical: false)
                     HStack {

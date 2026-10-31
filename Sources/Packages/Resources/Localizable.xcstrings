@@ -556,61 +556,61 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "fr" : {
@@ -622,115 +622,115 @@
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretiveについて"
+            "value" : "SSH Gateについて"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive에 대해서"
+            "value" : "SSH Gate에 대해서"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sobre o Secretive"
+            "value" : "Sobre o SSH Gate"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About Secretive"
+            "value" : "About SSH Gate"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "关于Secretive"
+            "value" : "关于SSH Gate"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "關於Secretive"
+            "value" : "關於SSH Gate"
           }
         }
       }
@@ -741,181 +741,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive est Open Source et sous licence MIT"
+            "value" : "SSH Gate est Open Source et sous licence MIT"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretiveはオープンソースです。MITライセンスで提供されています。"
+            "value" : "SSH Gateはオープンソースです。MITライセンスで提供されています。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive는 오픈 소스이며 MIT 라이선스입니다"
+            "value" : "SSH Gate는 오픈 소스이며 MIT 라이선스입니다"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Secretive é Open Source e distribuído sob a licença MIT"
+            "value" : "O SSH Gate é Open Source e distribuído sob a licença MIT"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive is Open Source and MIT Licensed"
+            "value" : "SSH Gate is Open Source and MIT Licensed"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive是开源软件并以MIT协议授权"
+            "value" : "SSH Gate是开源软件并以MIT协议授权"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive是開源軟體並以MIT協議授權"
+            "value" : "SSH Gate是開源軟體並以MIT協議授權"
           }
         }
       }
@@ -1296,181 +1296,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive no ha aconseguit arrancar l'agent segur (SecretAgent). Prova de reiniciar el teu Mac, i si açò no funciona, obri una “issue” al GitHub."
+            "value" : "SSH Gate no ha aconseguit arrancar l'agent segur (SSH Gate Agent). Prova de reiniciar el teu Mac, i si açò no funciona, obri una “issue” al GitHub."
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive konnte den SecretAgent nicht starten. Bitte versuche Deinen Mac neu zu starten und wenn das nicht funktioniert, ein Issue auf GitHub zu erstellen."
+            "value" : "SSH Gate konnte den SSH Gate Agent nicht starten. Bitte versuche Deinen Mac neu zu starten und wenn das nicht funktioniert, ein Issue auf GitHub zu erstellen."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Το Secretive δεν μπόρεσε να εκκινήσει τον SecretAgent. Παρακαλώ δοκιμάστε να επανεκκινήσετε τον Mac σας, και αν αυτό δεν λειτουργήσει, ανοίξτε ένα issue στο GitHub."
+            "value" : "Το SSH Gate δεν μπόρεσε να εκκινήσει τον SSH Gate Agent. Παρακαλώ δοκιμάστε να επανεκκινήσετε τον Mac σας, και αν αυτό δεν λειτουργήσει, ανοίξτε ένα issue στο GitHub."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive ei saanut SecretAgent-apuohjelmaa käyntiin. Kokeile käynnistää Macisi uudestaan, ja jos se ei tepsi, raportoi ongelmasta GitHubissa."
+            "value" : "SSH Gate ei saanut SSH Gate Agent-apuohjelmaa käyntiin. Kokeile käynnistää Macisi uudestaan, ja jos se ei tepsi, raportoi ongelmasta GitHubissa."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive n'a pas pu démarrer le SecretAgent. Veuillez redémarrer votre Mac, si cela ne fonctionne pas, signalez le problème sur GitHub."
+            "value" : "SSH Gate n'a pas pu démarrer le SSH Gate Agent. Veuillez redémarrer votre Mac, si cela ne fonctionne pas, signalez le problème sur GitHub."
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretiveアプリはSecretAgentを起動できませんでした。Macを再起動するか、それでも起動しない場合はGitHubのIssueで問題を報告してください。"
+            "value" : "SSH GateアプリはSSH Gate Agentを起動できませんでした。Macを再起動するか、それでも起動しない場合はGitHubのIssueで問題を報告してください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive에서 SecretAgent를 실행할 수 없습니다. Mac을 재시작해 보시고, 그래도 문제가 해결되지 않으면 GitHub에 문제를 제출해 주세요."
+            "value" : "SSH Gate에서 SSH Gate Agent를 실행할 수 없습니다. Mac을 재시작해 보시고, 그래도 문제가 해결되지 않으면 GitHub에 문제를 제출해 주세요."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive nie udało się uruchomić programu SecretAgent. Spróbuj ponownie uruchomić komputer Mac, a jeśli to nie zadziała, zgłoś problem na GitHub."
+            "value" : "SSH Gate nie udało się uruchomić programu SSH Gate Agent. Spróbuj ponownie uruchomić komputer Mac, a jeśli to nie zadziała, zgłoś problem na GitHub."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Secretive não foi capaz de iniciar o SecretAgent. Por favor, tente reiniciar seu Mac e, se isso não resolver, registre uma issue no GitHub."
+            "value" : "O SSH Gate não foi capaz de iniciar o SSH Gate Agent. Por favor, tente reiniciar seu Mac e, se isso não resolver, registre uma issue no GitHub."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive не получлось запустить SecretAgent. Пожалуйста, попробуйте перезапустить Ваш Mac, и если это не поможет – создайте issue на GitHub."
+            "value" : "SSH Gate не получлось запустить SSH Gate Agent. Пожалуйста, попробуйте перезапустить Ваш Mac, и если это не поможет – создайте issue на GitHub."
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive was unable to get SecretAgent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
+            "value" : "SSH Gate was unable to get SSH Gate Agent to launch. Please try restarting your Mac, and if that doesn't work, file an issue on GitHub."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive无法启动SecretAgent。请尝试重启Mac，如果没有效果，请在GitHub上提交一个issue。"
+            "value" : "SSH Gate无法启动SSH Gate Agent。请尝试重启Mac，如果没有效果，请在GitHub上提交一个issue。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive無法啟動SecretAgent。請嘗試重啟Mac，如果沒有效果，請在GitHub上提交一個issue。"
+            "value" : "SSH Gate無法啟動SSH Gate Agent。請嘗試重啟Mac，如果沒有效果，請在GitHub上提交一個issue。"
           }
         }
       }
@@ -2257,7 +2257,7 @@
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Έναρξη SecretAgent"
+            "value" : "Έναρξη SSH Gate Agent"
           }
         },
         "en" : {
@@ -2776,181 +2776,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L'agent segur (SecretAgent) és un procés que funciona en rerefons per signar peticions, tal que no hages de tindre Secretive obert tot el temps.\n\n**Secretive no funcionarà correctament a menys que l'agent estiga instal·lat i en funcionament.**"
+            "value" : "L'agent segur (SSH Gate Agent) és un procés que funciona en rerefons per signar peticions, tal que no hages de tindre SSH Gate obert tot el temps.\n\n**SSH Gate no funcionarà correctament a menys que l'agent estiga instal·lat i en funcionament.**"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent ist ein Hintergrund-Prozess, der Anfragen signiert, sodass Du Secretive nicht durchgehend geöffnet haben musst.\n\n**Secretive wird nicht richtig funktionieren, wenn der Agent nicht installiert und ausgeführt wird.**"
+            "value" : "SSH Gate Agent ist ein Hintergrund-Prozess, der Anfragen signiert, sodass Du SSH Gate nicht durchgehend geöffnet haben musst.\n\n**SSH Gate wird nicht richtig funktionieren, wenn der Agent nicht installiert und ausgeführt wird.**"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Το SecretAgent είναι μια διεργασία που εκτελείται στο παρασκήνιο για να υπογράφει αιτήματα. Δεν χρειάζεται να κρατάτε παράθυρο του Secretive ανοιχτό συνεχώς.\n\n**Το Secretive δεν θα μπορεί να λειτουργήσει σωστά εκτός και αν o Agent είναι εγκατεστημένος και εκτελείται.**"
+            "value" : "Το SSH Gate Agent είναι μια διεργασία που εκτελείται στο παρασκήνιο για να υπογράφει αιτήματα. Δεν χρειάζεται να κρατάτε παράθυρο του SSH Gate ανοιχτό συνεχώς.\n\n**Το SSH Gate δεν θα μπορεί να λειτουργήσει σωστά εκτός και αν o Agent είναι εγκατεστημένος και εκτελείται.**"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent-agenttiprosessi toimii taustalla ja allekirjoittaa pyyntöjä, jotta Secretive-käyttöliittymää ei tarvitse pitää aina auki.\n\n**Secretive ei toimi oikein, jollei agentti ole asennettu ja käynnissä.**"
+            "value" : "SSH Gate Agent-agenttiprosessi toimii taustalla ja allekirjoittaa pyyntöjä, jotta SSH Gate-käyttöliittymää ei tarvitse pitää aina auki.\n\n**SSH Gate ei toimi oikein, jollei agentti ole asennettu ja käynnissä.**"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent est un processus qui s'exécute en arrière-plan pour signer les demandes, de sorte que vous n'ayez pas besoin de garder Secretive ouvert en permanence.\n\n**Secretive ne pourra pas fonctionner correctement sans que l'agent soit installé et fonctionne.**"
+            "value" : "SSH Gate Agent est un processus qui s'exécute en arrière-plan pour signer les demandes, de sorte que vous n'ayez pas besoin de garder SSH Gate ouvert en permanence.\n\n**SSH Gate ne pourra pas fonctionner correctement sans que l'agent soit installé et fonctionne.**"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgentはバックグラウンドで稼働し署名を行います。Secretiveアプリを常に実行する必要はありません。\n\n**Secretiveアプリはエージェントがインストールされて稼働しない限り正しく動作しません。**"
+            "value" : "SSH Gate Agentはバックグラウンドで稼働し署名を行います。SSH Gateアプリを常に実行する必要はありません。\n\n**SSH Gateアプリはエージェントがインストールされて稼働しない限り正しく動作しません。**"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent는 백그라운드에서 실행되어 요청에 서명하는 프로세스이므로 Secretive를 항상 열어 둘 필요는 없습니다.\n\n**Secretive 에이전트가 설치되어 실행 중이어야 Secretive가 제대로 작동합니다.**"
+            "value" : "SSH Gate Agent는 백그라운드에서 실행되어 요청에 서명하는 프로세스이므로 SSH Gate를 항상 열어 둘 필요는 없습니다.\n\n**SSH Gate 에이전트가 설치되어 실행 중이어야 SSH Gate가 제대로 작동합니다.**"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent to proces działający w tle, który podpisuje żądania, dzięki czemu nie musisz mieć otwartego programu Secretive przez cały czas.\n\n**Program Secretive nie będzie działał poprawnie, jeśli agent nie zostanie zainstalowany i uruchomiony.**"
+            "value" : "SSH Gate Agent to proces działający w tle, który podpisuje żądania, dzięki czemu nie musisz mieć otwartego programu SSH Gate przez cały czas.\n\n**Program SSH Gate nie będzie działał poprawnie, jeśli agent nie zostanie zainstalowany i uruchomiony.**"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O SecretAgent é um processo que roda em segundo plano para assinar pedidos, sem precisar manter o Secretive aberto o tempo todo.\n\n**O Secretive não funcionará corretamente a menos que o agente esteja instalado e rodando.**"
+            "value" : "O SSH Gate Agent é um processo que roda em segundo plano para assinar pedidos, sem precisar manter o SSH Gate aberto o tempo todo.\n\n**O SSH Gate não funcionará corretamente a menos que o agente esteja instalado e rodando.**"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent это процесс, который работает в фоне чтобы подписывать запросы. Так Вам не придется все время держать Secretive открытым.\n\n**Secretive не сможет нормально функционировать, пока агент не установлен и не запущен.**"
+            "value" : "SSH Gate Agent это процесс, который работает в фоне чтобы подписывать запросы. Так Вам не придется все время держать SSH Gate открытым.\n\n**SSH Gate не сможет нормально функционировать, пока агент не установлен и не запущен.**"
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**Secretive will not be able to function properly unless the agent is installed and running.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**SSH Gate will not be able to function properly unless the agent is installed and running.**"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent是个在后台处理签名请求的进程，让您无需将Secretive一直保持在前台。\n\n**需要安装并运行Agent，否则Secretive无法正常工作。**"
+            "value" : "SSH Gate Agent是个在后台处理签名请求的进程，让您无需将SSH Gate一直保持在前台。\n\n**需要安装并运行Agent，否则SSH Gate无法正常工作。**"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent是個在後台處理簽名請求的行程，讓您無需將Secretive一直保持在前台。\n\n**需要安裝並執行Agent，否則Secretive無法正常工作。**"
+            "value" : "SSH Gate Agent是個在後台處理簽名請求的行程，讓您無需將SSH Gate一直保持在前台。\n\n**需要安裝並執行Agent，否則SSH Gate無法正常工作。**"
           }
         }
       }
@@ -3039,7 +3039,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secret Agent non è in esecuzione"
+            "value" : "SSH Gate Agent non è in esecuzione"
           }
         },
         "ja" : {
@@ -3146,181 +3146,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent és un procés que s'executa en segon pla per signar peticions, per tal que no necessites tindre Secretive obert tot el temps.\n\n**Pots tancar Secretive, i tot continuarà funcionant.**"
+            "value" : "SSH Gate Agent és un procés que s'executa en segon pla per signar peticions, per tal que no necessites tindre SSH Gate obert tot el temps.\n\n**Pots tancar SSH Gate, i tot continuarà funcionant.**"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent ist ein Prozess, der im Hintergrund läuft, um Anfragen zu signieren, so dass du Secretive nicht durchgehend geöffnet halten musst.\n\n**Du kannst Secretive schließen, und alles funktioniert weiter.**"
+            "value" : "SSH Gate Agent ist ein Prozess, der im Hintergrund läuft, um Anfragen zu signieren, so dass du SSH Gate nicht durchgehend geöffnet halten musst.\n\n**Du kannst SSH Gate schließen, und alles funktioniert weiter.**"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Το SecretAgent είναι μια διεργασία που εκτελείται στο παρασκήνιο για να υπογράφει αιτήματα. Δεν χρειάζεται να κρατάτε παράθυρο του Secretive ανοιχτό συνεχώς.\n\n**Το Secretive δεν θα μπορεί να λειτουργήσει σωστά εκτός και αν o Agent είναι εγκατεστημένος και εκτελείται.**"
+            "value" : "Το SSH Gate Agent είναι μια διεργασία που εκτελείται στο παρασκήνιο για να υπογράφει αιτήματα. Δεν χρειάζεται να κρατάτε παράθυρο του SSH Gate ανοιχτό συνεχώς.\n\n**Το SSH Gate δεν θα μπορεί να λειτουργήσει σωστά εκτός και αν o Agent είναι εγκατεστημένος και εκτελείται.**"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent on taustaprosessi joka allekirjoittaa pyyntöjä, joten Secretiveä ei tarvitse pitää käynnissä koko aikaa.  **Voit sulkea Secretiven, ja kaikki toimii yhä.**"
+            "value" : "SSH Gate Agent on taustaprosessi joka allekirjoittaa pyyntöjä, joten SSH Gateä ei tarvitse pitää käynnissä koko aikaa.  **Voit sulkea SSH Gaten, ja kaikki toimii yhä.**"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent est un processus qui s'exécute en arrière-plan pour signer les demandes, de sorte que vous n'ayez pas besoin de garder Secretive ouvert en permanence.\n\n**Vous pouvez fermer Secretive, et tout continuera à fonctionner.**"
+            "value" : "SSH Gate Agent est un processus qui s'exécute en arrière-plan pour signer les demandes, de sorte que vous n'ayez pas besoin de garder SSH Gate ouvert en permanence.\n\n**Vous pouvez fermer SSH Gate, et tout continuera à fonctionner.**"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent è un processo che viene eseguito in background per firmare le richieste, così che non devi tenere aperto Secretive tutto il tempo.\n\n**Puoi chiudere Secretive, e continuerà a funzionare.**"
+            "value" : "SSH Gate Agent è un processo che viene eseguito in background per firmare le richieste, così che non devi tenere aperto SSH Gate tutto il tempo.\n\n**Puoi chiudere SSH Gate, e continuerà a funzionare.**"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgentはバックグラウンドで稼働し署名を行います。Secretiveアプリを常に実行する必要はありません。\n\n**Secretiveアプリは終了しても問題ありません。アプリは機能し続けます。**"
+            "value" : "SSH Gate Agentはバックグラウンドで稼働し署名を行います。SSH Gateアプリを常に実行する必要はありません。\n\n**SSH Gateアプリは終了しても問題ありません。アプリは機能し続けます。**"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent는 요청에 서명하기 위해 백그라운드에서 실행되는 프로세스이므로 Secretive를 항상 열어 둘 필요가 없습니다.\n\n**Secretive를 닫아도 모든 것이 계속 작동합니다.**"
+            "value" : "SSH Gate Agent는 요청에 서명하기 위해 백그라운드에서 실행되는 프로세스이므로 SSH Gate를 항상 열어 둘 필요가 없습니다.\n\n**SSH Gate를 닫아도 모든 것이 계속 작동합니다.**"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent to proces, który działa w tle, aby popisywać zapytania. Dzięki temu nie musisz mieć uruchomionej aplikacji Secretive cały czas."
+            "value" : "SSH Gate Agent to proces, który działa w tle, aby popisywać zapytania. Dzięki temu nie musisz mieć uruchomionej aplikacji SSH Gate cały czas."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O SecretAgent é um processo que roda em segundo plano para assinar pedidos, sem precisar manter o Secretive aberto o tempo todo.\n\n**Você pode fechar o Secretive e tudo continuará funcionando.**"
+            "value" : "O SSH Gate Agent é um processo que roda em segundo plano para assinar pedidos, sem precisar manter o SSH Gate aberto o tempo todo.\n\n**Você pode fechar o SSH Gate e tudo continuará funcionando.**"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent это процесс, который работает в фоне, чтобы подписывать запросы – так Вам не нужно держать Secretive открытым все время.\n\n**Вы можете закрыть Secretive, и все продолжит работать штатно.**"
+            "value" : "SSH Gate Agent это процесс, который работает в фоне, чтобы подписывать запросы – так Вам не нужно держать SSH Gate открытым все время.\n\n**Вы можете закрыть SSH Gate, и все продолжит работать штатно.**"
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SecretAgent is a process that runs in the background to sign requests, so you don't need to keep Secretive open all the time.\n\n**You can close Secretive, and everything will still keep working.**"
+            "value" : "SSH Gate Agent is a process that runs in the background to sign requests, so you don't need to keep SSH Gate open all the time.\n\n**You can close SSH Gate, and everything will still keep working.**"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent是个在后台处理签名请求的进程，让您无需将Secretive一直保持在前台。\n\n**您可以关闭Secretive，所有服务都将正常运行。**"
+            "value" : "SSH Gate Agent是个在后台处理签名请求的进程，让您无需将SSH Gate一直保持在前台。\n\n**您可以关闭SSH Gate，所有服务都将正常运行。**"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent是個在後台處理簽名請求的行程，讓您無需將Secretive一直保持在前台。\n\n**您可以關閉Secretive，所有服務都將正常執行。**"
+            "value" : "SSH Gate Agent是個在後台處理簽名請求的行程，讓您無需將SSH Gate一直保持在前台。\n\n**您可以關閉SSH Gate，所有服務都將正常執行。**"
           }
         }
       }
@@ -3331,13 +3331,13 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "ca" : {
@@ -3349,19 +3349,19 @@
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secret Agent wird Ausgeführt"
+            "value" : "SSH Gate Agent wird Ausgeführt"
           }
         },
         "el" : {
@@ -3373,43 +3373,43 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent on käynnissä"
+            "value" : "SSH Gate Agent on käynnissä"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent est actif"
+            "value" : "SSH Gate Agent est actif"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secret Agent è in esecuzione"
+            "value" : "SSH Gate Agent è in esecuzione"
           }
         },
         "ja" : {
@@ -3421,91 +3421,91 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secret Agent가 실행 중입니다."
+            "value" : "SSH Gate Agent가 실행 중입니다."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secret Agent jest uruchomiony"
+            "value" : "SSH Gate Agent jest uruchomiony"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O SecretAgent está rodando"
+            "value" : "O SSH Gate Agent está rodando"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent запущен"
+            "value" : "SSH Gate Agent запущен"
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent is Running"
+            "value" : "SSH Gate Agent is Running"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secret Agent运行中"
+            "value" : "SSH Gate Agent运行中"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secret Agent執行中"
+            "value" : "SSH Gate Agent執行中"
           }
         }
       }
@@ -3701,13 +3701,13 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "ca" : {
@@ -3719,67 +3719,67 @@
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgent-Pfad"
+            "value" : "SSH Gate Agent-Pfad"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Τοποθεσία Secret Agent"
+            "value" : "Τοποθεσία SSH Gate Agent"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretAgentin sijainti"
+            "value" : "SSH Gate Agentin sijainti"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Emplacement du SecretAgent"
+            "value" : "Emplacement du SSH Gate Agent"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "ja" : {
@@ -3791,91 +3791,91 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secret Agent 경로"
+            "value" : "SSH Gate Agent 경로"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lokalizacja Secret Agent"
+            "value" : "Lokalizacja SSH Gate Agent"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Localização do SecretAgent"
+            "value" : "Localização do SSH Gate Agent"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Расположение Secret Agent"
+            "value" : "Расположение SSH Gate Agent"
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secret Agent Location"
+            "value" : "SSH Gate Agent Location"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secret Agent的位置"
+            "value" : "SSH Gate Agent的位置"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secret Agent的位置"
+            "value" : "SSH Gate Agent的位置"
           }
         }
       }
@@ -4441,181 +4441,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive necessita estar a la carpeta Apps per funcionar correctament. Per favor mogueu-lo i reobriu."
+            "value" : "SSH Gate necessita estar a la carpeta Apps per funcionar correctament. Per favor mogueu-lo i reobriu."
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive muss sich in deinem Programme Ordner befinden, damit es richtig funktioniert. Bitte verschiebe die App und starten sie neu."
+            "value" : "SSH Gate muss sich in deinem Programme Ordner befinden, damit es richtig funktioniert. Bitte verschiebe die App und starten sie neu."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretiven tulee olla Ohjelmat-kansiossa toimiakseen oikein. Ole hyvä ja käynnistä se uudelleen siirrettyäsi sen."
+            "value" : "SSH Gaten tulee olla Ohjelmat-kansiossa toimiakseen oikein. Ole hyvä ja käynnistä se uudelleen siirrettyäsi sen."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive doit se trouver dans votre dossier Applications pour fonctionner correctement. Veuillez le déplacer et relancer."
+            "value" : "SSH Gate doit se trouver dans votre dossier Applications pour fonctionner correctement. Veuillez le déplacer et relancer."
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive deve trovarsi nella cartella delle Applicazioni per funzionare correttamente. Per favore spostala e riavvia."
+            "value" : "SSH Gate deve trovarsi nella cartella delle Applicazioni per funzionare correttamente. Per favore spostala e riavvia."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretiveは正しく動作するためにアプリケーションフォルダにある必要があります。アプリを移動して再度実行してください。"
+            "value" : "SSH Gateは正しく動作するためにアプリケーションフォルダにある必要があります。アプリを移動して再度実行してください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive가 제대로 작동하려면 Applications 폴더에 있어야 합니다. 이동한 후 다시 실행해 주세요."
+            "value" : "SSH Gate가 제대로 작동하려면 Applications 폴더에 있어야 합니다. 이동한 후 다시 실행해 주세요."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive musi być w katalogu Applications, aby działać prawidłowo. Zmień lokalizację aplikacji i uruchom ją ponownie."
+            "value" : "SSH Gate musi być w katalogu Applications, aby działać prawidłowo. Zmień lokalizację aplikacji i uruchom ją ponownie."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Secretive precisa estar no seu diretório de Aplicativos para funcionar corretamente. Por favor, mova-o e abra novamente."
+            "value" : "O SSH Gate precisa estar no seu diretório de Aplicativos para funcionar corretamente. Por favor, mova-o e abra novamente."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive должен находиться в папке Applications чтобы работать правильно. Пожалуйста, переместите его и перезапустите приложение."
+            "value" : "SSH Gate должен находиться в папке Applications чтобы работать правильно. Пожалуйста, переместите его и перезапустите приложение."
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to be in your Applications folder to work properly. Please move it and relaunch."
+            "value" : "SSH Gate needs to be in your Applications folder to work properly. Please move it and relaunch."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive需要在“应用程序”文件夹中才能正常运行。请移动并重新启动Secretive。"
+            "value" : "SSH Gate需要在“应用程序”文件夹中才能正常运行。请移动并重新启动SSH Gate。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive需要在「應用程式」資料夾中才能正常執行。請移動並重新啟動Secretive。"
+            "value" : "SSH Gate需要在「應用程式」資料夾中才能正常執行。請移動並重新啟動SSH Gate。"
           }
         }
       }
@@ -4811,181 +4811,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive no es troba a la carpeta Apps"
+            "value" : "SSH Gate no es troba a la carpeta Apps"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive ist Nicht im Programme Ordner"
+            "value" : "SSH Gate ist Nicht im Programme Ordner"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive ei ole Ohjelmat-kansiossa"
+            "value" : "SSH Gate ei ole Ohjelmat-kansiossa"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive n'est pas dans le dossier Applications"
+            "value" : "SSH Gate n'est pas dans le dossier Applications"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive non è nella cartella delle Applicazioni"
+            "value" : "SSH Gate non è nella cartella delle Applicazioni"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretiveがアプリケーションフォルダにありません"
+            "value" : "SSH Gateがアプリケーションフォルダにありません"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive가 Applications 폴더에 없음"
+            "value" : "SSH Gate가 Applications 폴더에 없음"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive nie jest w folderze Applications"
+            "value" : "SSH Gate nie jest w folderze Applications"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Secretive não está no diretório de Aplicativos"
+            "value" : "O SSH Gate não está no diretório de Aplicativos"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive находится не в папке Applications"
+            "value" : "SSH Gate находится не в папке Applications"
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive Is Not in Applications Folder"
+            "value" : "SSH Gate Is Not in Applications Folder"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive不在“应用程序”文件夹中"
+            "value" : "SSH Gate不在“应用程序”文件夹中"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive不在「應用程式」資料夾中"
+            "value" : "SSH Gate不在「應用程式」資料夾中"
           }
         }
       }
@@ -12091,181 +12091,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive suporta claus EC256, EC384, RSA1024 i RSA2048."
+            "value" : "SSH Gate suporta claus EC256, EC384, RSA1024 i RSA2048."
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive unterstützt EC256, EC384, RSA1024 und RSA2048 Schlüssel."
+            "value" : "SSH Gate unterstützt EC256, EC384, RSA1024 und RSA2048 Schlüssel."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive tukee EC256-, EC384-, RSA1024- ja RSA2048-avaimia."
+            "value" : "SSH Gate tukee EC256-, EC384-, RSA1024- ja RSA2048-avaimia."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive prend en charge les clés EC256, EC384, RSA1024 et RSA2048."
+            "value" : "SSH Gate prend en charge les clés EC256, EC384, RSA1024 et RSA2048."
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive supporta la cifratura EC256, EC384, RSA1024 e RSA2048."
+            "value" : "SSH Gate supporta la cifratura EC256, EC384, RSA1024 e RSA2048."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SecretiveはEC256、EC384、RSA1024、またはRSA2048の鍵に対応しています。"
+            "value" : "SSH GateはEC256、EC384、RSA1024、またはRSA2048の鍵に対応しています。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive는 EC256, EC384, RSA1024 및 RSA2048 키를 지원합니다."
+            "value" : "SSH Gate는 EC256, EC384, RSA1024 및 RSA2048 키를 지원합니다."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive wspiera klucze EC256, EC384, RSA1024 i RSA2048."
+            "value" : "SSH Gate wspiera klucze EC256, EC384, RSA1024 i RSA2048."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Secretive suporta chaves EC256, EC384 e RSA2048."
+            "value" : "O SSH Gate suporta chaves EC256, EC384 e RSA2048."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive поддерживает ключи EC256, EC384, RSA1024, и RSA2048."
+            "value" : "SSH Gate поддерживает ключи EC256, EC384, RSA1024, и RSA2048."
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive supports EC256, EC384, and RSA2048 keys."
+            "value" : "SSH Gate supports EC256, EC384, and RSA2048 keys."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive支持EC256、EC384、RSA2048密钥。"
+            "value" : "SSH Gate支持EC256、EC384、RSA2048密钥。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive支援EC256、EC384、RSA2048金鑰。"
+            "value" : "SSH Gate支援EC256、EC384、RSA2048金鑰。"
           }
         }
       }
@@ -15091,13 +15091,13 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "ca" : {
@@ -15109,43 +15109,43 @@
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jos tarkoituksesi on määrittää komentorivityökaluja käyttämään Secretiveä, määritä shell."
+            "value" : "Jos tarkoituksesi on määrittää komentorivityökaluja käyttämään SSH Gateä, määritä shell."
           }
         },
         "fr" : {
@@ -15157,115 +15157,115 @@
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "コマンドラインで実行するツールでSecretiveを利用する場合は、シェルの設定をしてください。"
+            "value" : "コマンドラインで実行するツールでSSH Gateを利用する場合は、シェルの設定をしてください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive를 사용하기 위해 명령줄에서 실행되는 모든 것을 구성하려는 경우 셸을 구성하세요."
+            "value" : "SSH Gate를 사용하기 위해 명령줄에서 실행되는 모든 것을 구성하려는 경우 셸을 구성하세요."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jeśli próbujesz skonfigurować cokolwiek w wierszu poleceń, najpierw skonfiguruj swoją powłokę, aby używać Secretive."
+            "value" : "Jeśli próbujesz skonfigurować cokolwiek w wierszu poleceń, najpierw skonfiguruj swoją powłokę, aby używać SSH Gate."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Se você está tentando configurar qualquer coisa em sua linha de comando para usar o Secretive, configure seu shell."
+            "value" : "Se você está tentando configurar qualquer coisa em sua linha de comando para usar o SSH Gate, configure seu shell."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Если Вы хотите наладить работу Secretive с Вашими скриптами в Терминале, настройте Ваш Терминал."
+            "value" : "Если Вы хотите наладить работу SSH Gate с Вашими скриптами в Терминале, настройте Ваш Терминал."
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If you're trying to configure anything your command line runs to use Secretive, configure your shell."
+            "value" : "If you're trying to configure anything your command line runs to use SSH Gate, configure your shell."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果您打算让命令行运行的任何命令使用Secretive，请配置“Shell”。"
+            "value" : "如果您打算让命令行运行的任何命令使用SSH Gate，请配置“Shell”。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果您打算讓命令列執行的任何命令使用Secretive，請配置「Shell」。"
+            "value" : "如果您打算讓命令列執行的任何命令使用SSH Gate，請配置「Shell」。"
           }
         }
       }
@@ -15646,181 +15646,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configurant programes per a Secretive"
+            "value" : "Configurant programes per a SSH Gate"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Työkalujen määrittäminen käyttämään Secretiveä"
+            "value" : "Työkalujen määrittäminen käyttämään SSH Gateä"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configuration des outils pour Secretive"
+            "value" : "Configuration des outils pour SSH Gate"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretiveをツールで利用する設定"
+            "value" : "SSH Gateをツールで利用する設定"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive를 위한 도구 구성"
+            "value" : "SSH Gate를 위한 도구 구성"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konfigurowanie Narzędzi dla Secretive"
+            "value" : "Konfigurowanie Narzędzi dla SSH Gate"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configurando ferramentas para o Secretive"
+            "value" : "Configurando ferramentas para o SSH Gate"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Настройка инструментов для Secretive"
+            "value" : "Настройка инструментов для SSH Gate"
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Configuring Tools for Secretive"
+            "value" : "Configuring Tools for SSH Gate"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "为Secretive配置工具"
+            "value" : "为SSH Gate配置工具"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "為Secretive配置工具"
+            "value" : "為SSH Gate配置工具"
           }
         }
       }
@@ -15831,181 +15831,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La majoria de programes tracten d'utilitzar claus SSH a la carpeta `~/.ssh`. Per usar Secretive, hem de configurar-los perquè es connecten a Secretive en lloc d'açò."
+            "value" : "La majoria de programes tracten d'utilitzar claus SSH a la carpeta `~/.ssh`. Per usar SSH Gate, hem de configurar-los perquè es connecten a SSH Gate en lloc d'açò."
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suurin osa työkaluista etsii SSH-avaimia kotihakemistostasi, `~/.ssh`. Ne pitää sen sijaan määrittää puhumaan Secretivelle."
+            "value" : "Suurin osa työkaluista etsii SSH-avaimia kotihakemistostasi, `~/.ssh`. Ne pitää sen sijaan määrittää puhumaan SSH Gatelle."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La plupart des outils vont essayer de lire les clés SSH sur le disque dans `~/.ssh`. Pour utiliser Secretive, vous devez configurer ces outils pour qu'ils communiquent avec Secretive."
+            "value" : "La plupart des outils vont essayer de lire les clés SSH sur le disque dans `~/.ssh`. Pour utiliser SSH Gate, vous devez configurer ces outils pour qu'ils communiquent avec SSH Gate."
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ほとんどのツールはSSH鍵をディスク上の `~/.ssh` から探します。Secretiveを利用するには、代わりにSecretiveを利用するようにツールを設定する必要があります。"
+            "value" : "ほとんどのツールはSSH鍵をディスク上の `~/.ssh` から探します。SSH Gateを利用するには、代わりにSSH Gateを利用するようにツールを設定する必要があります。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "대부분의 도구는 디스크의 `~/.ssh`에서 SSH 키를 찾으려고 합니다. Secretive를 사용하려면 해당 도구가 Secretive와 통신하도록 설정해야 합니다."
+            "value" : "대부분의 도구는 디스크의 `~/.ssh`에서 SSH 키를 찾으려고 합니다. SSH Gate를 사용하려면 해당 도구가 SSH Gate와 통신하도록 설정해야 합니다."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Większość narzędzi próbuje szukać kluczy SSH na dysku w `~/.ssh`. Aby korzystać z kluczy umieszczonych w Secretive, musimy skonfigurować te narzędzia, aby komunikowały się z Secretive."
+            "value" : "Większość narzędzi próbuje szukać kluczy SSH na dysku w `~/.ssh`. Aby korzystać z kluczy umieszczonych w SSH Gate, musimy skonfigurować te narzędzia, aby komunikowały się z SSH Gate."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A maioria das ferramentas tentará procurar chaves SSH no disco em `~/.ssh`. Para usar o Secretive, precisamos configurar essas ferramentas para falarem com o Secretive ao invés disso."
+            "value" : "A maioria das ferramentas tentará procurar chaves SSH no disco em `~/.ssh`. Para usar o SSH Gate, precisamos configurar essas ferramentas para falarem com o SSH Gate ao invés disso."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Большинство инструментов попробуют найти SSH ключи в `~/.ssh`. Для того, чтобы использовать Secretive, нам потребуется настроить эти инструменты, чтобы они работали с Secretive."
+            "value" : "Большинство инструментов попробуют найти SSH ключи в `~/.ssh`. Для того, чтобы использовать SSH Gate, нам потребуется настроить эти инструменты, чтобы они работали с SSH Gate."
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use Secretive, we need to configure those tools to talk to Secretive instead."
+            "value" : "Most tools will try and look for SSH keys on disk in `~/.ssh`. To use SSH Gate, we need to configure those tools to talk to SSH Gate instead."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "多数工具会尝试在`~/.ssh`中查找磁盘上的SSH密钥。要使用Secretive，我们需要配置这些工具来与Secretive通信。"
+            "value" : "多数工具会尝试在`~/.ssh`中查找磁盘上的SSH密钥。要使用SSH Gate，我们需要配置这些工具来与SSH Gate通信。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "多數工具會嘗試在`~/.ssh`中查詢磁碟上的SSH金鑰。要使用Secretive，我們需要配置這些工具來與Secretive通訊。"
+            "value" : "多數工具會嘗試在`~/.ssh`中查詢磁碟上的SSH金鑰。要使用SSH Gate，我們需要配置這些工具來與SSH Gate通訊。"
           }
         }
       }
@@ -22021,181 +22021,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aquesta aplicació s'anomena **Secret Agent** i potser la vegas en Monitor d'Activitat."
+            "value" : "Aquesta aplicació s'anomena **SSH Gate Agent** i potser la vegas en Monitor d'Activitat."
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Hilfsanwendung heißt **Secret Agent**, und du kannst sie gelegentlich in der Aktivitätsanzeige sehen."
+            "value" : "Diese Hilfsanwendung heißt **SSH Gate Agent**, und du kannst sie gelegentlich in der Aktivitätsanzeige sehen."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apusovelluksen nimi on **Secret Agent** ja voit nähdä sen Activity Managerissa aika ajoin."
+            "value" : "Apusovelluksen nimi on **SSH Gate Agent** ja voit nähdä sen Activity Managerissa aika ajoin."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cette application auxiliaire s'appelle **Secret Agent** et vous pouvez la voir dans le Gestionnaire d'activités de temps en temps."
+            "value" : "Cette application auxiliaire s'appelle **SSH Gate Agent** et vous pouvez la voir dans le Gestionnaire d'activités de temps en temps."
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quest’app ausiliare è chiamata **Secret Agent** e potrebbe comparire in Monitoraggio Attività di tanto in tanto."
+            "value" : "Quest’app ausiliare è chiamata **SSH Gate Agent** e potrebbe comparire in Monitoraggio Attività di tanto in tanto."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "この補助アプリは**SecretAgent**といいます。アクティビティモニタに表示されます。"
+            "value" : "この補助アプリは**SSH Gate Agent**といいます。アクティビティモニタに表示されます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 도우미 앱은 **Secret Agent**이라고 하며 활성 상태 보기에서 수시로 볼 수 있습니다."
+            "value" : "이 도우미 앱은 **SSH Gate Agent**이라고 하며 활성 상태 보기에서 수시로 볼 수 있습니다."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ta aplikacja pomocnicza nazywa się **Secret Agent** i możesz zobaczyć ją od czasu do czasu w Monitorze Aktywności."
+            "value" : "Ta aplikacja pomocnicza nazywa się **SSH Gate Agent** i możesz zobaczyć ją od czasu do czasu w Monitorze Aktywności."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Esse aplicativo auxiliar se chama **Secret Agent** e você pode vê-lo no Monitor de Atividades de tempos em tempos."
+            "value" : "Esse aplicativo auxiliar se chama **SSH Gate Agent** e você pode vê-lo no Monitor de Atividades de tempos em tempos."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Это вспомогательное приложение назвается **Secret Agent**, Вы можете видеть его в Activity Monitor время от времени."
+            "value" : "Это вспомогательное приложение назвается **SSH Gate Agent**, Вы можете видеть его в Activity Monitor время от времени."
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This helper app is called **Secret Agent** and you may see it in Activity Manager from time to time."
+            "value" : "This helper app is called **SSH Gate Agent** and you may see it in Activity Manager from time to time."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这个辅助程序叫做**Secret Agent**， 之后您会时不时在活动监视器中看见它。"
+            "value" : "这个辅助程序叫做**SSH Gate Agent**， 之后您会时不时在活动监视器中看见它。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "這個輔助程式叫做**Secret Agent**，之後您會時不時在活動監視器中看見它。"
+            "value" : "這個輔助程式叫做**SSH Gate Agent**，之後您會時不時在活動監視器中看見它。"
           }
         }
       }
@@ -22206,181 +22206,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive necessita iniciar una aplicació secundària per funcionar correctament. Signarà les peticions dels clients SSH en segon pla, per tal que no necessites mantenir la aplicació principal de Secretive oberta."
+            "value" : "SSH Gate necessita iniciar una aplicació secundària per funcionar correctament. Signarà les peticions dels clients SSH en segon pla, per tal que no necessites mantenir la aplicació principal de SSH Gate oberta."
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive muss eine Hilfsanwendung einrichten, damit es richtig funktioniert. Sie signiert Anfragen von SSH-Clients im Hintergrund, sodass du die Secretive-Hauptanwendung nicht geöffnet halten musst."
+            "value" : "SSH Gate muss eine Hilfsanwendung einrichten, damit es richtig funktioniert. Sie signiert Anfragen von SSH-Clients im Hintergrund, sodass du die SSH Gate-Hauptanwendung nicht geöffnet halten musst."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretiven pitää määrittää apusovellus toimiakseen oikein. Se allekirjoittaa SSH-asiakasohjelmien pyyntöjä taustalla, jotta Secretive-pääohjelmaa ei tarvitse pitää auki koko ajan."
+            "value" : "SSH Gaten pitää määrittää apusovellus toimiakseen oikein. Se allekirjoittaa SSH-asiakasohjelmien pyyntöjä taustalla, jotta SSH Gate-pääohjelmaa ei tarvitse pitää auki koko ajan."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive a besoin de mettre en place une application auxiliaire pour fonctionner correctement. Elle signera les requêtes des clients SSH en arrière-plan, de sorte que vous n'ayez pas besoin de garder l'application principale Secretive ouverte."
+            "value" : "SSH Gate a besoin de mettre en place une application auxiliaire pour fonctionner correctement. Elle signera les requêtes des clients SSH en arrière-plan, de sorte que vous n'ayez pas besoin de garder l'application principale SSH Gate ouverte."
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive ha bisogno di impostare un’app ausiliaria per funzionare. Firmerà le richieste dai client SSH in background, così che non dovrai tenere l’app principale Secretive aperta."
+            "value" : "SSH Gate ha bisogno di impostare un’app ausiliaria per funzionare. Firmerà le richieste dai client SSH in background, così che non dovrai tenere l’app principale SSH Gate aperta."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretiveは補助アプリを利用します。補助アプリはバックグラウンドで稼働し、SSHクライアントからの要求に署名をします。Secretiveアプリを常に実行する必要はありません。"
+            "value" : "SSH Gateは補助アプリを利用します。補助アプリはバックグラウンドで稼働し、SSHクライアントからの要求に署名をします。SSH Gateアプリを常に実行する必要はありません。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive가 제대로 작동하려면 도우미 앱을 설치해야 합니다. 백그라운드에서 SSH 클라이언트의 요청에 서명하므로 기본 Secretive 앱을 열어 둘 필요가 없습니다."
+            "value" : "SSH Gate가 제대로 작동하려면 도우미 앱을 설치해야 합니다. 백그라운드에서 SSH 클라이언트의 요청에 서명하므로 기본 SSH Gate 앱을 열어 둘 필요가 없습니다."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive potrzebuje ustawić aplikację pomocniczą, aby działać prawidłowo. Będzie podpisywać zapytania od klientów SSH w tle. Dzięki temu główna aplikacja Secretive nie musi być ciągle uruchomiona."
+            "value" : "SSH Gate potrzebuje ustawić aplikację pomocniczą, aby działać prawidłowo. Będzie podpisywać zapytania od klientów SSH w tle. Dzięki temu główna aplikacja SSH Gate nie musi być ciągle uruchomiona."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Secretive precisa configurar um aplicativo auxiliar para funcionar corretamente. Ele irá assinar pedidos de clientes SSH em segundo plano, para que você não precise manter o aplicativo principal do Secretive aberto."
+            "value" : "O SSH Gate precisa configurar um aplicativo auxiliar para funcionar corretamente. Ele irá assinar pedidos de clientes SSH em segundo plano, para que você não precise manter o aplicativo principal do SSH Gate aberto."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive требуется настроить вспомогательное приложение, чтобы работать правильно. Оно будет подписывать запросы от SSH клиентов в фоне, так Вам не придется держать основное приложение Secretive открытым."
+            "value" : "SSH Gate требуется настроить вспомогательное приложение, чтобы работать правильно. Оно будет подписывать запросы от SSH клиентов в фоне, так Вам не придется держать основное приложение SSH Gate открытым."
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main Secretive app open."
+            "value" : "SSH Gate needs to set up a helper app to work properly. It will sign requests from SSH clients in the background, so you don't need to keep the main SSH Gate app open."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive需要设置一个辅助程序才能正常工作。它会在后台处理SSH客户端的签名请求，这样您就不需要在前台一直保持Secretive开启了。"
+            "value" : "SSH Gate需要设置一个辅助程序才能正常工作。它会在后台处理SSH客户端的签名请求，这样您就不需要在前台一直保持SSH Gate开启了。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive需要設定一個輔助程式才能正常工作。它會在後台處理SSH客戶端的簽名請求，這樣您就不需要在前臺一直保持Secretive開啟了。"
+            "value" : "SSH Gate需要設定一個輔助程式才能正常工作。它會在後台處理SSH客戶端的簽名請求，這樣您就不需要在前臺一直保持SSH Gate開啟了。"
           }
         }
       }
@@ -22654,7 +22654,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Imposta Secret Agent"
+            "value" : "Imposta SSH Gate Agent"
           }
         },
         "ja" : {
@@ -23131,181 +23131,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configura els programes que utilitzes perquè gasten Secretive."
+            "value" : "Configura els programes que utilitzes perquè gasten SSH Gate."
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sag den Tools, die Du benutzt, wie sie mit Secretive kommunizieren können."
+            "value" : "Sag den Tools, die Du benutzt, wie sie mit SSH Gate kommunizieren können."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kerro käyttämillesi työkaluille, miten puhua Secretivelle."
+            "value" : "Kerro käyttämillesi työkaluille, miten puhua SSH Gatelle."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Indiquez aux outils que vous utilisez comment communiquer avec Secretive."
+            "value" : "Indiquez aux outils que vous utilisez comment communiquer avec SSH Gate."
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "お使いのツールとSecretiveを連携できます。"
+            "value" : "お使いのツールとSSH Gateを連携できます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive와 대화하는 방법을 사용하는 도구를 알려주세요."
+            "value" : "SSH Gate와 대화하는 방법을 사용하는 도구를 알려주세요."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wskaż narzędziom, z których korzystasz, jak komunikować się z Secretive."
+            "value" : "Wskaż narzędziom, z których korzystasz, jak komunikować się z SSH Gate."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diga às ferramentas que você usa como falar com o Secretive."
+            "value" : "Diga às ferramentas que você usa como falar com o SSH Gate."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Настройте Ваши инструменты для работы с Secretive"
+            "value" : "Настройте Ваши инструменты для работы с SSH Gate"
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Tell the tools you use how to talk to Secretive."
+            "value" : "Tell the tools you use how to talk to SSH Gate."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "让您用的工具知道如何与Secretive通信。"
+            "value" : "让您用的工具知道如何与SSH Gate通信。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "讓您用的工具知道如何與Secretive通訊。"
+            "value" : "讓您用的工具知道如何與SSH Gate通訊。"
           }
         }
       }
@@ -23501,181 +23501,181 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive comprovarà periòdicament amb GitHub per comprovar si existeix una nova versió. "
+            "value" : "SSH Gate comprovarà periòdicament amb GitHub per comprovar si existeix una nova versió. "
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive prüft regelmäßig bei GitHub, ob es eine neue Version gibt. Wenn du Netzwerkanfragen an GitHub siehst, ist das der Grund."
+            "value" : "SSH Gate prüft regelmäßig bei GitHub, ob es eine neue Version gibt. Wenn du Netzwerkanfragen an GitHub siehst, ist das der Grund."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive tarkistaa päivityksiä GitHubista aika ajoin. Tämä selittää, jos näet verkkopyyntöjä GitHubiin."
+            "value" : "SSH Gate tarkistaa päivityksiä GitHubista aika ajoin. Tämä selittää, jos näet verkkopyyntöjä GitHubiin."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive vérifie périodiquement sur GitHub s'il existe une nouvelle version. C'est pour cette raison que vous pouvez voir des requêtes réseau vers GitHub."
+            "value" : "SSH Gate vérifie périodiquement sur GitHub s'il existe une nouvelle version. C'est pour cette raison que vous pouvez voir des requêtes réseau vers GitHub."
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive controllerà periodicamente GitHub per vedere se ci sono nuove versioni rilasciate. Se vedi una richiesta network per GitHub, eccola spiegata."
+            "value" : "SSH Gate controllerà periodicamente GitHub per vedere se ci sono nuove versioni rilasciate. Se vedi una richiesta network per GitHub, eccola spiegata."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretiveは定期的にGitHubにアプリのアップデートがあるか確認します。GitHubへの通信が表示されることがあるのはそのためです。"
+            "value" : "SSH Gateは定期的にGitHubにアプリのアップデートがあるか確認します。GitHubへの通信が表示されることがあるのはそのためです。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive는 주기적으로 GitHub를 확인하여 새 릴리스가 있는지 확인합니다. GitHub에 대한 네트워크 요청이 표시되는 이유입니다. "
+            "value" : "SSH Gate는 주기적으로 GitHub를 확인하여 새 릴리스가 있는지 확인합니다. GitHub에 대한 네트워크 요청이 표시되는 이유입니다. "
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive będzie co jakiś czas będzie sprawdzał GitHub, aby zobaczyć czy dostępna jest nowsza wersja aplikacji. Jeżeli zobaczysz jakikolwiek ruch sieciowy do GitHub, to właśnie dlatego."
+            "value" : "SSH Gate będzie co jakiś czas będzie sprawdzał GitHub, aby zobaczyć czy dostępna jest nowsza wersja aplikacji. Jeżeli zobaczysz jakikolwiek ruch sieciowy do GitHub, to właśnie dlatego."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Secretive vai verificar o GitHub periodicamente para saber se há uma nova versão. Se notar requisições de rede para o GitHub, esse é o motivo."
+            "value" : "O SSH Gate vai verificar o GitHub periodicamente para saber se há uma nova versão. Se notar requisições de rede para o GitHub, esse é o motivo."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive будет проверять обновления на GitHub. Если Вы видите сетевые запросы к GitHub, вот их причина."
+            "value" : "SSH Gate будет проверять обновления на GitHub. Если Вы видите сетевые запросы к GitHub, вот их причина."
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
+            "value" : "SSH Gate will periodically check with GitHub to see if there's a new release. If you see any network requests to GitHub, that's why."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive会定期访问GitHub来检查更新。这就是为什么您会看见发往GitHub的网络请求。"
+            "value" : "SSH Gate会定期访问GitHub来检查更新。这就是为什么您会看见发往GitHub的网络请求。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive會定期訪問GitHub來檢查更新。這就是為什麼您會看見發往GitHub的網路請求。"
+            "value" : "SSH Gate會定期訪問GitHub來檢查更新。這就是為什麼您會看見發往GitHub的網路請求。"
           }
         }
       }
@@ -27395,133 +27395,133 @@
         "af" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "ru" : {
@@ -27533,43 +27533,43 @@
         "sr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Secretive %1$(updateName)@"
+            "value" : "SSH Gate %1$(updateName)@"
           }
         }
       }
