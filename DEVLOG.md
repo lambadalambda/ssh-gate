@@ -38,7 +38,7 @@
   userauth targets (user, host key, host name from known_hosts) and SSHSIG
   namespaces, and traces the requesting process chain. Its "remember" option
   unlocks a whole key for all processes. We add grants per requester and
-  purpose instead. Fork: lambadalambda/ssh-gate, branch `scoped-grants`.
+  purpose instead. Fork: https://github.com/lambadalambda/ssh-gate.
 - SwiftPM and xcodebuild sandbox the package manifest build; that fails inside
   a sandboxed session. `swift build --disable-sandbox` works. `swift test`
   then crashes: SSHProtocolKit asserts that the process is an XPC service or

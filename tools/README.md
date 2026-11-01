@@ -1,7 +1,7 @@
 # sshgate
 
 > The main work has moved to SSH Gate, a fork of Secretive with scoped grants
-> (`lambadalambda/ssh-gate`, branch `scoped-grants`): a Mac app that holds the keys
+> ([lambadalambda/ssh-gate](https://github.com/lambadalambda/ssh-gate)): a Mac app that holds the keys
 > in the Secure Enclave and asks in a window, with Touch ID, which process may
 > use which key for which purpose and for how long. This repo has the
 > `ssh-grant` command and the agent skill for it, the e2e and fixture tools,

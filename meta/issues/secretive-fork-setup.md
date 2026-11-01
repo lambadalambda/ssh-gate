@@ -2,7 +2,7 @@
 
 ## Summary
 
-Mirror upstream Secretive into a private Gitea repo and work on a branch.
+Mirror upstream Secretive into its own repo and work on a branch.
 
 ## Acceptance Criteria
 
