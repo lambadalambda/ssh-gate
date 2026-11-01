@@ -11,12 +11,14 @@ expires.
 - Logins are pinned to host keys from verified session-binds, including host
   certificates; forwarded agent connections only get one-time approvals.
 - Agents can ask in advance with a reason: `ssh-grant login user@host`,
-  `ssh-grant sign`, or `ssh-grant ssh <ssh args>` (from the sshgate repo).
+  `ssh-grant sign`, or `ssh-grant ssh <ssh args>` (in [tools/](tools/README.md), with
+  a skill for coding agents).
 - With a key marked as grant CA, each login grant also gets a short-lived user
   certificate, so servers that trust the CA enforce the expiry themselves.
 
 SSH Gate is a fork of [Secretive](https://github.com/maxgoedjen/secretive) by
-Max Goedjen (MIT License). Build with `scripts/release.sh` (Developer ID,
+Max Goedjen (MIT License). Project notes are in `meta/` and `DEVLOG.md`.
+Build with `scripts/release.sh` (Developer ID,
 team from `Sources/Config/OpenSource.xcconfig`) and install with
 `scripts/install.sh`.
 

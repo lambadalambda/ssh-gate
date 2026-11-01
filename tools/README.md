@@ -1,11 +1,9 @@
-# sshgate
+# Tools for SSH Gate
 
-> The main work has moved to SSH Gate, a fork of Secretive with scoped grants
-> ([lambadalambda/ssh-gate](https://github.com/lambadalambda/ssh-gate)): a Mac app that holds the keys
-> in the Secure Enclave and asks in a window, with Touch ID, which process may
-> use which key for which purpose and for how long. This repo has the
-> `ssh-grant` command and the agent skill for it, the e2e and fixture tools,
-> and the original proxy below.
+Go tools for [SSH Gate](../README.md): the `ssh-grant` command, the agent
+skill for it, the end-to-end tests and the fixture capture for the app's
+tests, and the original proxy (sshgate) that SSH Gate grew out of. Run the
+commands below in this directory.
 
 ## ssh-grant and the agent skill
 
@@ -15,14 +13,14 @@ ssh-grant login git@git.example.com --for 1h --reason "push branch x"
 ssh-grant sign --for 1h --reason "sign the release tag"
 ```
 
-`ssh-grant` asks the fork's agent (`SSH_AUTH_SOCK`) for a grant before the key
+`ssh-grant` asks SSH Gate's agent (`SSH_AUTH_SOCK`) for a grant before the key
 is used. For coding agents, install the skill:
 
 ```sh
 ln -s "$PWD/skills/ssh-grant" ~/.claude/skills/ssh-grant
 ```
 
-If a key is marked as grant CA in the fork's host app, each login grant also
+If a key is marked as grant CA in the SSH Gate app, each login grant also
 gets a user certificate that is valid only for the granted user and until the
 grant expires. Servers trust the CA with one line in `authorized_keys`
 (`cert-authority,principals="USER" <CA key>`) or with `TrustedUserCAKeys`.
