@@ -11,7 +11,9 @@
 #   4. login to host A      -> no window
 #   5. login to host B      -> window (other host); deny
 set -u
-sock=${1:-$HOME/Library/Containers/com.example.sshgate.SecretAgent/Data/socket-debug.ssh}
+bundle=${SSH_GATE_AGENT_BUNDLE:-$(/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "/Applications/SSH Gate.app/Contents/Library/LoginItems/SSH Gate Agent.app/Contents/Info.plist" 2>/dev/null)}
+[ -n "$bundle" ] || { echo "SSH Gate is not installed; set SSH_GATE_AGENT_BUNDLE to the agent's bundle ID"; exit 1; }
+sock=${1:-$HOME/Library/Containers/$bundle/Data/socket.ssh}
 dir=$(mktemp -d /tmp/grant-test.XXXX)
 trap 'kill $(cat "$dir"/*.pid 2>/dev/null) 2>/dev/null; rm -rf "$dir"' EXIT
 
