@@ -1,6 +1,6 @@
 #!/bin/sh
 # Manual test of grant certificates with the Secretive fork. Needs:
-# - the fork's agent running, with a key marked as grant CA in the host app,
+# - SSH Gate's agent running, with a key marked as grant CA in the host app,
 # - ssh-grant (go build -o ssh-grant ./cmd/ssh-grant),
 # - a person to approve the window.
 #
@@ -11,7 +11,9 @@
 # agent and ssh read that file; removes exactly those lines again at the end.
 set -u
 here=$(cd "$(dirname "$0")/.." && pwd)
-container=$HOME/Library/Containers/com.example.sshgate.SecretAgent/Data
+bundle=${SSH_GATE_AGENT_BUNDLE:-$(/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "/Applications/SSH Gate.app/Contents/Library/LoginItems/SSH Gate Agent.app/Contents/Info.plist" 2>/dev/null)}
+[ -n "$bundle" ] || { echo "SSH Gate is not installed; set SSH_GATE_AGENT_BUNDLE to the agent's bundle ID"; exit 1; }
+container=$HOME/Library/Containers/$bundle/Data
 sock=${2:-$container/socket.ssh}
 marker="sshgate-certificate-test"
 port=2245
